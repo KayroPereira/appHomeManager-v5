@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">appHomeManager-v4</string>
+
+    <string name="login">Login</string>
+    <string name="vazio"> </string>
+
+    <string name="dgLogin">Digite um e-mail</string>
+    <string name="dgPassword">Digite uma senha</string>
+    <string name="dgConfirmePassword">Confirmar senha</string>
+
+    <!-- Geral   -->
+
+    <string name="email">E-mail</string>
+    <string name="senha">Senha</string>
+
+    <string name="campoNaoPreenchido">Preencher o campo obrigatório: </string>
+    <string name="camposNaoPreenchidos">Preencher os campos obrigatórios: </string>
+
+
+    <!-- Churrasqueira   -->
+    <string name="onOff">OnOff</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+</resources>

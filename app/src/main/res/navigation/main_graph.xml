@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_graph"
+    app:startDestination="@id/mainActivity">
+
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.home.apphomemanager_v4.MainActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main" />
+    <activity
+        android:id="@+id/dadosFirebaseActivity"
+        android:name="com.home.apphomemanager_v4.DadosFirebaseActivity"
+        android:label="activity_dados_firebase"
+        tools:layout="@layout/activity_dados_firebase" />
+    <activity
+        android:id="@+id/testActivity"
+        android:name="com.home.apphomemanager_v4.TestActivity"
+        android:label="activity_test"
+        tools:layout="@layout/activity_test" />
+</navigation>
