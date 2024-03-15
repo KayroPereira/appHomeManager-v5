@@ -1,14 +1,54 @@
 package com.home.apphomemanager_v4.util;
 
 import android.util.Log;
+import android.util.Pair;
 
 import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class AtributoUtils {
+
+    public static String getPath(String pathCampo){
+        return getPath(pathCampo, "\\.");
+    }
+
+    public static String getPath(String pathCampo, String separador){
+        List<String> atributo = Arrays.stream(pathCampo.split(separador)).collect(Collectors.toList());
+        int ultimoElemento = atributo.size() - 1;
+
+        if (ultimoElemento > 0) {
+            atributo.remove(ultimoElemento);
+        }else{
+            return "";
+        }
+        return "." + String.join(".", atributo);
+    }
+
+    public static String getAtributo(String pathCampo){
+        return getAtributo(pathCampo, "\\.");
+    }
+
+    public static String getAtributo(String pathCampo, String separador){
+        String[] atributo = pathCampo.split(separador);
+
+        return atributo[atributo.length-1];
+    }
+
+    public static Pair<String, String> getParamentrosField(Object obj, String campo){
+
+        String[] nameClass = obj.getClass().getName().split("\\.");
+        String classPai = (nameClass[nameClass.length-1]).toLowerCase();
+
+        String atributo = AtributoUtils.getAtributo(campo);
+
+        String pathTarget = classPai + AtributoUtils.getPath(campo);
+
+        return new Pair<>(pathTarget, atributo);
+    }
 
     public static <K, V> K buscarChavePorValor(Map<K, V> mapa, V valor) {
         for (Map.Entry<K, V> entry : mapa.entrySet()) {

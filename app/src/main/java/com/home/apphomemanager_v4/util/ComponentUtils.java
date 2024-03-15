@@ -31,17 +31,11 @@ public class ComponentUtils {
 
         fields.stream().forEach(att -> {
             Object value = AtributoUtils.obterValorCampo(source, att);
-            DebuggerUtils.log("-----------------------------");
-            DebuggerUtils.log("value: " + value);
-            DebuggerUtils.log("att: " + att);
-
             View child = getComponent(binding, componentActivity, att);
 
             changeValueComponent(child, value);
         });
     }
-
-
 
     public static View getComponent(ViewBinding binding, Map<Integer, String> componentActivity, String atributo){
         Integer idComponent = AtributoUtils.buscarChavePorValor(componentActivity, atributo);
