@@ -38,6 +38,8 @@ public class DadosFirebaseActivity extends AppCompatActivity {
 
     private Map<Integer, String> componentActivity = new HashMap<>();
 
+    private static final String PATH_ROOT_FIREBASE = "churrasqueira";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +51,7 @@ public class DadosFirebaseActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         database = FirebaseDatabase.getInstance();
-        mDatabase = database.getReference().child("churrasqueira");
+        mDatabase = database.getReference().child(PATH_ROOT_FIREBASE);
 
         mapeametoComponenteToFirebase();
         ComponentUtils.inicializaElementos(binding);

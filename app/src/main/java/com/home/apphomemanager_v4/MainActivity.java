@@ -40,6 +40,12 @@ public class MainActivity extends AppCompatActivity {
         binding.btEnviarLGN.setOnClickListener(e -> loginFirebase());
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mAuth.signOut();
+    }
+
     private void loginFirebase(){
 
         String email = binding.eTSSIDLGN.getText().toString().trim();
@@ -58,25 +64,16 @@ public class MainActivity extends AppCompatActivity {
 
     private void sendDataFirebaseLogin(String email, String password){
 
-        //          "current_key": "AIzaSyBl3MODTkTZJBXCvBPO20XGt2igneVzqu4"
-//        Toast.makeText(this, "Chegou aqio", Toast.LENGTH_SHORT).show();
-
-//        mAuth.signOut();
-
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
-                        // Sign in success, update UI with the signed-in user's information
-//                        Log.d(TAG, "signInWithEmail:success");
                         FirebaseUser user = mAuth.getCurrentUser();
-//                        Toast.makeText(this, user.getEmail(), Toast.LENGTH_SHORT).show();
+
                         Toast.makeText(this, "Login ok", Toast.LENGTH_SHORT).show();
+
                         startActivity(new Intent(this, DadosFirebaseActivity.class));
                     } else {
-                        // If sign in fails, display a message to the user.
-//                        Log.w(TAG, "signInWithEmail:failure", task.getException());
-                        Toast.makeText(this, "Authentication failed.",
-                                Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "Authentication failed.", Toast.LENGTH_SHORT).show();
                     }
                 });
     }
