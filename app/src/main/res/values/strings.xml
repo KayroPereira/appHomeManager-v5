@@ -16,12 +16,20 @@
     <string name="campoNaoPreenchido">Preencher o campo obrigatório: </string>
     <string name="camposNaoPreenchidos">Preencher os campos obrigatórios: </string>
 
+    <string name="zeroNum">0</string>
 
     <!-- Churrasqueira   -->
     <string name="onOff">OnOff</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-
+    <string name="churrasqueira_sfc2">sFc2</string>
+    <string name="churrasqueira_mdir">mDir</string>
+    <string name="churrasqueira_sfc1">sFc1</string>
+    <string name="churrasqueira_osopr">oSopr</string>
+    <string name="churrasqueira_olamp">oLamp</string>
+    <string name="churrasqueira_monoff">mOnOff</string>
+    <string name="churrasqueira_oexau">oExau</string>
+    <string name="churrasqueira_oagua">oAgua</string>
+    <string name="churrasqueira_mhab">mHab</string>
 
 </resources>
