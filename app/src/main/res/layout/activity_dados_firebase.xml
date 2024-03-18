@@ -6,26 +6,165 @@
     android:layout_height="match_parent"
     tools:context=".DadosFirebaseActivity">
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="300dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="81dp" />
+
     <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/swOnOffChurrasqueiraGeral"
         android:layout_width="100dp"
         android:layout_height="52dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:text="@string/onOff"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.666" />
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/swMDirecaoChurrasqueira"
+        android:layout_width="100dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/churrasqueira_mdir"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline2" />
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/swSFc2Churrasqueira"
+        android:layout_width="100dp"
+        android:layout_height="52dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:text="@string/churrasqueira_sfc2"
+        app:layout_constraintBottom_toTopOf="@+id/guideline3"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/swSFc1Churrasqueira"
+        android:layout_width="100dp"
+        android:layout_height="52dp"
+        android:layout_marginBottom="10dp"
+        android:text="@string/churrasqueira_sfc1"
+        app:layout_constraintBottom_toTopOf="@+id/guideline3"
+        app:layout_constraintEnd_toStartOf="@+id/swSFc2Churrasqueira"
+        app:layout_constraintStart_toEndOf="@+id/swOSopradorChurrasqueira" />
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/swOSopradorChurrasqueira"
+        android:layout_width="100dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="10dp"
+        android:text="@string/churrasqueira_osopr"
+        app:layout_constraintBottom_toTopOf="@+id/guideline3"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/swOLampadaChurrasqueira"
+        android:layout_width="100dp"
+        android:layout_height="52dp"
+        android:layout_marginEnd="10dp"
+        android:text="@string/churrasqueira_olamp"
+        app:layout_constraintBottom_toTopOf="@+id/swSFc2Churrasqueira"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/swMOnOffChurrasqueira" />
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/swMOnOffChurrasqueira"
+        android:layout_width="100dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:text="@string/churrasqueira_monoff"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline2" />
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/swOExauChurrasqueira"
+        android:layout_width="100dp"
+        android:layout_height="52dp"
+        android:text="@string/churrasqueira_oexau"
+        app:layout_constraintBottom_toTopOf="@+id/swSFc1Churrasqueira"
+        app:layout_constraintEnd_toStartOf="@+id/swOLampadaChurrasqueira"
+        app:layout_constraintStart_toEndOf="@+id/swOAguaChurrasqueira"
+        app:layout_constraintTop_toBottomOf="@+id/swMHabilitadoChurrasqueira" />
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/swOAguaChurrasqueira"
+        android:layout_width="100dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="10dp"
+        android:text="@string/churrasqueira_oagua"
+        app:layout_constraintBottom_toTopOf="@+id/swOSopradorChurrasqueira"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/swMDirecaoChurrasqueira" />
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/swMHabilitadoChurrasqueira"
+        android:layout_width="100dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/churrasqueira_mhab"
+        app:layout_constraintEnd_toStartOf="@+id/swMOnOffChurrasqueira"
+        app:layout_constraintStart_toEndOf="@+id/swMDirecaoChurrasqueira"
+        app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
     <TextView
         android:id="@+id/tvDFBInfo"
-        android:layout_width="342dp"
-        android:layout_height="598dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
         android:text="@string/vazio"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/swOnOffChurrasqueiraGeral" />
+        app:layout_constraintTop_toTopOf="@+id/guideline" />
+
+    <TextView
+        android:id="@+id/tvDFBUpdate"
+        android:layout_width="85dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:text="@string/zeroNum"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline4"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="306dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
