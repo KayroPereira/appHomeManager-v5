@@ -13,6 +13,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "appHomeManager-v4"
+rootProject.name = "appHomeManager-v5"
 include(":app")
  

@@ -1,4 +1,4 @@
-package com.home.apphomemanager_v4;
+package com.home.apphomemanager_v5;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -14,12 +14,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
-import com.home.apphomemanager_v4.databinding.ActivityDadosFirebaseBinding;
-import com.home.apphomemanager_v4.model.churrasqueira.Churrasqueira;
-import com.home.apphomemanager_v4.util.AtributoUtils;
-import com.home.apphomemanager_v4.util.ComponentUtils;
-import com.home.apphomemanager_v4.util.FirebaseUtils;
-import com.home.apphomemanager_v4.util.JsonUtils;
+import com.home.apphomemanager_v5.databinding.ActivityDadosFirebaseBinding;
+import com.home.apphomemanager_v5.model.churrasqueira.Churrasqueira;
+import com.home.apphomemanager_v5.util.AtributoUtils;
+import com.home.apphomemanager_v5.util.ComponentUtils;
+import com.home.apphomemanager_v5.util.FirebaseUtils;
+import com.home.apphomemanager_v5.util.JsonUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -36,7 +36,7 @@ public class DadosFirebaseActivity extends AppCompatActivity {
 
     private Churrasqueira churrasqueira;
 
-    private Map<Integer, String> componentActivity = new HashMap<>();
+    private Map<Integer, String> componentsActivity = new HashMap<>();
 
     private static final String PATH_ROOT_FIREBASE = "churrasqueira";
 
@@ -74,7 +74,7 @@ public class DadosFirebaseActivity extends AppCompatActivity {
         switchCompat.setOnCheckedChangeListener((compoundButton, b) -> {
 
             Integer idComponent = compoundButton.getId();
-            String path = componentActivity.get(idComponent);
+            String path = componentsActivity.get(idComponent);
             Pair<String, String> parametros = AtributoUtils.getParamentrosField(churrasqueira, path);
 
             FirebaseUtils.sendSimpleData(parametros.first, parametros.second, b);
@@ -82,17 +82,17 @@ public class DadosFirebaseActivity extends AppCompatActivity {
     }
 
     private void mapeametoComponenteToFirebase(){
-        componentActivity.put(binding.swOnOffChurrasqueiraGeral.getId(), "onOff");
-        componentActivity.put(binding.swMDirecaoChurrasqueira.getId(), "parametros.motor.direcao");
-        componentActivity.put(binding.swMHabilitadoChurrasqueira.getId(), "parametros.motor.habilitado");
-        componentActivity.put(binding.swMOnOffChurrasqueira.getId(), "parametros.motor.onOff");
-        componentActivity.put(binding.swOAguaChurrasqueira.getId(), "parametros.output.agua");
-        componentActivity.put(binding.swOExauChurrasqueira.getId(), "parametros.output.exaustor");
-        componentActivity.put(binding.swOLampadaChurrasqueira.getId(), "parametros.output.lampada");
-        componentActivity.put(binding.swOSopradorChurrasqueira.getId(), "parametros.output.soprador");
-        componentActivity.put(binding.swSFc1Churrasqueira.getId(), "parametros.sensor.fc1");
-        componentActivity.put(binding.swSFc2Churrasqueira.getId(), "parametros.sensor.fc2");
-        componentActivity.put(binding.tvDFBUpdate.getId(), "update");
+        componentsActivity.put(binding.swOnOffChurrasqueiraGeral.getId(), "onOff");
+        componentsActivity.put(binding.swMDirecaoChurrasqueira.getId(), "parametros.motor.direcao");
+        componentsActivity.put(binding.swMHabilitadoChurrasqueira.getId(), "parametros.motor.habilitado");
+        componentsActivity.put(binding.swMOnOffChurrasqueira.getId(), "parametros.motor.onOff");
+        componentsActivity.put(binding.swOAguaChurrasqueira.getId(), "parametros.output.agua");
+        componentsActivity.put(binding.swOExauChurrasqueira.getId(), "parametros.output.exaustor");
+        componentsActivity.put(binding.swOLampadaChurrasqueira.getId(), "parametros.output.lampada");
+        componentsActivity.put(binding.swOSopradorChurrasqueira.getId(), "parametros.output.soprador");
+        componentsActivity.put(binding.swSFc1Churrasqueira.getId(), "parametros.sensor.fc1");
+        componentsActivity.put(binding.swSFc2Churrasqueira.getId(), "parametros.sensor.fc2");
+        componentsActivity.put(binding.tvDFBUpdate.getId(), "update");
     }
 
     private void ouvinteFirebase(){
@@ -123,7 +123,7 @@ public class DadosFirebaseActivity extends AppCompatActivity {
 
                     binding.tvDFBInfo.setText(sb.toString());
 
-                    ComponentUtils.atualizaComponents(churrasqueira, atributosAlterados, componentActivity, binding);
+                    ComponentUtils.atualizaComponents(churrasqueira, atributosAlterados, componentsActivity, binding);
                 } catch (Exception e) {
                     Toast.makeText(DadosFirebaseActivity.this, "Erro ao adicionar o json ao textview: " + e, Toast.LENGTH_SHORT).show();
                 }

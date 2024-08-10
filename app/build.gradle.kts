@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace = "com.home.apphomemanager_v4"
+    namespace = "com.home.apphomemanager_v5"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.home.apphomemanager_v4"
+        applicationId = "com.home.apphomemanager_v5"
         minSdk = 30
         targetSdk = 34
         versionCode = 1
@@ -48,6 +48,10 @@ dependencies {
     // When using the BoM, don't specify versions in Firebase dependencies
     implementation("com.google.firebase:firebase-analytics")
 
+    implementation("com.google.android.material:material:1.11.0")
+
+//    implementation("com.google.dagger:dagger:2.51.1")
+//    annotationProcessor("com.google.dagger:dagger-compiler:2.51.1")
 
     // Add the dependencies for any other desired Firebase products
     // https://firebase.google.com/docs/android/setup#available-libraries
@@ -72,4 +76,8 @@ dependencies {
     val navVersion = "2.7.6"
     implementation("androidx.navigation:navigation-fragment:$navVersion")
     implementation("androidx.navigation:navigation-ui:$navVersion")
+
+    //Lombok
+    implementation ("org.projectlombok:lombok:1.18.28")
+    implementation ("org.projectlombok:lombok:1.18.28")
 }

@@ -4,16 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    android:background="@drawable/background_main"
 
-    android:background="@drawable/background3"
     android:focusable="true"
     android:focusableInTouchMode="true"
     android:scrollbars="horizontal|vertical"
     android:verticalScrollbarPosition="defaultPosition"
     app:layout_anchorGravity="center|center_horizontal|center_vertical"
+    tools:context=".MainActivity"
 
->
+    >
 
     <ScrollView
         android:layout_width="match_parent"
@@ -47,47 +47,13 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/guideline10">
 
-                <Button
-                    android:id="@+id/btEnviarLGN"
-                    android:layout_width="275dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="center|center_horizontal"
-                    android:gravity="center"
-                    android:text="@string/login"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
-
-                <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/eTPasswordLGN"
-                    android:layout_width="275dp"
-                    android:layout_height="48dp"
-                    android:layout_gravity="center|center_horizontal"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:autofillHints="@string/dgPassword"
-                    android:background="@android:color/background_light"
-                    android:ems="10"
-                    android:gravity="center"
-                    android:inputType="textPassword"
-
-
-
-                    app:layout_constraintBottom_toTopOf="@+id/btEnviarLGN"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/eTSSIDLGN" />
-
-                <!--                    android:hint="@string/dgLogin"-->
-
-                <androidx.appcompat.widget.AppCompatEditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/eTSSIDLGN"
                     android:layout_width="275dp"
                     android:layout_height="48dp"
                     android:layout_gravity="center|center_horizontal"
                     android:layout_marginTop="20dp"
-                    android:autofillHints="@string/dgLogin"
-                    android:background="@android:color/background_light"
+                    android:hint="@string/dgLogin"
                     android:ems="10"
 
                     android:gravity="center"
@@ -95,7 +61,41 @@
                     android:text=""
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+
+                    />
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/eTPasswordLGN"
+                    android:layout_width="275dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="center|center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:hint="@string/dgPassword"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:inputType="textPassword"
+
+
+                    app:layout_constraintBottom_toTopOf="@+id/btEnviarLGN"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/eTSSIDLGN" />
+
+                <Button
+                    android:id="@+id/btEnviarLGN"
+                    android:layout_width="275dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center|center_horizontal"
+                    android:gravity="center"
+                    android:text="@string/login"
+
+
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

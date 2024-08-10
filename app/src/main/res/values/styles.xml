@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Widget.App.Button.OutlinedButton.IconOnly" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="iconPadding">0dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:paddingLeft">12dp</item>
+        <item name="android:paddingRight">12dp</item>
+        <item name="android:minWidth">48dp</item>
+        <item name="android:minHeight">48dp</item>
+    </style>
+
+    <style name="SwitchMaterialCustomStyle" parent="Widget.MaterialComponents.CompoundButton.Switch">
+        <item name="thumbTint">@color/white</item>
+        <item name="trackTint">@color/on</item>
+        <item name="android:minHeight">88dp</item> <!-- Ajuste conforme necessário -->
+        <item name="android:minWidth">128dp</item> <!-- Ajuste conforme necessário -->
+<!--        <item name="android:thumbTint">@color/switch_thumb_color</item> &lt;!&ndash; Cor do Thumb &ndash;&gt;-->
+        <item name="android:thumbDrawable">@drawable/custom_thumb_drawable</item> <!-- Drawable personalizado para o Thumb -->
+<!--        <item name="trackTint">@color/switch_track_color</item> &lt;!&ndash; Cor do Track &ndash;&gt;-->
+        <item name="android:trackDrawable">@drawable/custom_track_drawable</item> <!-- Drawable personalizado para o Track -->
+    </style>
+</resources>

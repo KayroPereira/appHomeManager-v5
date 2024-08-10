@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">appHomeManager-v4</string>
 
-    <string name="login">Login</string>
+    <string name="login">LOGIN</string>
     <string name="vazio"> </string>
 
     <string name="dgLogin">Digite um e-mail</string>

@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_main"
+    tools:context=".ChurrasqueiraActivity">
+
+    <ImageView
+        android:id="@+id/btChOnOffMain"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+        android:tag="bt_off"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_Ch_Main_H2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline_Ch_Main_V1"
+        app:layout_constraintTop_toTopOf="@+id/guideline_Ch_Main_H1"
+        app:srcCompat="@drawable/bt_off" />
+
+    <ImageView
+        android:id="@+id/btChBackMain"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_Ch_Main_H1"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_Ch_Main_V2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/back" />
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/swChOnOffChu"
+        style="@style/SwitchMaterialCustomStyle"
+        android:layout_width="0dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="20dp"
+        android:checked="true"
+        android:useMaterialThemeColors="false"
+        android:thumb="@drawable/custom_thumb"
+        app:track="@drawable/switch_track"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_Ch_Main_V1"
+        app:layout_constraintStart_toStartOf="@+id/guideline5"
+        app:layout_constraintTop_toTopOf="@+id/guideline_Ch_Main_H2" />
+<!--        android:thumbTint="@color/cardview_dark_background"-->
+
+<!--    Guideline -->
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_Ch_Main_H1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="60dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_Ch_Main_H2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="120dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_Ch_Main_H3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="60dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_Ch_Main_V1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="60dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_Ch_Main_V2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="60dp" />
+
+    <TextView
+        android:id="@+id/tvChMain"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_Ch_Main_H1"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_Ch_Main_V1"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:text="Ligar Churrasqueira"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline_Ch_Main_H2" />
+
+    <!--        app:iconTint="@color/switch_thumb_color"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/swOnOff"
+        android:layout_width="213dp"
+        android:layout_height="147dp"
+        android:layout_gravity="center"
+        android:checked="true"
+        android:textOff=""
+        android:textOn=""
+        android:textSize="0dp"
+        android:thumb="@drawable/custom_thumb"
+        android:thumbTint="#34c759"
+        app:track="@drawable/switch_track"
+
+        app:showText="true"
+        tools:layout_editor_absoluteX="72dp"
+        tools:layout_editor_absoluteY="420dp" />
+
+    <Switch
+        android:id="@+id/switch2"
+        style="@style/SwitchMaterialCustomStyle"
+        android:layout_width="70dp"
+        android:layout_height="33dp"
+        android:layout_weight="1"
+        android:checked="true"
+        android:textOff=""
+        android:textOn=""
+        android:thumb="@drawable/custom_thumb"
+        android:track="@drawable/switch_track"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_Ch_Main_V1"
+        tools:layout_editor_absoluteY="317dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

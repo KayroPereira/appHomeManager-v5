@@ -1,4 +1,4 @@
-package com.home.apphomemanager_v4;
+package com.home.apphomemanager_v5;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.home.apphomemanager_v4.databinding.ActivityMainBinding;
+import com.home.apphomemanager_v5.databinding.ActivityMainBinding;
 
 import java.util.Arrays;
 import java.util.List;
@@ -71,7 +71,8 @@ public class MainActivity extends AppCompatActivity {
 
                         Toast.makeText(this, "Login ok", Toast.LENGTH_SHORT).show();
 
-                        startActivity(new Intent(this, DadosFirebaseActivity.class));
+//                        startActivity(new Intent(this, DadosFirebaseActivity.class));
+                        startActivity(new Intent(this, ChurrasqueiraActivity.class));
                     } else {
                         Toast.makeText(this, "Authentication failed.", Toast.LENGTH_SHORT).show();
                     }

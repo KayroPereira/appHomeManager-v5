@@ -7,17 +7,17 @@
 
     <activity
         android:id="@+id/mainActivity"
-        android:name="com.home.apphomemanager_v4.MainActivity"
+        android:name="com.home.apphomemanager_v5.MainActivity"
         android:label="activity_main"
         tools:layout="@layout/activity_main" />
     <activity
+        android:id="@+id/churrasqueiraActivity"
+        android:name="com.home.apphomemanager_v5.ChurrasqueiraActivity"
+        android:label="activity_churrasqueira"
+        tools:layout="@layout/activity_churrasqueira" />
+    <activity
         android:id="@+id/dadosFirebaseActivity"
-        android:name="com.home.apphomemanager_v4.DadosFirebaseActivity"
+        android:name="com.home.apphomemanager_v5.DadosFirebaseActivity"
         android:label="activity_dados_firebase"
         tools:layout="@layout/activity_dados_firebase" />
-    <activity
-        android:id="@+id/testActivity"
-        android:name="com.home.apphomemanager_v4.TestActivity"
-        android:label="activity_test"
-        tools:layout="@layout/activity_test" />
 </navigation>

@@ -1,4 +1,4 @@
-package com.home.apphomemanager_v4;
+package com.home.apphomemanager_v5;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.home.apphomemanager_v4", appContext.getPackageName());
+        assertEquals("com.home.apphomemanager_v5", appContext.getPackageName());
     }
 }
