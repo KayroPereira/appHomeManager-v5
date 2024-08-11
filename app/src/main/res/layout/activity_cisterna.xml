@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_main"
+    tools:context=".CisternaActivity">
+
+    <ImageView
+        android:id="@+id/btCisOnOffMain"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+        android:tag="bt_off"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_Cis_Main_H2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline_Cis_Main_V1"
+        app:layout_constraintTop_toTopOf="@+id/guideline_Cis_Main_H1"
+        app:srcCompat="@drawable/bt_off" />
+
+    <ImageView
+        android:id="@+id/btCisBackMain"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_Cis_Main_H1"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_Cis_Main_V2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/back" />
+
+    <!--        android:thumbTint="@color/cardview_dark_background"-->
+
+    <!--        android:useMaterialThemeColors="false"-->
+    <!--        style="@style/SwitchMaterialCustomStyle"-->
+    <!--    Guideline -->
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/swCisOnOffCisu"
+        android:layout_width="113dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="5dp"
+        android:checked="true"
+        android:thumb="@drawable/custom_thumb"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_Cis_Main_V1"
+        app:layout_constraintTop_toTopOf="@+id/guideline_Cis_Main_H4"
+        app:track="@drawable/switch_track" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_Cis_Main_H1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="60dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_Cis_Main_H2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="120dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_Cis_Main_H3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="60dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_Cis_Main_V1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="60dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_Cis_Main_V2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="60dp" />
+
+    <TextView
+        android:id="@+id/tvCisMain"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_Cis_Main_H1"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_Cis_Main_V1"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_Cis_Main_V3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.33" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:text="Auto/Manual"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline_Cis_Main_H4" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_Cis_Main_H4"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.3"
+        app:layout_constraintTop_toTopOf="@+id/guideline_Cis_Main_H2" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_Cis_Main_V4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.33333" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_Cis_Main_V5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.6666" />
+
+    <ImageView
+        android:id="@+id/ivCisCx1"
+        android:layout_width="60dp"
+        android:layout_height="45dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_Cis_Main_H4"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_Cis_Main_V4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/watertank" />
+
+    <TextView
+        android:id="@+id/tvCisCx1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/ivCisCx1"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_Cis_Main_V4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline_Cis_Main_H2" />
+
+
+    <ImageView
+        android:id="@+id/ivCisCx2"
+        android:layout_width="60dp"
+        android:layout_height="45dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_Cis_Main_H4"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_Cis_Main_V5"
+        app:layout_constraintStart_toStartOf="@+id/guideline_Cis_Main_V3"
+        app:srcCompat="@drawable/watertank" />
+
+    <TextView
+        android:id="@+id/tvCisCx2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/ivCisCx2"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_Cis_Main_V5"
+        app:layout_constraintStart_toStartOf="@+id/guideline_Cis_Main_V4"
+        app:layout_constraintTop_toTopOf="@+id/guideline_Cis_Main_H2" />
+
+    <ImageView
+        android:id="@+id/ivCisCx3"
+        android:layout_width="60dp"
+        android:layout_height="45dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_Cis_Main_H4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline_Cis_Main_V5"
+        app:srcCompat="@drawable/watertank" />
+
+    <TextView
+        android:id="@+id/tvCisCx3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/ivCisCx3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline_Cis_Main_V5"
+        app:layout_constraintTop_toTopOf="@+id/guideline_Cis_Main_H2" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="On-line"
+        android:textColor="#4CAF50"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_Cis_Main_H2"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_Cis_Main_V3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline_Cis_Main_H1" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

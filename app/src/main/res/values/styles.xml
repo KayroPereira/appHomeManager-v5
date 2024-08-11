@@ -11,14 +11,14 @@
         <item name="android:minHeight">48dp</item>
     </style>
 
-    <style name="SwitchMaterialCustomStyle" parent="Widget.MaterialComponents.CompoundButton.Switch">
-        <item name="thumbTint">@color/white</item>
-        <item name="trackTint">@color/on</item>
-        <item name="android:minHeight">88dp</item> <!-- Ajuste conforme necessário -->
-        <item name="android:minWidth">128dp</item> <!-- Ajuste conforme necessário -->
-<!--        <item name="android:thumbTint">@color/switch_thumb_color</item> &lt;!&ndash; Cor do Thumb &ndash;&gt;-->
-        <item name="android:thumbDrawable">@drawable/custom_thumb_drawable</item> <!-- Drawable personalizado para o Thumb -->
-<!--        <item name="trackTint">@color/switch_track_color</item> &lt;!&ndash; Cor do Track &ndash;&gt;-->
-        <item name="android:trackDrawable">@drawable/custom_track_drawable</item> <!-- Drawable personalizado para o Track -->
-    </style>
+<!--    <style name="SwitchMaterialCustomStyle" parent="Widget.MaterialComponents.CompoundButton.Switch">-->
+<!--        <item name="thumbTint">@color/white</item>-->
+<!--        <item name="trackTint">@color/on</item>-->
+<!--        <item name="android:minHeight">88dp</item> &lt;!&ndash; Ajuste conforme necessário &ndash;&gt;-->
+<!--        <item name="android:minWidth">128dp</item> &lt;!&ndash; Ajuste conforme necessário &ndash;&gt;-->
+<!--&lt;!&ndash;        <item name="android:thumbTint">@color/switch_thumb_color</item> &lt;!&ndash; Cor do Thumb &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;        <item name="android:thumbDrawable">@drawable/custom_thumb_drawable</item> &lt;!&ndash; Drawable personalizado para o Thumb &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;        <item name="trackTint">@color/switch_track_color</item> &lt;!&ndash; Cor do Track &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;        <item name="android:trackDrawable">@drawable/custom_track_drawable</item> &lt;!&ndash; Drawable personalizado para o Track &ndash;&gt;&ndash;&gt;-->
+<!--    </style>-->
 </resources>

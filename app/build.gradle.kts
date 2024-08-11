@@ -35,6 +35,9 @@ android {
     viewBinding{
         enable = true;
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -78,6 +81,18 @@ dependencies {
     implementation("androidx.navigation:navigation-ui:$navVersion")
 
     //Lombok
-    implementation ("org.projectlombok:lombok:1.18.28")
-    implementation ("org.projectlombok:lombok:1.18.28")
+    compileOnly ("org.projectlombok:lombok:1.18.34")
+//    implementation ("org.projectlombok:lombok:1.18.28")
+    annotationProcessor ("org.projectlombok:lombok:1.18.34")
+
+//    implementation 'org.projectlombok:lombok:1.18.24'
+//    annotationProcessor 'org.projectlombok:lombok:1.18.24'
+
+
+    //Jackson
+//    implementation("com.fasterxml.jackson.core:jackson-databind:2.0.1")
+    implementation ("com.fasterxml.jackson.core:jackson-databind:2.15.0")
+    implementation ("com.fasterxml.jackson.core:jackson-core:2.15.0")
+    implementation ("com.fasterxml.jackson.core:jackson-annotations:2.15.0")
+
 }

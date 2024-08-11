@@ -72,7 +72,8 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(this, "Login ok", Toast.LENGTH_SHORT).show();
 
 //                        startActivity(new Intent(this, DadosFirebaseActivity.class));
-                        startActivity(new Intent(this, ChurrasqueiraActivity.class));
+//                        startActivity(new Intent(this, ChurrasqueiraActivity.class));
+                        startActivity(new Intent(this, CisternaActivity.class));
                     } else {
                         Toast.makeText(this, "Authentication failed.", Toast.LENGTH_SHORT).show();
                     }

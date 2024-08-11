@@ -13,6 +13,11 @@
         android:theme="@style/Theme.AppHomeManagerv4"
         tools:targetApi="31">
         <activity
+            android:name=".CisternaActivity"
+            android:exported="false"
+            android:label="@string/title_activity_cisterna"
+            android:theme="@style/Theme.AppHomeManagerv4" />
+        <activity
             android:name=".ChurrasqueiraActivity"
             android:exported="false" />
         <activity
