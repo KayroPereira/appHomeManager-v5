@@ -4,8 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     android:background="@drawable/background_main"
+        android:scrollbars="horizontal|vertical"
+        android:verticalScrollbarPosition="defaultPosition"
+        app:layout_anchorGravity="center|center_horizontal|center_vertical"
     tools:context=".CisternaActivity">
+<!--    android:id="@+id/cisterna"-->
+
+<!--    android:focusable="true"-->
+<!--    android:focusableInTouchMode="true"-->
+<!--    android:scrollbars="horizontal|vertical"-->
+<!--    android:verticalScrollbarPosition="defaultPosition"-->
+<!--    app:layout_anchorGravity="center|center_horizontal|center_vertical"-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/tvCisAutoManual"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:gravity="center"-->
+<!--        android:text="hdfahskgdjas"-->
+<!--        android:textStyle="normal"-->
+<!--        android:textAlignment="center"-->
+<!--        android:textColor="#000000"-->
+<!--        android:textSize="20sp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
 
     <ImageView
         android:id="@+id/btCisOnOffMain"
@@ -34,22 +60,52 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/back" />
 
-    <!--        android:thumbTint="@color/cardview_dark_background"-->
-
-    <!--        android:useMaterialThemeColors="false"-->
-    <!--        style="@style/SwitchMaterialCustomStyle"-->
-    <!--    Guideline -->
-
-    <com.google.android.material.switchmaterial.SwitchMaterial
-        android:id="@+id/swCisOnOffCisu"
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/swCisAutoManual"
         android:layout_width="113dp"
         android:layout_height="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="5dp"
         android:checked="true"
-        android:thumb="@drawable/custom_thumb"
         app:layout_constraintEnd_toStartOf="@+id/guideline_Cis_Main_V1"
         app:layout_constraintTop_toTopOf="@+id/guideline_Cis_Main_H4"
+        android:thumb="@drawable/custom_thumb"
+        app:track="@drawable/switch_track" />
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/swCisValvulaEntrada"
+        android:layout_width="113dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="8dp"
+        android:checked="true"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_Cis_Main_V1"
+        app:layout_constraintTop_toBottomOf="@+id/swCisAutoManual"
+        android:thumb="@drawable/custom_thumb"
+        app:track="@drawable/switch_track" />
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/swCisValvulaControle"
+        android:layout_width="113dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="8dp"
+        android:checked="true"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_Cis_Main_V1"
+        app:layout_constraintTop_toBottomOf="@+id/swCisValvulaEntrada"
+        android:thumb="@drawable/custom_thumb"
+        app:track="@drawable/switch_track" />
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/swCisBomba"
+        android:layout_width="113dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="8dp"
+        android:checked="true"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_Cis_Main_V1"
+        app:layout_constraintTop_toBottomOf="@+id/swCisValvulaControle"
+        android:thumb="@drawable/custom_thumb"
         app:track="@drawable/switch_track" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -92,7 +148,7 @@
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif"
-        android:text="TextView"
+        android:text=""
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="20sp"
@@ -108,16 +164,62 @@
         app:layout_constraintGuide_percent="0.33" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tvCisAutoManual"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
-        android:text="Auto/Manual"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
+        android:text="@string/autoManual"
         android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline_Cis_Main_H4" />
+
+<!--        android:fontFamily="sans-serif"-->
+<!--        android:textAlignment="center"-->
+<!--        android:textColor="#FFFFFF"-->
+<!--        android:visibility="visible"-->
+<!--    android:textSize="20sp"-->
+
+
+
+        <TextView
+        android:id="@+id/tvCisValveControle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        android:text="@string/valveControle"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvCisValveEntrada" />
+
+<!--    android:text="@string/valveControle"-->
+    <TextView
+        android:id="@+id/tvCisValveBomba"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        android:text="@string/bomba"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvCisValveControle" />
+
+    <TextView
+        android:id="@+id/tvCisValveEntrada"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        android:text="@string/valveEntrada"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvCisAutoManual" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_Cis_Main_H4"
@@ -156,7 +258,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="TextView"
+        android:text="@string/caixa1"
         app:layout_constraintBottom_toTopOf="@+id/ivCisCx1"
         app:layout_constraintEnd_toStartOf="@+id/guideline_Cis_Main_V4"
         app:layout_constraintStart_toStartOf="parent"
@@ -178,7 +280,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="TextView"
+        android:text="@string/caixa2"
         app:layout_constraintBottom_toTopOf="@+id/ivCisCx2"
         app:layout_constraintEnd_toStartOf="@+id/guideline_Cis_Main_V5"
         app:layout_constraintStart_toStartOf="@+id/guideline_Cis_Main_V4"
@@ -199,17 +301,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="TextView"
+        android:text="@string/caixa3"
         app:layout_constraintBottom_toTopOf="@+id/ivCisCx3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline_Cis_Main_V5"
         app:layout_constraintTop_toTopOf="@+id/guideline_Cis_Main_H2" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/tvCisStatus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="On-line"
+        android:text="@string/online"
         android:textColor="#4CAF50"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -217,5 +319,18 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline_Cis_Main_V3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline_Cis_Main_H1" />
+
+
+
+<!--    <TextView-->
+<!--        android:id="@+id/textview_first"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="16dp"-->
+<!--        android:text="Teste"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/button_first" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -64,15 +64,34 @@ public class CisternaActivity extends AppCompatActivity {
 
         listenerFirebase();
 
-        binding.tvCisMain.setText(ACTIVITY_NAME);
 
         ComponentUtils.inicializaElementos(binding);
+
         ComponentUtils.setImageViewToggleListener(binding.btCisOnOffMain, componentsActivity, cisterna);
+        ComponentUtils.setSwitchCheckedChangeListener(binding.swCisAutoManual, componentsActivity, cisterna);
+        ComponentUtils.setSwitchCheckedChangeListener(binding.swCisValvulaEntrada, componentsActivity, cisterna);
+        ComponentUtils.setSwitchCheckedChangeListener(binding.swCisValvulaControle, componentsActivity, cisterna);
+        ComponentUtils.setSwitchCheckedChangeListener(binding.swCisBomba, componentsActivity, cisterna);
+
+        binding.tvCisMain.setText(ACTIVITY_NAME);
+        binding.tvCisStatus.setText(R.string.online);
+        binding.tvCisAutoManual.setText(R.string.autoManual);
+        binding.tvCisValveEntrada.setText(R.string.valveEntrada);
+        binding.tvCisValveControle.setText(R.string.valveControle);
+        binding.tvCisValveBomba.setText(R.string.bomba);
+        binding.tvCisCx1.setText(R.string.caixa1);
+        binding.tvCisCx2.setText(R.string.caixa2);
+        binding.tvCisCx3.setText(R.string.caixa3);
     }
 
     private void mapeametoComponenteToFirebase(){
         componentsActivity.put(binding.btCisOnOffMain.getId(), "onOff");
-//        componentsActivity.put(binding.swMDirecaoChurrasqueira.getId(), "parametros.motor.direcao");
+        componentsActivity.put(binding.swCisAutoManual.getId(), "autoManual");
+        componentsActivity.put(binding.swCisValvulaEntrada.getId(), "vle");
+        componentsActivity.put(binding.swCisValvulaControle.getId(), "vlc");
+        componentsActivity.put(binding.swCisBomba.getId(), "pump");
+
+
 //        componentsActivity.put(binding.swMHabilitadoChurrasqueira.getId(), "parametros.motor.habilitado");
 //        componentsActivity.put(binding.swMOnOffChurrasqueira.getId(), "parametros.motor.onOff");
 //        componentsActivity.put(binding.swOAguaChurrasqueira.getId(), "parametros.output.agua");
@@ -85,7 +104,9 @@ public class CisternaActivity extends AppCompatActivity {
     }
 
     private void listenerFirebase(){
+
         ValueEventListener postListener = new ValueEventListener() {
+
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
