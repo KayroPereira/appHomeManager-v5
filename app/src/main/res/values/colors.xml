@@ -4,5 +4,6 @@
     <color name="white">#FFFFFFFF</color>
 
 
-    <color name="on">#34c759</color>
+    <color name="onLine">#4CAF50</color>
+    <color name="offLine">#B00020</color>
 </resources>

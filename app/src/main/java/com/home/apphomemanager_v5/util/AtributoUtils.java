@@ -112,6 +112,7 @@ public class AtributoUtils {
                 }
             }
             oldClasse = oldClasse.getSuperclass();
+            newClasse = newClasse.getSuperclass();
         }
     }
 

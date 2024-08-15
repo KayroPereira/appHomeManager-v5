@@ -5,33 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:scrollbars="horizontal|vertical"
+    android:verticalScrollbarPosition="defaultPosition"
+    app:layout_anchorGravity="center|center_horizontal|center_vertical"
     android:background="@drawable/background_main"
-        android:scrollbars="horizontal|vertical"
-        android:verticalScrollbarPosition="defaultPosition"
-        app:layout_anchorGravity="center|center_horizontal|center_vertical"
     tools:context=".CisternaActivity">
-<!--    android:id="@+id/cisterna"-->
-
-<!--    android:focusable="true"-->
-<!--    android:focusableInTouchMode="true"-->
-<!--    android:scrollbars="horizontal|vertical"-->
-<!--    android:verticalScrollbarPosition="defaultPosition"-->
-<!--    app:layout_anchorGravity="center|center_horizontal|center_vertical"-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/tvCisAutoManual"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:gravity="center"-->
-<!--        android:text="hdfahskgdjas"-->
-<!--        android:textStyle="normal"-->
-<!--        android:textAlignment="center"-->
-<!--        android:textColor="#000000"-->
-<!--        android:textSize="20sp"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
 
     <ImageView
         android:id="@+id/btCisOnOffMain"
@@ -67,9 +47,9 @@
         android:layout_marginTop="40dp"
         android:layout_marginEnd="5dp"
         android:checked="true"
+        android:thumb="@drawable/custom_thumb"
         app:layout_constraintEnd_toStartOf="@+id/guideline_Cis_Main_V1"
         app:layout_constraintTop_toTopOf="@+id/guideline_Cis_Main_H4"
-        android:thumb="@drawable/custom_thumb"
         app:track="@drawable/switch_track" />
 
     <androidx.appcompat.widget.SwitchCompat
@@ -127,7 +107,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_end="60dp" />
+        app:layout_constraintGuide_end="59dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_Cis_Main_V1"
@@ -176,14 +156,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline_Cis_Main_H4" />
 
-<!--        android:fontFamily="sans-serif"-->
-<!--        android:textAlignment="center"-->
-<!--        android:textColor="#FFFFFF"-->
-<!--        android:visibility="visible"-->
-<!--    android:textSize="20sp"-->
-
-
-
         <TextView
         android:id="@+id/tvCisValveControle"
         android:layout_width="wrap_content"
@@ -196,7 +168,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvCisValveEntrada" />
 
-<!--    android:text="@string/valveControle"-->
     <TextView
         android:id="@+id/tvCisValveBomba"
         android:layout_width="wrap_content"
@@ -247,11 +218,14 @@
         android:id="@+id/ivCisCx1"
         android:layout_width="60dp"
         android:layout_height="45dp"
+
+        android:tag="watertank_off"
+
         android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline_Cis_Main_H4"
         app:layout_constraintEnd_toStartOf="@+id/guideline_Cis_Main_V4"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/watertank" />
+        app:srcCompat="@drawable/watertank_off" />
 
     <TextView
         android:id="@+id/tvCisCx1"
@@ -269,11 +243,14 @@
         android:id="@+id/ivCisCx2"
         android:layout_width="60dp"
         android:layout_height="45dp"
+
+        android:tag="watertank_off"
+
         android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline_Cis_Main_H4"
         app:layout_constraintEnd_toStartOf="@+id/guideline_Cis_Main_V5"
         app:layout_constraintStart_toStartOf="@+id/guideline_Cis_Main_V3"
-        app:srcCompat="@drawable/watertank" />
+        app:srcCompat="@drawable/watertank_off" />
 
     <TextView
         android:id="@+id/tvCisCx2"
@@ -290,11 +267,14 @@
         android:id="@+id/ivCisCx3"
         android:layout_width="60dp"
         android:layout_height="45dp"
+
+        android:tag="watertank_off"
+
         android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline_Cis_Main_H4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline_Cis_Main_V5"
-        app:srcCompat="@drawable/watertank" />
+        app:srcCompat="@drawable/watertank_off" />
 
     <TextView
         android:id="@+id/tvCisCx3"
@@ -312,7 +292,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/online"
-        android:textColor="#4CAF50"
+        android:textColor="@color/onLine"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/guideline_Cis_Main_H2"
@@ -320,17 +300,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline_Cis_Main_H1" />
 
+    <ImageView
+        android:id="@+id/ivCisReservatorio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline_Cis_Main_H5"
+        app:srcCompat="@drawable/ct0" />
 
-
-<!--    <TextView-->
-<!--        android:id="@+id/textview_first"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="16dp"-->
-<!--        android:text="Teste"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/button_first" />-->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_Cis_Main_H5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.55" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
