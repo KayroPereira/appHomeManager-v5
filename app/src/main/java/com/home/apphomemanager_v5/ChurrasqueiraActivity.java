@@ -88,7 +88,7 @@ public class ChurrasqueiraActivity extends AppCompatActivity {
 
                     AtributoUtils.transferirValoresEntreObjetos(churrasqueiraFirebase, churrasqueira, atributosAlterados);
 
-                    FirebaseUtils.updateMultipleFields(churrasqueira, atributosAlterados);
+                    FirebaseUtils.updateMultipleFields(churrasqueira, atributosAlterados, PATH_ROOT_FIREBASE);
 
                     ComponentUtils.atualizaComponents(churrasqueira, atributosAlterados, componentsActivity, binding);
                 } catch (Exception e) {

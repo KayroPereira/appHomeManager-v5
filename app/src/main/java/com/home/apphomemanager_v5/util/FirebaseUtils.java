@@ -30,6 +30,11 @@ public class FirebaseUtils {
         String[] nameClass = obj.getClass().getName().split("\\.");
         String classPai = (nameClass[nameClass.length-1]).toLowerCase();
 
+        updateMultipleFields(obj, campos, classPai);
+    }
+
+    public static void updateMultipleFields(Object obj, List<String> campos, String classPai){
+
         for(String campo : campos) {
 
             String atributo = AtributoUtils.getAtributo(campo);
