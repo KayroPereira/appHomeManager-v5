@@ -85,17 +85,29 @@ public class ComponentUtils {
     }
 
     public static <T> void setSwitchCheckedChangeListener(SwitchCompat switchCompat, Map<Integer, String> componentsActivity, T clazz){
+
+        setSwitchCheckedChangeListener(switchCompat, componentsActivity, clazz, null);
+    }
+
+    public static <T> void setSwitchCheckedChangeListener(SwitchCompat switchCompat, Map<Integer, String> componentsActivity, T clazz, String pathPai){
         switchCompat.setOnCheckedChangeListener((compoundButton, b) -> {
 
             Integer idComponent = compoundButton.getId();
             String path = componentsActivity.get(idComponent);
             Pair<String, String> parametros = AtributoUtils.getParamentrosField(clazz, path);
 
-            FirebaseUtils.sendSimpleData(parametros.first, parametros.second, b);
+            String pathFinal = pathPai != null ? pathPai : parametros.first;
+
+            FirebaseUtils.sendSimpleData(pathFinal, parametros.second, b);
         });
     }
 
     public static <T> void setImageViewToggleListener(ImageView imageView, Map<Integer, String> componentsActivity, T clazz){
+
+        setImageViewToggleListener(imageView,componentsActivity, clazz, null);
+    }
+
+    public static <T> void setImageViewToggleListener(ImageView imageView, Map<Integer, String> componentsActivity, T clazz, String pathPai){
 
         imageView.setOnClickListener((compoundButton) -> {
 
@@ -112,7 +124,9 @@ public class ComponentUtils {
             im.setTag(statusComponent.first+"_"+valorStatusToggle);
             im.setImageResource(getIdImage(im.getContext(), im.getTag().toString()));
 
-            FirebaseUtils.sendSimpleData(parametros.first, parametros.second, getTrueFalse(valorStatusToggle));
+            String pathFinal = pathPai != null ? pathPai : parametros.first;
+
+            FirebaseUtils.sendSimpleData(pathFinal, parametros.second, getTrueFalse(valorStatusToggle));
         });
     }
 

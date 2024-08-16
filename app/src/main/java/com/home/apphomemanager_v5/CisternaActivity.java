@@ -164,7 +164,7 @@ public class CisternaActivity extends AppCompatActivity {
 
                     AtributoUtils.transferirValoresEntreObjetos(cisternaFirebase, cisterna, atributosAlterados);
 
-                    FirebaseUtils.updateMultipleFields(cisterna, atributosAlterados);
+                    FirebaseUtils.updateMultipleFields(cisterna, atributosAlterados, PATH_ROOT_FIREBASE);
 
                     ComponentUtils.atualizaComponents(cisterna, atributosAlterados, componentsActivity, binding);
 
