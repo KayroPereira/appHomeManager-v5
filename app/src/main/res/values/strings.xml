@@ -50,6 +50,12 @@
     <string name="caixa2">Caixa 2</string>
     <string name="caixa3">Caixa 3</string>
 
+
+    <!-- Caixa d'agua   -->
+
+    <string name="valveEntradaPrincipal">Válvula Entrada Principal</string>
+    <string name="valveEntradaSecundaria">Válvula Entrada Secundária</string>
+
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
