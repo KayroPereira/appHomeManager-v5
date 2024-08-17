@@ -14,7 +14,7 @@
     tools:context=".CaixaDaguaActivity">
 
     <ImageView
-        android:id="@+id/btCxdOnOffMain"
+        android:id="@+id/ivCxdOnOffMain"
         android:layout_width="0dp"
         android:layout_height="0dp"
 
@@ -26,7 +26,7 @@
         app:srcCompat="@drawable/bt_off" />
 
     <ImageView
-        android:id="@+id/btCxdBackMain"
+        android:id="@+id/ivCxdBackMain"
         android:layout_width="32dp"
         android:layout_height="32dp"
 

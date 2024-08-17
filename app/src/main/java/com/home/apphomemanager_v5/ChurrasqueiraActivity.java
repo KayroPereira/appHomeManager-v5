@@ -57,11 +57,11 @@ public class ChurrasqueiraActivity extends AppCompatActivity {
         binding.tvChMain.setText(ACTIVITY_NAME);
 
         ComponentUtils.inicializaElementos(binding);
-        ComponentUtils.setImageViewToggleListener(binding.btChOnOffMain, componentsActivity, churrasqueira);
+        ComponentUtils.setImageViewToggleListener(binding.ivChOnOffMain, componentsActivity, churrasqueira);
     }
 
     private void mapeametoComponenteToFirebase(){
-        componentsActivity.put(binding.btChOnOffMain.getId(), "onOff");
+        componentsActivity.put(binding.ivChOnOffMain.getId(), "onOff");
 //        componentsActivity.put(binding.swMDirecaoChurrasqueira.getId(), "parametros.motor.direcao");
 //        componentsActivity.put(binding.swMHabilitadoChurrasqueira.getId(), "parametros.motor.habilitado");
 //        componentsActivity.put(binding.swMOnOffChurrasqueira.getId(), "parametros.motor.onOff");

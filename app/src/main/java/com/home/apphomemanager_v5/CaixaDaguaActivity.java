@@ -81,7 +81,9 @@ public class CaixaDaguaActivity extends AppCompatActivity {
 
         ComponentUtils.inicializaElementos(binding);
 
-        ComponentUtils.setImageViewToggleListener(binding.btCxdOnOffMain, componentsActivity, caixaDagua, PATH_ROOT_FIREBASE);
+        ComponentUtils.setEventClickGeneric(binding.ivCxdBackMain, this::voltar);
+
+        ComponentUtils.setImageViewToggleListener(binding.ivCxdOnOffMain, componentsActivity, caixaDagua, PATH_ROOT_FIREBASE);
         ComponentUtils.setSwitchCheckedChangeListener(binding.swCxdAutoManual, componentsActivity, caixaDagua, PATH_ROOT_FIREBASE);
         ComponentUtils.setSwitchCheckedChangeListener(binding.swCxdValvulaEntradaPrincipal, componentsActivity, caixaDagua, PATH_ROOT_FIREBASE);
         ComponentUtils.setSwitchCheckedChangeListener(binding.swCxdValvulaEntradaSecundaria, componentsActivity, caixaDagua, PATH_ROOT_FIREBASE);
@@ -135,7 +137,7 @@ public class CaixaDaguaActivity extends AppCompatActivity {
 
     private void mapeametoComponenteToFirebase(){
 
-        componentsActivity.put(binding.btCxdOnOffMain.getId(), "onOff");
+        componentsActivity.put(binding.ivCxdOnOffMain.getId(), "onOff");
         componentsActivity.put(binding.swCxdAutoManual.getId(), "autoManual");
         componentsActivity.put(binding.swCxdValvulaEntradaPrincipal.getId(), "vlep");
         componentsActivity.put(binding.swCxdValvulaEntradaSecundaria.getId(), "vles");
@@ -218,5 +220,10 @@ public class CaixaDaguaActivity extends AppCompatActivity {
 
         binding.swCxdValvulaEntradaPrincipal.setEnabled(status);
         binding.swCxdValvulaEntradaSecundaria.setEnabled(status);
+    }
+
+    private void voltar(Object event){
+
+        finish();
     }
 }

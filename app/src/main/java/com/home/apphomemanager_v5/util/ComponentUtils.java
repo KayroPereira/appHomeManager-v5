@@ -11,6 +11,8 @@ import android.widget.TextView;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.viewbinding.ViewBinding;
 
+import com.home.apphomemanager_v5.inteface.EventClick;
+
 import java.util.List;
 import java.util.Map;
 
@@ -127,6 +129,13 @@ public class ComponentUtils {
             String pathFinal = pathPai != null ? pathPai : parametros.first;
 
             FirebaseUtils.sendSimpleData(pathFinal, parametros.second, getTrueFalse(valorStatusToggle));
+        });
+    }
+
+    public static <T extends  View> void setEventClickGeneric(T imageView, EventClick method){
+
+        imageView.setOnClickListener(event -> {
+            method.execute(event);
         });
     }
 

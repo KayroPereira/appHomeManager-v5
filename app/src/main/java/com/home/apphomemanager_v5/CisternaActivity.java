@@ -71,7 +71,7 @@ public class CisternaActivity extends AppCompatActivity {
 
         ComponentUtils.inicializaElementos(binding);
 
-        ComponentUtils.setImageViewToggleListener(binding.btCisOnOffMain, componentsActivity, cisterna);
+        ComponentUtils.setImageViewToggleListener(binding.ivCisOnOffMain, componentsActivity, cisterna);
         ComponentUtils.setSwitchCheckedChangeListener(binding.swCisAutoManual, componentsActivity, cisterna);
         ComponentUtils.setSwitchCheckedChangeListener(binding.swCisValvulaEntrada, componentsActivity, cisterna);
         ComponentUtils.setSwitchCheckedChangeListener(binding.swCisValvulaControle, componentsActivity, cisterna);
@@ -127,6 +127,8 @@ public class CisternaActivity extends AppCompatActivity {
         binding.tvCisCx2.setText(R.string.caixa2);
         binding.tvCisCx3.setText(R.string.caixa3);
 
+        ComponentUtils.setEventClickGeneric(binding.ivCisBackMain, this::voltar);
+
         ComponentUtils.changeValueComponent(binding.ivCisCx1, false);
         ComponentUtils.changeValueComponent(binding.ivCisCx2, false);
         ComponentUtils.changeValueComponent(binding.ivCisCx3, false);
@@ -134,7 +136,7 @@ public class CisternaActivity extends AppCompatActivity {
 
     private void mapeametoComponenteToFirebase(){
 
-        componentsActivity.put(binding.btCisOnOffMain.getId(), "onOff");
+        componentsActivity.put(binding.ivCisOnOffMain.getId(), "onOff");
         componentsActivity.put(binding.swCisAutoManual.getId(), "autoManual");
         componentsActivity.put(binding.swCisValvulaEntrada.getId(), "vle");
         componentsActivity.put(binding.swCisValvulaControle.getId(), "vlc");
@@ -228,5 +230,10 @@ public class CisternaActivity extends AppCompatActivity {
         binding.swCisValvulaEntrada.setEnabled(status);
         binding.swCisValvulaControle.setEnabled(status);
         binding.swCisBomba.setEnabled(status);
+    }
+
+    private void voltar(Object event){
+
+        finish();
     }
 }
