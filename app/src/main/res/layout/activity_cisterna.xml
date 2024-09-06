@@ -14,7 +14,7 @@
     tools:context=".CisternaActivity">
 
     <ImageView
-        android:id="@+id/btCisOnOffMain"
+        android:id="@+id/ivCisOnOffMain"
         android:layout_width="0dp"
         android:layout_height="0dp"
 
@@ -26,7 +26,7 @@
         app:srcCompat="@drawable/bt_off" />
 
     <ImageView
-        android:id="@+id/btCisBackMain"
+        android:id="@+id/ivCisBackMain"
         android:layout_width="32dp"
         android:layout_height="32dp"
 

@@ -96,4 +96,10 @@ dependencies {
     implementation ("com.fasterxml.jackson.core:jackson-core:2.15.0")
     implementation ("com.fasterxml.jackson.core:jackson-annotations:2.15.0")
 
+
+    //Geolocalização
+    implementation ("com.google.android.gms:play-services-location:21.3.0")
+    implementation ("com.squareup.retrofit2:retrofit:2.11.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.11.0")
+
 }

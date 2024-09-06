@@ -26,15 +26,13 @@ public class Reservatorio {
     private Long update;
 
     public int getImageLevel(int quantidadeImagensNiveis){
-
-        long range = (this.ni - this.ns) / quantidadeImagensNiveis;
-        long value = ((this.ni - this.na - range) / range);
-
-        if (value < 0)
+        if (this.na < 0) {
             return 0;
-        else if (value >= quantidadeImagensNiveis)
-            return quantidadeImagensNiveis - 1;
-        else
-            return (int) value;
+        }
+
+        double range = (this.nic - this.nsc) / quantidadeImagensNiveis;
+        long value = (long) Math.ceil((this.nic - this.na - range) / range);
+
+        return (int) Math.max(0, Math.min(value, quantidadeImagensNiveis - 1));
     }
 }

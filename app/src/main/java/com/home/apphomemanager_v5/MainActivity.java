@@ -75,9 +75,11 @@ public class MainActivity extends AppCompatActivity {
 //                        startActivity(new Intent(this, ChurrasqueiraActivity.class));
 //                        startActivity(new Intent(this, CisternaActivity.class));
 
-                        Intent intent = new Intent(this, CaixaDaguaActivity.class);
-                        intent.putExtra("path", "1");
-                        startActivity(intent);
+//                        Intent intent = new Intent(this, CaixaDaguaActivity.class);
+//                        intent.putExtra("path", "1");
+//                        startActivity(intent);
+
+                        startActivity(new Intent(this, DashBoardActivity.class));
                     } else {
                         Toast.makeText(this, "Authentication failed.", Toast.LENGTH_SHORT).show();
                     }

@@ -41,7 +41,7 @@
 
 
     <!-- Cisterna   -->
-
+    <string name="cisterna">Cisterna</string>
     <string name="valveControle">Válvula Controle</string>
     <string name="valveEntrada">Válvula Entrada</string>
     <string name="bomba">Bomba</string>
@@ -63,4 +63,48 @@
     <string name="previous">Previous</string>
 
 
+    <!-- lista compras -->
+
+    <string name="cadastrarLSTC">Cadastrar</string>
+    <string name="cestaOk">Já na cesta</string>
+    <string name="clearBasket">Limpar Cesta</string>
+    <string name="clearList">Limpar Lista</string>
+    <string name="listClear">(Lista vazia)</string>
+    <string name="compartilhar">Compartilhar</string>
+
+    <string name="msgCesta">cesta</string>
+    <string name="msgLista">lista</string>
+
+    <string name="sim">Sim</string>
+    <string name="nao">Não</string>
+
+    <string name="msgClearProduct">Deseja remover os itens da</string>
+    <string name="msgEmptList">Não existem itens na </string>
+    <string name="msgProductEmpt">Favor inserir o nome do produto</string>
+    <string name="msgProductAdd">adicionado a lista</string>
+    <string name="msgProductRemove">removido da lista</string>
+    <string name="msgCompartilharLst">Compartilhar Lista</string>
+    <string name="msgLstCompras">Lista de Compras</string>
+    <string name="msgCompras">Compras</string>
+    <string name="msgLstComprasPendente">Existem itens pendentes na lista de compras</string>
+
+    <string name="saveOk">Produto cadastrado</string>
+
+
+    <!-- dash board -->
+
+    <string name="reservatorio">Reservatório</string>
+    <string name="utilitarios">Utilitários</string>
+    <string name="controle">Controle</string>
+    <string name="cidade">Cidade</string>
+    <string name="strNull">null</string>
+
+
+    <!-- doors-->
+
+    <string name="titleDoorLock">Door Lock</string>
+
+    <!-- opções menus -->
+
+    <string name="titleConfiguration">Configuração</string>
 </resources>
