@@ -2,8 +2,6 @@ package com.home.apphomemanager_v5;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -13,6 +11,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
+import com.home.apphomemanager_v5.commons.AppConstants;
+import com.home.apphomemanager_v5.commons.StatusDispositivo;
 import com.home.apphomemanager_v5.databinding.ActivityCisternaBinding;
 import com.home.apphomemanager_v5.model.firebase.FirebaseEntity;
 import com.home.apphomemanager_v5.model.reservatorio.Cisterna;
@@ -21,7 +21,6 @@ import com.home.apphomemanager_v5.util.ComponentUtils;
 import com.home.apphomemanager_v5.util.FirebaseUtils;
 import com.home.apphomemanager_v5.util.JsonUtils;
 
-import java.time.Instant;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -39,8 +38,7 @@ public class CisternaActivity extends AppCompatActivity {
 
     private Boolean wasFirstUpdate = true;
 
-    private Handler handler;
-    private Runnable runnable;
+    private StatusDispositivo statusDispositivo = new StatusDispositivo();
 
 
     private static final String PATH_ROOT_FIREBASE = "cisterna";
@@ -48,8 +46,7 @@ public class CisternaActivity extends AppCompatActivity {
 
     private static final int QUANTIDADE_IMAGENS_CISTENA = 20;
 
-    private static final int DELAY_2_MINUTO_MS = 1000 * 60 * 2;
-    private static final int PERIODO_2_MINUTO_S = 120;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,7 +76,7 @@ public class CisternaActivity extends AppCompatActivity {
 
         setParametrosDefault();
 
-        inicializaSchedulerStatusDispositivo();
+        statusDispositivo.inicializaSchedulerStatusDispositivo(this::verificaStatusDispositivo, AppConstants.DELAY_2_MINUTO_MS);
     }
 
     @Override
@@ -87,31 +84,12 @@ public class CisternaActivity extends AppCompatActivity {
 
         super.onDestroy();
 
-        handler.removeCallbacks(runnable);
-    }
-
-    private void inicializaSchedulerStatusDispositivo() {
-
-        handler = new Handler(Looper.myLooper());
-
-        runnable = new Runnable() {
-            @Override
-            public void run() {
-
-                verificaStatusDispositivo();
-
-                handler.postDelayed(this, DELAY_2_MINUTO_MS);
-            }
-        };
-
-        handler.post(runnable);
+        statusDispositivo.paraSchedulerStatusDispositivo();
     }
 
     private void verificaStatusDispositivo() {
 
-        Instant dataAtual = Instant.now();
-
-        binding.tvCisStatus.setText(dataAtual.getEpochSecond() - cisterna.getStatus() > PERIODO_2_MINUTO_S ? R.string.offline : R.string.online);
+        binding.tvCisStatus.setText(statusDispositivo.isOnline(cisterna.getStatus(), AppConstants.PERIODO_2_MINUTO_S) ? R.string.online : R.string.offline);
         binding.tvCisStatus.setTextColor(getString(R.string.online).equals(binding.tvCisStatus.getText()) ? getColor(R.color.onLine) : getColor(R.color.offLine));
     }
 
@@ -194,6 +172,7 @@ public class CisternaActivity extends AppCompatActivity {
                 case "onOff":
 
                     binding.swCisAutoManual.setEnabled(cisterna.getOnOff());
+                    binding.swCisValvulaControle.setEnabled(cisterna.getOnOff());
                 case "autoManual":
 
                     controleEquipamentosAutoManual();
@@ -228,7 +207,6 @@ public class CisternaActivity extends AppCompatActivity {
         Boolean status = cisterna.getOnOff() && !cisterna.getAutoManual();
 
         binding.swCisValvulaEntrada.setEnabled(status);
-        binding.swCisValvulaControle.setEnabled(status);
         binding.swCisBomba.setEnabled(status);
     }
 

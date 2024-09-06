@@ -14,6 +14,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
+import com.home.apphomemanager_v5.commons.AppConstants;
+import com.home.apphomemanager_v5.commons.StatusDispositivo;
 import com.home.apphomemanager_v5.databinding.ActivityCaixaDaguaBinding;
 import com.home.apphomemanager_v5.databinding.ActivityCisternaBinding;
 import com.home.apphomemanager_v5.model.firebase.FirebaseEntity;
@@ -42,18 +44,13 @@ public class CaixaDaguaActivity extends AppCompatActivity {
 
     private Boolean wasFirstUpdate = true;
 
-    private Handler handler;
-    private Runnable runnable;
-
+    private StatusDispositivo statusDispositivo = new StatusDispositivo();
 
     private String PATH_ROOT_CISTERNA_FIREBASE = "cisterna";
     private String PATH_ROOT_FIREBASE = "cx";
     private String ACTIVITY_NAME = "Caixa D'água - ";
 
-    private static final int QUANTIDADE_IMAGENS_CISTENA = 20;
-
-    private static final int DELAY_2_MINUTO_MS = 1000 * 60 * 2;
-    private static final int PERIODO_2_MINUTO_S = 120;
+    private static final int QUANTIDADE_IMAGENS_CAIXA_DAGUA = 20;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,7 +87,7 @@ public class CaixaDaguaActivity extends AppCompatActivity {
 
         setParametrosDefault();
 
-        inicializaSchedulerStatusDispositivo();
+        statusDispositivo.inicializaSchedulerStatusDispositivo(this::verificaStatusDispositivo, AppConstants.DELAY_2_MINUTO_MS);
     }
 
     @Override
@@ -98,31 +95,12 @@ public class CaixaDaguaActivity extends AppCompatActivity {
 
         super.onDestroy();
 
-        handler.removeCallbacks(runnable);
-    }
-
-    private void inicializaSchedulerStatusDispositivo() {
-
-        handler = new Handler(Looper.myLooper());
-
-        runnable = new Runnable() {
-            @Override
-            public void run() {
-
-                verificaStatusDispositivo();
-
-                handler.postDelayed(this, DELAY_2_MINUTO_MS);
-            }
-        };
-
-        handler.post(runnable);
+        statusDispositivo.paraSchedulerStatusDispositivo();
     }
 
     private void verificaStatusDispositivo() {
 
-        Instant dataAtual = Instant.now();
-
-        binding.tvCxdStatus.setText(dataAtual.getEpochSecond() - caixaDagua.getStatus() > PERIODO_2_MINUTO_S ? R.string.offline : R.string.online);
+        binding.tvCxdStatus.setText(statusDispositivo.isOnline(caixaDagua.getStatus(), AppConstants.PERIODO_2_MINUTO_S) ? R.string.online : R.string.offline);
         binding.tvCxdStatus.setTextColor(getString(R.string.online).equals(binding.tvCxdStatus.getText()) ? getColor(R.color.onLine) : getColor(R.color.offLine));
     }
 
@@ -203,7 +181,7 @@ public class CaixaDaguaActivity extends AppCompatActivity {
                 case "ni":
                 case "ns":
 
-                    @SuppressLint("DiscouragedApi") int resourceIdImagem = getResources().getIdentifier("wt" + caixaDagua.getImageLevel(QUANTIDADE_IMAGENS_CISTENA), "drawable", getPackageName());
+                    @SuppressLint("DiscouragedApi") int resourceIdImagem = getResources().getIdentifier("wt" + caixaDagua.getImageLevel(QUANTIDADE_IMAGENS_CAIXA_DAGUA), "drawable", getPackageName());
                     binding.ivCxdReservatorio.setImageResource(resourceIdImagem != 0 ? resourceIdImagem : R.drawable.wt0);
                     break;
 
