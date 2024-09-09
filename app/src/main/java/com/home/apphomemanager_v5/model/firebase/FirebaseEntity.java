@@ -29,4 +29,8 @@ public class FirebaseEntity {
     public void setmDatabase(DatabaseReference mDatabase) {
         this.mDatabase = mDatabase;
     }
+
+    public void disconnect(){
+        this.mDatabase.onDisconnect();
+    }
 }

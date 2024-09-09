@@ -317,4 +317,56 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.55" />
 
+    <SeekBar
+        android:id="@+id/skbCisNivel"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:max="10"
+        android:maxHeight="55dp"
+        android:minHeight="55dp"
+        android:progress="3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_Cis_Main_V1"
+        app:layout_constraintStart_toStartOf="@+id/guideline_Cis_Main_V2"
+        app:layout_constraintTop_toTopOf="@+id/guideline_Cis_Main_H3" />
+
+    <TextView
+        android:id="@+id/tvCisNivelSuperior"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="start|center_vertical"
+        android:textColor="@color/onLine"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline_Cis_Main_V1"
+        app:layout_constraintTop_toTopOf="@+id/guideline_Cis_Main_H3" />
+
+    <TextView
+        android:id="@+id/tvCisNivelInferior"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center_vertical|end"
+        android:text="@string/zeroNum"
+        android:textColor="@color/offLine"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_Cis_Main_V2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline_Cis_Main_H3" />
+
+    <TextView
+        android:id="@+id/tvCisNivelAtual"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
+        android:gravity="center_vertical|end"
+        android:text="@string/zeroNum"
+        android:textColor="@color/colorAzul"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -35,4 +35,22 @@ public class Reservatorio {
 
         return (int) Math.max(0, Math.min(value, quantidadeImagensNiveis - 1));
     }
+
+    public int getNivelSuperiorRelativo(){
+
+        if(this.nic == null || this.nsc == null){
+            return 0;
+        }
+
+        return (int) (this.nic - this.nsc);
+    }
+
+    public int getNivelAtualRelativo(){
+
+        if(this.nic == null || this.na == null){
+            return 0;
+        }
+
+        return (int) (this.nic - this.na);
+    }
 }
