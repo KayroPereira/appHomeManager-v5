@@ -85,12 +85,19 @@ public class CisternaActivity extends AppCompatActivity {
         super.onDestroy();
 
         statusDispositivo.paraSchedulerStatusDispositivo();
+
+        firebaseEntity.disconnect();
     }
 
     private void verificaStatusDispositivo() {
 
-        binding.tvCisStatus.setText(statusDispositivo.isOnline(cisterna.getStatus(), AppConstants.PERIODO_2_MINUTO_S) ? R.string.online : R.string.offline);
+        boolean status = statusDispositivo.isOnline(cisterna.getStatus(), AppConstants.PERIODO_2_MINUTO_S);
+
+        binding.tvCisStatus.setText(status ? R.string.online : R.string.offline);
         binding.tvCisStatus.setTextColor(getString(R.string.online).equals(binding.tvCisStatus.getText()) ? getColor(R.color.onLine) : getColor(R.color.offLine));
+
+        ComponentUtils.setComponentEnabledAll(binding, componentsActivity, status);
+        ComponentUtils.setComponentEnabled(binding, binding.ivCisReservatorio.getId(), status);
     }
 
     private void setParametrosDefault() {
@@ -104,12 +111,20 @@ public class CisternaActivity extends AppCompatActivity {
         binding.tvCisCx1.setText(R.string.caixa1);
         binding.tvCisCx2.setText(R.string.caixa2);
         binding.tvCisCx3.setText(R.string.caixa3);
+        binding.tvCisNivelInferior.setText(R.string.zeroNum);
 
         ComponentUtils.setEventClickGeneric(binding.ivCisBackMain, this::voltar);
 
         ComponentUtils.changeValueComponent(binding.ivCisCx1, false);
         ComponentUtils.changeValueComponent(binding.ivCisCx2, false);
         ComponentUtils.changeValueComponent(binding.ivCisCx3, false);
+
+        binding.skbCisNivel.setEnabled(false);
+
+        binding.skbCisNivel.getViewTreeObserver().addOnGlobalLayoutListener(() -> {
+            defineNivelSuperior();
+            ajustaPosicaoNivelAtual();
+        });
     }
 
     private void mapeametoComponenteToFirebase(){
@@ -178,9 +193,14 @@ public class CisternaActivity extends AppCompatActivity {
                     controleEquipamentosAutoManual();
                     break;
 
+                case "nsc":
+                case "nic":
+                    defineNivelSuperior();
                 case "na":
                 case "ni":
                 case "ns":
+
+                    ajustaPosicaoNivelAtual();
 
                     @SuppressLint("DiscouragedApi") int resourceIdImagem = getResources().getIdentifier("ct" + cisterna.getImageLevel(QUANTIDADE_IMAGENS_CISTENA), "drawable", getPackageName());
                     binding.ivCisReservatorio.setImageResource(resourceIdImagem != 0 ? resourceIdImagem : R.drawable.ct0);
@@ -200,6 +220,27 @@ public class CisternaActivity extends AppCompatActivity {
                     break;
             }
         }
+    }
+
+    private void defineNivelSuperior() {
+
+        binding.skbCisNivel.setMax(cisterna.getNivelSuperiorRelativo());
+        binding.tvCisNivelSuperior.setText(String.valueOf(cisterna.getNivelSuperiorRelativo()));
+    }
+
+    private void ajustaPosicaoNivelAtual() {
+
+        binding.skbCisNivel.setProgress(cisterna.getNivelAtualRelativo());
+        binding.tvCisNivelAtual.setText(String.valueOf(cisterna.getNivelAtualRelativo()));
+        binding.tvCisNivelAtual.setTranslationX(getPosicaoNivelAtualX());
+    }
+
+    private int getPosicaoNivelAtualX(){
+
+        int px = binding.skbCisNivel.getThumb().getBounds().centerX();
+        int seekBarInicioX = binding.skbCisNivel.getLeft();
+
+        return seekBarInicioX + px;
     }
 
     private void controleEquipamentosAutoManual(){

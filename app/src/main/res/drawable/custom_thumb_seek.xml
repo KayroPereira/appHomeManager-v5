@@ -1,0 +1,19 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+
+    <!-- Define o tamanho do thumb -->
+    <size
+        android:width="15dp"
+        android:height="15dp" />
+
+    <!-- Define a cor do thumb -->
+    <solid android:color="@color/colorAzul" />
+
+    <!-- Define a borda ao redor do thumb -->
+    <stroke
+        android:width="2dp"
+        android:color="#FFFFFF" />
+
+    <!-- Define a sombra ou o raio do thumb -->
+    <corners android:radius="20dp" />
+</shape>

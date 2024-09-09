@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
+import android.view.ViewTreeObserver;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -96,12 +97,18 @@ public class CaixaDaguaActivity extends AppCompatActivity {
         super.onDestroy();
 
         statusDispositivo.paraSchedulerStatusDispositivo();
+        firebaseEntity.disconnect();
     }
 
     private void verificaStatusDispositivo() {
 
-        binding.tvCxdStatus.setText(statusDispositivo.isOnline(caixaDagua.getStatus(), AppConstants.PERIODO_2_MINUTO_S) ? R.string.online : R.string.offline);
+        boolean status = statusDispositivo.isOnline(caixaDagua.getStatus(), AppConstants.PERIODO_2_MINUTO_S);
+
+        binding.tvCxdStatus.setText(status ? R.string.online : R.string.offline);
         binding.tvCxdStatus.setTextColor(getString(R.string.online).equals(binding.tvCxdStatus.getText()) ? getColor(R.color.onLine) : getColor(R.color.offLine));
+
+        ComponentUtils.setComponentEnabledAll(binding, componentsActivity, status);
+        ComponentUtils.setComponentEnabled(binding, binding.ivCxdReservatorio.getId(), status);
     }
 
     private void setParametrosDefault() {
@@ -111,6 +118,14 @@ public class CaixaDaguaActivity extends AppCompatActivity {
         binding.tvCxdAutoManual.setText(R.string.autoManual);
         binding.tvCxdValveEntradaPrincipal.setText(R.string.valveEntradaPrincipal);
         binding.tvCxdValveEntradaSecundaria.setText(R.string.valveEntradaSecundaria);
+        binding.tvCxdNivelInferior.setText(R.string.zeroNum);
+
+        binding.skbCxdNivel.setEnabled(false);
+
+        binding.skbCxdNivel.getViewTreeObserver().addOnGlobalLayoutListener(() -> {
+            defineNivelSuperior();
+            ajustaPosicaoNivelAtual();
+        });
     }
 
     private void mapeametoComponenteToFirebase(){
@@ -177,9 +192,14 @@ public class CaixaDaguaActivity extends AppCompatActivity {
                     controleEquipamentosAutoManual();
                     break;
 
+                case "nsc":
+                case "nic":
+                    defineNivelSuperior();
                 case "na":
                 case "ni":
                 case "ns":
+
+                    ajustaPosicaoNivelAtual();
 
                     @SuppressLint("DiscouragedApi") int resourceIdImagem = getResources().getIdentifier("wt" + caixaDagua.getImageLevel(QUANTIDADE_IMAGENS_CAIXA_DAGUA), "drawable", getPackageName());
                     binding.ivCxdReservatorio.setImageResource(resourceIdImagem != 0 ? resourceIdImagem : R.drawable.wt0);
@@ -190,6 +210,27 @@ public class CaixaDaguaActivity extends AppCompatActivity {
                     break;
             }
         }
+    }
+
+    private void defineNivelSuperior() {
+
+        binding.skbCxdNivel.setMax(caixaDagua.getNivelSuperiorRelativo());
+        binding.tvCxdNivelSuperior.setText(String.valueOf(caixaDagua.getNivelSuperiorRelativo()));
+    }
+
+    private void ajustaPosicaoNivelAtual() {
+
+        binding.skbCxdNivel.setProgress(caixaDagua.getNivelAtualRelativo());
+        binding.tvCxdNivelAtual.setText(String.valueOf(caixaDagua.getNivelAtualRelativo()));
+        binding.tvCxdNivelAtual.setTranslationX(getPosicaoNivelAtualX());
+    }
+
+    private int getPosicaoNivelAtualX(){
+
+        int px = binding.skbCxdNivel.getThumb().getBounds().centerX();
+        int seekBarInicioX = binding.skbCxdNivel.getLeft();
+
+        return seekBarInicioX + px;
     }
 
     private void controleEquipamentosAutoManual(){
