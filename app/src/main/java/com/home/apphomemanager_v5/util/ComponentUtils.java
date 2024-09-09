@@ -2,6 +2,8 @@ package com.home.apphomemanager_v5.util;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.ColorMatrix;
+import android.graphics.ColorMatrixColorFilter;
 import android.util.Pair;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,6 +33,32 @@ public class ComponentUtils {
                 changeValueComponent(child, "");
             }else if(child instanceof  ImageView){
                 changeValueComponent(child, false);
+            }
+        }
+    }
+
+    public static void setComponentEnabledAll(ViewBinding binding, Map<Integer, String> componentsActivity, boolean isEnabled){
+
+        componentsActivity.forEach((key, value) -> {
+
+            setComponentEnabled(binding, key, isEnabled);
+        });
+    }
+
+    public static void setComponentEnabled(ViewBinding binding, int componentId, boolean isEnabled) {
+
+        View component = binding.getRoot().findViewById(componentId);
+
+        if (component != null) {
+            component.setEnabled(isEnabled);
+
+            if (component instanceof ImageView) {
+                ImageView imageView = (ImageView) component;
+                if (isEnabled) {
+                    removerImageViewTomDeCinza(imageView);
+                } else {
+                    imageViewTomDeCinza(imageView);
+                }
             }
         }
     }
@@ -134,9 +162,7 @@ public class ComponentUtils {
 
     public static <T extends  View> void setEventClickGeneric(T imageView, EventClick method){
 
-        imageView.setOnClickListener(event -> {
-            method.execute(event);
-        });
+        imageView.setOnClickListener(event -> method.execute(event));
     }
 
     public static int getIdImage(Context context, String nome){
@@ -165,5 +191,17 @@ public class ComponentUtils {
 
     public static boolean getTrueFalse(String status){
         return ("on".equalsIgnoreCase(status) || "true".equalsIgnoreCase(status));
+    }
+
+    public static void imageViewTomDeCinza(ImageView imageView){
+
+        ColorMatrix matrix = new ColorMatrix();
+        matrix.setSaturation(0);
+        ColorMatrixColorFilter filter = new ColorMatrixColorFilter(matrix);
+        imageView.setColorFilter(filter);
+    }
+
+    public static void removerImageViewTomDeCinza(ImageView imageView){
+        imageView.clearColorFilter();
     }
 }

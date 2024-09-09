@@ -102,8 +102,13 @@ public class CaixaDaguaActivity extends AppCompatActivity {
 
     private void verificaStatusDispositivo() {
 
-        binding.tvCxdStatus.setText(statusDispositivo.isOnline(caixaDagua.getStatus(), AppConstants.PERIODO_2_MINUTO_S) ? R.string.online : R.string.offline);
+        boolean status = statusDispositivo.isOnline(caixaDagua.getStatus(), AppConstants.PERIODO_2_MINUTO_S);
+
+        binding.tvCxdStatus.setText(status ? R.string.online : R.string.offline);
         binding.tvCxdStatus.setTextColor(getString(R.string.online).equals(binding.tvCxdStatus.getText()) ? getColor(R.color.onLine) : getColor(R.color.offLine));
+
+        ComponentUtils.setComponentEnabledAll(binding, componentsActivity, status);
+        ComponentUtils.setComponentEnabled(binding, binding.ivCxdReservatorio.getId(), status);
     }
 
     private void setParametrosDefault() {

@@ -91,8 +91,13 @@ public class CisternaActivity extends AppCompatActivity {
 
     private void verificaStatusDispositivo() {
 
-        binding.tvCisStatus.setText(statusDispositivo.isOnline(cisterna.getStatus(), AppConstants.PERIODO_2_MINUTO_S) ? R.string.online : R.string.offline);
+        boolean status = statusDispositivo.isOnline(cisterna.getStatus(), AppConstants.PERIODO_2_MINUTO_S);
+
+        binding.tvCisStatus.setText(status ? R.string.online : R.string.offline);
         binding.tvCisStatus.setTextColor(getString(R.string.online).equals(binding.tvCisStatus.getText()) ? getColor(R.color.onLine) : getColor(R.color.offLine));
+
+        ComponentUtils.setComponentEnabledAll(binding, componentsActivity, status);
+        ComponentUtils.setComponentEnabled(binding, binding.ivCisReservatorio.getId(), status);
     }
 
     private void setParametrosDefault() {

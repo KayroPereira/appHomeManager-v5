@@ -47,7 +47,7 @@
         android:layout_marginTop="40dp"
         android:layout_marginEnd="5dp"
         android:checked="true"
-        android:thumb="@drawable/custom_thumb"
+        android:thumb="@drawable/custom_thumb_switch"
         app:layout_constraintEnd_toStartOf="@+id/guideline_Cxd_Main_V1"
         app:layout_constraintTop_toTopOf="@+id/guideline_Cxd_Main_H4"
         app:track="@drawable/switch_track" />
@@ -61,7 +61,7 @@
         android:checked="true"
         app:layout_constraintEnd_toStartOf="@+id/guideline_Cxd_Main_V1"
         app:layout_constraintTop_toBottomOf="@+id/swCxdAutoManual"
-        android:thumb="@drawable/custom_thumb"
+        android:thumb="@drawable/custom_thumb_switch"
         app:track="@drawable/switch_track" />
 
     <androidx.appcompat.widget.SwitchCompat
@@ -73,7 +73,7 @@
         android:checked="true"
         app:layout_constraintEnd_toStartOf="@+id/guideline_Cxd_Main_V1"
         app:layout_constraintTop_toBottomOf="@+id/swCxdValvulaEntradaPrincipal"
-        android:thumb="@drawable/custom_thumb"
+        android:thumb="@drawable/custom_thumb_switch"
         app:track="@drawable/switch_track" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -225,10 +225,7 @@
         android:id="@+id/skbCxdNivel"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:max="10"
-        android:maxHeight="55dp"
-        android:minHeight="55dp"
-        android:progress="3"
+        android:thumb="@drawable/custom_thumb_seek"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline_Cxd_Main_V1"
         app:layout_constraintStart_toStartOf="@+id/guideline_Cxd_Main_V2"
