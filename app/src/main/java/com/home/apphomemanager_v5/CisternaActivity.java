@@ -98,6 +98,7 @@ public class CisternaActivity extends AppCompatActivity {
 
         ComponentUtils.setComponentEnabledAll(binding, componentsActivity, status);
         ComponentUtils.setComponentEnabled(binding, binding.ivCisReservatorio.getId(), status);
+        controleEquipamentoOnOff();
     }
 
     private void setParametrosDefault() {
@@ -186,8 +187,7 @@ public class CisternaActivity extends AppCompatActivity {
             switch (att){
                 case "onOff":
 
-                    binding.swCisAutoManual.setEnabled(cisterna.getOnOff());
-                    binding.swCisValvulaControle.setEnabled(cisterna.getOnOff());
+                    controleEquipamentoOnOff();
                 case "autoManual":
 
                     controleEquipamentosAutoManual();
@@ -241,6 +241,14 @@ public class CisternaActivity extends AppCompatActivity {
         int seekBarInicioX = binding.skbCisNivel.getLeft();
 
         return seekBarInicioX + px;
+    }
+
+    private void controleEquipamentoOnOff(){
+
+        binding.swCisAutoManual.setEnabled(cisterna.getOnOff());
+        binding.swCisValvulaControle.setEnabled(cisterna.getOnOff());
+
+        controleEquipamentosAutoManual();
     }
 
     private void controleEquipamentosAutoManual(){
