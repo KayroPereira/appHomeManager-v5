@@ -40,7 +40,7 @@
         android:layout_height="20dp"
         android:layout_marginTop="20dp"
         android:checked="true"
-        android:thumb="@drawable/custom_thumb"
+        android:thumb="@drawable/custom_thumb_switch"
         app:track="@drawable/switch_track"
         app:layout_constraintEnd_toStartOf="@+id/guideline_Ch_Main_V1"
         app:layout_constraintStart_toStartOf="@+id/guideline_Cis_Main_V3"

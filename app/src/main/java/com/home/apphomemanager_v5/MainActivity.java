@@ -2,6 +2,7 @@ package com.home.apphomemanager_v5;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -34,10 +35,12 @@ public class MainActivity extends AppCompatActivity {
 
         mensagensErros = Arrays.asList(getString(R.string.email), getString(R.string.senha));
 
-        binding.eTSSIDLGN.setText("teste@gmail.com");
-        binding.eTPasswordLGN.setText("123456");
+        binding.pBarMainLogin.setVisibility(View.GONE);
 
-        binding.btEnviarLGN.setOnClickListener(e -> loginFirebase());
+        binding.eTMainEmail.setText("teste@gmail.com");
+        binding.eTMainPassword.setText("123456");
+
+        binding.btMainEnviar.setOnClickListener(e -> loginFirebase());
     }
 
     @Override
@@ -48,12 +51,13 @@ public class MainActivity extends AppCompatActivity {
 
     private void loginFirebase(){
 
-        String email = binding.eTSSIDLGN.getText().toString().trim();
-        String password = binding.eTPasswordLGN.getText().toString().trim();
+        String email = binding.eTMainEmail.getText().toString().trim();
+        String password = binding.eTMainPassword.getText().toString().trim();
 
-        List<Integer> erros = validaCamposText(Arrays.asList(binding.eTSSIDLGN, binding.eTPasswordLGN));
+        List<Integer> erros = validaCamposText(Arrays.asList(binding.eTMainEmail, binding.eTMainPassword));
 
         if(erros.isEmpty()){
+            binding.pBarMainLogin.setVisibility(View.VISIBLE);
             sendDataFirebaseLogin(email, password);
         }else{
             String mensagem = erros.size() == 1 ? getString(R.string.campoNaoPreenchido) : getString(R.string.camposNaoPreenchidos);
@@ -66,10 +70,13 @@ public class MainActivity extends AppCompatActivity {
 
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, task -> {
+
+                    binding.pBarMainLogin.setVisibility(View.GONE);
+
                     if (task.isSuccessful()) {
                         FirebaseUser user = mAuth.getCurrentUser();
 
-                        Toast.makeText(this, "Login ok", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(this, "Login ok", Toast.LENGTH_SHORT).show();
 
 //                        startActivity(new Intent(this, DadosFirebaseActivity.class));
 //                        startActivity(new Intent(this, ChurrasqueiraActivity.class));
