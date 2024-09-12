@@ -10,4 +10,13 @@
     <color name="colorFontItem">#C5ED0909</color>
 
     <color name="colorAzul">#C5021F75</color>
+
+
+    <!-- Define suas cores personalizadas -->
+    <color name="colorPrimary">#2A2532</color>
+    <color name="colorPrimaryVariant">#2C2B2E</color>
+    <color name="colorSecondary">#202A61</color>
+    <color name="colorBackground">#FFFFFF</color>
+    <color name="colorOnPrimary">#FFFFFF</color>
+    <color name="colorOnSecondary">#000000</color>
 </resources>

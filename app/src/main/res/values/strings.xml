@@ -1,11 +1,11 @@
 <resources>
-    <string name="app_name">appHomeManager-v4</string>
+    <string name="app_name">appHomeManager-v5</string>
 
     <string name="login">LOGIN</string>
     <string name="vazio"> </string>
 
-    <string name="dgLogin">Digite um e-mail</string>
-    <string name="dgPassword">Digite uma senha</string>
+    <string name="dgLogin">Digite seu e-mail</string>
+    <string name="dgPassword">Digite sua senha</string>
     <string name="dgConfirmePassword">Confirmar senha</string>
 
     <!-- Geral   -->

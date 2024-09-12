@@ -1,9 +1,22 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.AppHomeManagerv4" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
-    </style>
+<!--<resources xmlns:tools="http://schemas.android.com/tools">-->
+<!--    &lt;!&ndash; Base application theme. &ndash;&gt;-->
+<!--    <style name="Base.Theme.AppHomeManagerv4" parent="Theme.Material3.DayNight.NoActionBar">-->
+<!--        &lt;!&ndash; Customize your light theme here. &ndash;&gt;-->
+<!--        &lt;!&ndash; <item name="colorPrimary">@color/my_light_primary</item> &ndash;&gt;-->
+<!--    </style>-->
 
-    <style name="Theme.AppHomeManagerv4" parent="Base.Theme.AppHomeManagerv4" />
+<!--    <style name="Theme.AppHomeManagerv4" parent="Base.Theme.AppHomeManagerv4" />-->
+<!--</resources>-->
+
+<resources>
+<!--    <style name="Base.Theme.AppHomeManagerv4" parent="Theme.Material3.DayNight.NoActionBar">-->
+    <style name="Base.Theme.AppHomeManagerv4" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Personalização das cores do tema -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/colorPrimaryVariant</item>
+        <item name="colorSecondary">@color/colorSecondary</item>
+        <item name="android:colorBackground">@color/colorBackground</item>
+        <item name="colorOnPrimary">@color/colorOnPrimary</item>
+        <item name="colorOnSecondary">@color/colorOnSecondary</item>
+    </style>
 </resources>
