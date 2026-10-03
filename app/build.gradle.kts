@@ -1,8 +1,18 @@
+import java.util.Properties
+
 plugins {
     id("com.android.application")
 
     // Add the Google services Gradle plugin
     id("com.google.gms.google-services")
+}
+
+// Valores locais (fora do git): LOGIN_TESTE_EMAIL / LOGIN_TESTE_SENHA
+val localProperties = Properties().apply {
+    val arquivo = rootProject.file("local.properties")
+    if (arquivo.exists()) {
+        arquivo.inputStream().use { load(it) }
+    }
 }
 
 android {
@@ -17,10 +27,24 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        // Credenciais do projeto Cloud da Tuya (local.properties, fora do git).
+        // Atenção: o secret embutido no app pode ser extraído do APK; use só em app pessoal.
+        buildConfigField("String", "TUYA_ACCESS_ID", "\"${localProperties.getProperty("TUYA_ACCESS_ID", "")}\"")
+        buildConfigField("String", "TUYA_ACCESS_SECRET", "\"${localProperties.getProperty("TUYA_ACCESS_SECRET", "")}\"")
+        buildConfigField("String", "TUYA_HOME_ID", "\"${localProperties.getProperty("TUYA_HOME_ID", "")}\"")
+        buildConfigField("String", "TUYA_BASE_URL", "\"${localProperties.getProperty("TUYA_BASE_URL", "https://openapi.tuyaus.com/")}\"")
     }
 
     buildTypes {
+        debug {
+            // Pré-preenchimento do login para agilizar os testes; nunca vai para o release.
+            buildConfigField("String", "LOGIN_TESTE_EMAIL", "\"${localProperties.getProperty("LOGIN_TESTE_EMAIL", "")}\"")
+            buildConfigField("String", "LOGIN_TESTE_SENHA", "\"${localProperties.getProperty("LOGIN_TESTE_SENHA", "")}\"")
+        }
         release {
+            buildConfigField("String", "LOGIN_TESTE_EMAIL", "\"\"")
+            buildConfigField("String", "LOGIN_TESTE_SENHA", "\"\"")
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -29,44 +53,28 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
-    viewBinding{
-        enable = true;
+    testOptions {
+        // android.util.Log e afins retornam valores padrão nos testes JVM.
+        unitTests.isReturnDefaultValues = true
     }
     buildFeatures {
         viewBinding = true
+        buildConfig = true
     }
 }
 
 dependencies {
 
-    implementation ("com.google.code.gson:gson:2.8.9")
-
-    // Import the Firebase BoM
+    // Import the Firebase BoM (os artefatos Firebase abaixo não precisam de versão)
     implementation(platform("com.google.firebase:firebase-bom:32.7.0"))
 
-    // TODO: Add the dependencies for Firebase products you want to use
-    // When using the BoM, don't specify versions in Firebase dependencies
     implementation("com.google.firebase:firebase-analytics")
-
-    implementation("com.google.android.material:material:1.11.0")
-
-//    implementation("com.google.dagger:dagger:2.51.1")
-//    annotationProcessor("com.google.dagger:dagger-compiler:2.51.1")
-
-    // Add the dependencies for any other desired Firebase products
-    // https://firebase.google.com/docs/android/setup#available-libraries
-    // Import the BoM for the Firebase platform
-//    implementation(platform("com.google.firebase:firebase-bom:32.7.0"))
-
-    // Add the dependency for the Firebase Authentication library
-    // When using the BoM, you don't specify versions in Firebase library dependencies
     implementation("com.google.firebase:firebase-auth")
-    implementation("com.google.firebase:firebase-database:20.3.0")
-
-
+    implementation("com.google.firebase:firebase-database")
+    implementation("com.google.firebase:firebase-messaging")
 
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.11.0")
@@ -82,24 +90,14 @@ dependencies {
     implementation("androidx.navigation:navigation-ui:$navVersion")
 
     //Lombok
-    compileOnly ("org.projectlombok:lombok:1.18.34")
-//    implementation ("org.projectlombok:lombok:1.18.28")
-    annotationProcessor ("org.projectlombok:lombok:1.18.34")
+    compileOnly("org.projectlombok:lombok:1.18.34")
+    annotationProcessor("org.projectlombok:lombok:1.18.34")
 
-//    implementation 'org.projectlombok:lombok:1.18.24'
-//    annotationProcessor 'org.projectlombok:lombok:1.18.24'
+    //JSON
+    implementation("com.google.code.gson:gson:2.10.1")
 
-
-    //Jackson
-//    implementation("com.fasterxml.jackson.core:jackson-databind:2.0.1")
-    implementation ("com.fasterxml.jackson.core:jackson-databind:2.15.0")
-    implementation ("com.fasterxml.jackson.core:jackson-core:2.15.0")
-    implementation ("com.fasterxml.jackson.core:jackson-annotations:2.15.0")
-
-
-    //Geolocalização
-    implementation ("com.google.android.gms:play-services-location:21.3.0")
-    implementation ("com.squareup.retrofit2:retrofit:2.11.0")
-    implementation ("com.squareup.retrofit2:converter-gson:2.11.0")
-
+    //Geolocalização e clima
+    implementation("com.google.android.gms:play-services-location:21.2.0")
+    implementation("com.squareup.retrofit2:retrofit:2.11.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.11.0")
 }

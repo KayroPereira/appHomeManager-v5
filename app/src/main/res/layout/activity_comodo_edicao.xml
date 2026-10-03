@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_gradiente"
+    tools:context=".comodo.ComodoEdicaoActivity">
+
+    <ImageView
+        android:id="@+id/ivEdBack"
+        style="@style/BotaoTopo"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="2dp"
+        android:contentDescription="@string/voltar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/back" />
+
+    <LinearLayout
+        android:id="@+id/llEdAcoes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="4dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/ivEdExcluir"
+            style="@style/BotaoTopo"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:contentDescription="@string/excluir"
+            android:visibility="gone"
+            app:srcCompat="@drawable/ic_excluir" />
+
+        <ImageView
+            android:id="@+id/ivEdSalvar"
+            style="@style/BotaoTopo"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:alpha="0.4"
+            android:contentDescription="@string/salvar"
+            android:enabled="false"
+            app:srcCompat="@drawable/save" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvEdTitulo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:gravity="center"
+        android:text="@string/novoComodo"
+        android:textColor="@android:color/background_light"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@id/ivEdBack"
+        app:layout_constraintEnd_toStartOf="@id/llEdAcoes"
+        app:layout_constraintStart_toEndOf="@id/ivEdBack"
+        app:layout_constraintTop_toTopOf="@id/ivEdBack" />
+
+    <View
+        android:id="@+id/dividerEd"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_marginTop="52dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/pbEd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dividerEd" />
+
+    <ScrollView
+        android:id="@+id/svEd"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dividerEd">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="12dp">
+
+            <!-- Dados do cômodo -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_card_vidro"
+                android:orientation="vertical"
+                android:padding="14dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/nomeComodo"
+                    android:textColor="#CCFFFFFF"
+                    android:textSize="13sp" />
+
+                <EditText
+                    android:id="@+id/etEdNome"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:autofillHints="none"
+                    android:background="@drawable/bg_campo"
+                    android:inputType="textCapSentences"
+                    android:maxLength="30"
+                    android:minHeight="48dp"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:singleLine="true"
+                    android:textColor="@android:color/background_light"
+                    android:textColorHint="#80FFFFFF"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/tvEdErroNome"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/comodoSemNome"
+                    android:textColor="#FF8A80"
+                    android:textSize="12sp"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/icone"
+                    android:textColor="#CCFFFFFF"
+                    android:textSize="13sp" />
+
+                <!-- Grade que quebra em linhas: com mais de cinco ícones uma linha única sai da tela. -->
+                <GridLayout
+                    android:id="@+id/llEdIcones"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:columnCount="4" />
+            </LinearLayout>
+
+            <!-- Grupos de dispositivos escolhidos para o cômodo (um cômodo novo começa sem nenhum) -->
+            <LinearLayout
+                android:id="@+id/llEdGrupos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+
+            <TextView
+                android:id="@+id/tvEdSemGrupos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:text="@string/comodoSemGrupos"
+                android:textColor="@color/textoSecundario"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tvEdAddGrupo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/bg_campo"
+                android:foreground="?attr/selectableItemBackground"
+                android:gravity="center"
+                android:minHeight="48dp"
+                android:text="@string/adicionarGrupo"
+                android:textColor="@android:color/background_light"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

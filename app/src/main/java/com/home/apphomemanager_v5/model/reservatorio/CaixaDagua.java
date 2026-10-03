@@ -1,8 +1,10 @@
 package com.home.apphomemanager_v5.model.reservatorio;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Data
+@EqualsAndHashCode(callSuper = true)
 public class CaixaDagua extends Reservatorio{
 
     private Boolean vlep;

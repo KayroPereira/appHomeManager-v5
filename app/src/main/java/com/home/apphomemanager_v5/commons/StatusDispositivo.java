@@ -9,14 +9,22 @@ import java.time.ZonedDateTime;
 
 public class StatusDispositivo {
 
-    private Handler handler;
+    private final Handler handler;
     private Runnable runnable;
 
     public StatusDispositivo() {
-        handler = new Handler(Looper.myLooper());
+        handler = new Handler(Looper.getMainLooper());
     }
 
+    /**
+     * O dispositivo grava em "status" o epoch em horário local (não UTC),
+     * por isso o offset do fuso é somado ao instante atual antes da comparação.
+     */
     public boolean isOnline(Long baseAtual, int periodo){
+
+        if (baseAtual == null || baseAtual <= 0) {
+            return false;
+        }
 
         Instant dataAtual = Instant.now();
 
@@ -29,6 +37,8 @@ public class StatusDispositivo {
 
     public void inicializaSchedulerStatusDispositivo(Runnable task, long delayMs) {
 
+        paraSchedulerStatusDispositivo();
+
         runnable = new Runnable() {
             @Override
             public void run() {
@@ -40,8 +50,9 @@ public class StatusDispositivo {
     }
 
     public void paraSchedulerStatusDispositivo() {
-        if (handler != null && runnable != null) {
+        if (runnable != null) {
             handler.removeCallbacks(runnable);
+            runnable = null;
         }
     }
 }

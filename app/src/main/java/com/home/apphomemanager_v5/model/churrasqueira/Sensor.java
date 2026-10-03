@@ -35,7 +35,7 @@ public class Sensor {
         if (this == o) return true;
         if (!(o instanceof Sensor)) return false;
         Sensor sensor = (Sensor) o;
-        return isFc1() == sensor.isFc1() && isFc2() == sensor.isFc2();
+        return Objects.equals(isFc1(), sensor.isFc1()) && Objects.equals(isFc2(), sensor.isFc2());
     }
 
     @Override

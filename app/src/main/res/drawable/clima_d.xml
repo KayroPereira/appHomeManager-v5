@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="360dp"
+    android:height="360dp"
+    android:viewportWidth="360"
+    android:viewportHeight="360">
+    <path
+            android:fillColor="#FFF5F5F5"
+            android:pathData="M105,24H105a35,35 0 0 1 35,35V219a35,35 0 0 1 -35,35H105a35,35 0 0 1 -35,-35V59a35,35 0 0 1 35,-35zM105,56a12,12 0 0 0 -12,12V214a12,12 0 0 0 12,12H105a12,12 0 0 0 12,-12V68a12,12 0 0 0 -12,-12z" />
+    <path
+            android:fillColor="#FFF5F5F5"
+            android:pathData="M161,286a56,56 0 1 1 -112,0a56,56 0 1 1 112,0zM137,286a32,32 0 1 0 -64,0a32,32 0 1 0 64,0z" />
+    <path
+            android:fillColor="#FFF5F5F5"
+            android:pathData="M105,150H105a12,12 0 0 1 12,12V218a12,12 0 0 1 -12,12H105a12,12 0 0 1 -12,-12V162a12,12 0 0 1 12,-12zM129,286a24,24 0 1 1 -48,0a24,24 0 1 1 48,0z" />
+    <path
+            android:fillColor="#00000000"
+            android:strokeColor="#FFF5F5F5"
+            android:strokeWidth="12"
+            android:strokeLineCap="round"
+            android:strokeLineJoin="round"
+            android:pathData="M260,40V140M260,60L246,46M260,60L274,46M260,120L246,134M260,120L274,134" />
+    <group android:rotation="60" android:pivotX="260" android:pivotY="90">
+        <path
+            android:fillColor="#00000000"
+            android:strokeColor="#FFF5F5F5"
+            android:strokeWidth="12"
+            android:strokeLineCap="round"
+            android:strokeLineJoin="round"
+            android:pathData="M260,40V140M260,60L246,46M260,60L274,46M260,120L246,134M260,120L274,134" />
+    </group>
+    <group android:rotation="120" android:pivotX="260" android:pivotY="90">
+        <path
+            android:fillColor="#00000000"
+            android:strokeColor="#FFF5F5F5"
+            android:strokeWidth="12"
+            android:strokeLineCap="round"
+            android:strokeLineJoin="round"
+            android:pathData="M260,40V140M260,60L246,46M260,60L274,46M260,120L246,134M260,120L274,134" />
+    </group>
+    <path
+            android:fillColor="#FFF5F5F5"
+            android:pathData="M288,262a28,28 0 1 1 -56,0a28,28 0 1 1 56,0z" />
+    <path
+            android:fillColor="#00000000"
+            android:strokeColor="#FFF5F5F5"
+            android:strokeWidth="12"
+            android:strokeLineCap="round"
+            android:strokeLineJoin="round"
+            android:pathData="M260,206V218M260,306V318M204,262H216M304,262H316M220,222L228,230M292,294L300,302M220,302L228,294M292,230L300,222" />
+</vector>

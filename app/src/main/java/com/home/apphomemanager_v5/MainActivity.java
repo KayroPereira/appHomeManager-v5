@@ -9,7 +9,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.home.apphomemanager_v5.databinding.ActivityMainBinding;
 
 import java.util.Arrays;
@@ -37,8 +36,11 @@ public class MainActivity extends AppCompatActivity {
 
         binding.pBarMainLogin.setVisibility(View.GONE);
 
-        binding.eTMainEmail.setText("teste@gmail.com");
-        binding.eTMainPassword.setText("123456");
+        // Só no build debug, com os valores do local.properties (vazios no release).
+        if (BuildConfig.DEBUG) {
+            binding.eTMainEmail.setText(BuildConfig.LOGIN_TESTE_EMAIL);
+            binding.eTMainPassword.setText(BuildConfig.LOGIN_TESTE_SENHA);
+        }
 
         binding.btMainEnviar.setOnClickListener(e -> loginFirebase());
     }
@@ -52,12 +54,14 @@ public class MainActivity extends AppCompatActivity {
     private void loginFirebase(){
 
         String email = binding.eTMainEmail.getText().toString().trim();
-        String password = binding.eTMainPassword.getText().toString().trim();
+        // A senha não é "trimada": espaços podem fazer parte dela.
+        String password = binding.eTMainPassword.getText().toString();
 
         List<Integer> erros = validaCamposText(Arrays.asList(binding.eTMainEmail, binding.eTMainPassword));
 
         if(erros.isEmpty()){
             binding.pBarMainLogin.setVisibility(View.VISIBLE);
+            binding.btMainEnviar.setEnabled(false);
             sendDataFirebaseLogin(email, password);
         }else{
             String mensagem = erros.size() == 1 ? getString(R.string.campoNaoPreenchido) : getString(R.string.camposNaoPreenchidos);
@@ -72,9 +76,9 @@ public class MainActivity extends AppCompatActivity {
                 .addOnCompleteListener(this, task -> {
 
                     binding.pBarMainLogin.setVisibility(View.GONE);
+                    binding.btMainEnviar.setEnabled(true);
 
                     if (task.isSuccessful()) {
-                        FirebaseUser user = mAuth.getCurrentUser();
 
 //                        Toast.makeText(this, "Login ok", Toast.LENGTH_SHORT).show();
 
@@ -88,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
 
                         startActivity(new Intent(this, DashBoardActivity.class));
                     } else {
-                        Toast.makeText(this, "Authentication failed.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, R.string.falhaAutenticacao, Toast.LENGTH_SHORT).show();
                     }
                 });
     }

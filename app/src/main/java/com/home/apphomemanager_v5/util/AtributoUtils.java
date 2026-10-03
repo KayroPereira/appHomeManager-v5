@@ -70,6 +70,13 @@ public class AtributoUtils {
         });
     }
 
+    /** Campos da lista cujo valor em {@code source} é nulo (ou seja, ausentes no Firebase). */
+    public static List<String> camposAusentes(Object source, List<String> fields) {
+        return fields.stream()
+                .filter(field -> obterValorCampo(source, field) == null)
+                .collect(Collectors.toList());
+    }
+
     public static void atributosAlterados(Object oldObj, Object newObj, List<String> fields) {
         atributosAlterados(oldObj, newObj, fields, "");
     }

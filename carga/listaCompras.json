@@ -1,0 +1,84 @@
+{
+  "despensa": {
+    "0": {
+      "Achocolatado": 0, "Adoçante": 0, "Arroz Parabolizado": 2, "Azeite de oliva": 0, "Azeitonas": 0,
+      "Açúcar": 2, "Batata palha": 0, "Bolacha": 0, "Café instantâneo": 0, "Café moído": 0,
+      "Chocolate em pó": 0, "Cogumelo": 0, "Farinha": 2, "Farinha de trigo c": 0, "Feijão": 2,
+      "Feijão preto": 0, "Feijão verde": 0, "Fubá": 0, "Ketchup": 0, "Leite condensado": 0,
+      "Leite em caixa": 0, "Leite em caixa desnatado": 0, "Leite em pó desnatado": 0, "Leite em pó integral": 0,
+      "Macarrão Espaguete": 0, "Macarrão Talharim": 0, "Macarrão penne": 0, "Maionese": 0, "Maisena": 0,
+      "Manteiga": 0, "Manteiga de garrafa": 0, "Margarina": 0, "Massa para Lasanha": 0, "Massa tapioca": 0,
+      "Milho verde": 0, "Molho de tomate": 0, "Mostarda": 0, "Ovos": 0, "Pão": 2, "Pão de caixa": 0,
+      "Queijo ralado": 0, "Requeijão": 0, "Sal": 2, "Sardinha enlatada": 0, "Vinagre": 0, "Óleo": 0
+    },
+    "1": {
+      "Batata frita": 2, "Biscoito Maizena": 0, "Biscoito recheado": 0, "Biscoitos Waffles": 0, "Bolo": 0,
+      "Bolos de milho": 0, "Doce": 0, "Flocos de milho chocolate": 2, "Gelatina (em pó)": 0, "Iogurte": 0,
+      "Iogurte natural": 0, "Leite condensado": 0, "Milho de pipoca": 0, "Picles": 0, "Pudim de leite": 0,
+      "Salgadinhos": 0, "Sucrilho chocolate": 2, "Torta": 0, "Torta de limão": 0
+    },
+    "2": {
+      "Bohemia puro malte": 0, "Brahma duplo malte": 0, "Champanhe": 0, "Cidra": 0, "Energy Drink": 0,
+      "Fanta Laranja pet": 1, "Granadina": 0, "Licor de pêssego": 0, "Red Bull": 1, "Refrigerante": 0,
+      "Rum": 0, "Skol lata 350ml": 0, "Suco de Laranja": 0, "Tequila": 0, "Uísque": 0, "Vinho branco": 0,
+      "Vinho espumante": 0, "Vinho tinto": 0, "Vodka": 0, "Água": 0, "Água com gás": 0
+    },
+    "3": {
+      "Bacon": 2, "Fatias de bacon": 2, "Mortadela": 2, "Mortadela bolonha": 0, "Paio": 0,
+      "Peito de peru": 2, "Presunto": 2, "Queijo coalho": 2, "Queijo manteiga": 2, "Queijo muçarela": 2,
+      "Queijo prato": 0, "Salame": 0, "Salsicha": 2
+    },
+    "4": {
+      "Amaciante": 0, "Bucha de prato": 0, "Condicionador": 0, "Creme de cabelo": 0, "Creme dental": 0,
+      "Creme depilatório": 0, "Desinfetante": 0, "Desodorante": 0, "Desodorante Roll on": 0, "Detergente": 0,
+      "Escovar os dentes": 0, "Fraldas": 0, "Fósforo": 0, "Guardanapos": 0, "Hidratante": 0,
+      "Limpador de vidro": 0, "Lustra móveis": 0, "Lâmina de barbear": 0, "Omo": 0, "Omo liquido": 0,
+      "Palha de aço": 0, "Pano de chão ": 0, "Papel alumínio": 0, "Papel higiênico": 0, "Papel toalha": 0,
+      "Plástico filme": 0, "Sabonete": 0, "Sabonete em barra": 0, "Sabão em Barra": 0, "Sabão em pó": 0,
+      "Sacos de lixo": 0, "Shampoo": 0, "Shampoo Anticaspa": 0, "Água sanitária": 0, "Álcool": 0
+    },
+    "5": {
+      "Papel de embrulho": 0, "Pilha": 0
+    },
+    "6": {
+      "Asas de frango": 2, "Bife de patinho": 2, "Bisteca de boi": 2, "Bisteca de porco": 2, "Carne de peito": 0,
+      "Carne moída": 2, "Charque": 2, "Codorna": 2, "Costela": 0, "Costela de suíno": 2, "Coxa e sobrecoxa": 0,
+      "Coxinhas de frango": 2, "Cupim": 0, "Espetos de frango": 2, "Filé de carne": 2, "Filé de peito": 2,
+      "Frango inteiro": 2, "Fígado bovino": 2, "Lombo de porco": 2, "Osso bovino": 2, "Peito bovino ": 2,
+      "Peito de frango": 2, "Rabada": 0
+    },
+    "7": {
+      "Albacora": 2, "Anchova": 2, "Atum": 2, "Bacalhau": 2, "Badejo fresco": 2, "Caldeirada": 2,
+      "Camarão": 2, "Cavala": 2, "Dorada": 2, "Lagosta": 2, "Lagostim": 2, "Lula": 2, "Marisco": 2,
+      "Merluza": 2, "Pescada Amarela": 2, "Pescada Branca": 2, "Polvo": 2, "Robalo": 2, "Salmão": 2,
+      "Sururu": 2
+    },
+    "8": {
+      "Abacate": 0, "Abacaxi": 0, "Acelga": 0, "Acerola": 0, "Alface": 0, "Banana": 0, "Banana cumprida": 0,
+      "Batata": 2, "Batata doce": 2, "Brócolis": 0, "Caju": 0, "Cajá": 0, "Caqui": 0, "Cebola": 2,
+      "Cebolinho": 0, "Cenoura": 0, "Chuchu": 0, "Coco": 0, "Coentro": 0, "Couve flor": 0, "Couve folha": 0,
+      "Feijão verde": 2, "Fruta pão": 0, "Inhame": 0, "Jerimum": 0, "Laranja": 0, "Limão": 0, "Macaxeira": 2,
+      "Mamão": 0, "Maçã": 0, "Melancia": 2, "Melão": 0, "Mexerica": 0, "Pepino": 2, "Pera": 0, "Pimentão": 0,
+      "Pinha": 0, "Repolho": 0, "Salsa": 0, "Tomate": 2, "Uva": 2
+    },
+    "9": {
+      "Alho": 0, "Alho em pasta": 2, "Alho em pó": 2, "Alho granulado": 2, "Alho poró": 2, "Amendoim": 2,
+      "Amendoim torrado sem sal": 2, "Aveia fina": 2, "Aveia floco": 2, "Açafrão": 2, "Canela em pau": 2,
+      "Canela em pó": 2, "Castanha brejeira partida": 2, "Castanha de caju": 2, "Cebola+Bacon+Salsa": 2,
+      "Chimichurri": 2, "Colorau": 2, "Cominho": 2, "Farinha de trigo s": 0, "Granola": 2, "Kinnor": 0,
+      "Milho mostarda e mel": 2, "Mostarda em pó": 2, "Orégano": 2, "Pimenta calabresa": 2,
+      "Pimenta de cheiro": 0, "Pimenta e cominho": 2, "Páprica defumada": 2, "Sazon": 0,
+      "Tempero para feijão": 2, "Vinagrete": 2
+    },
+    "10": {
+      "Comida de Peixe": 0, "Ração de apolo": 0, "Ração de maycon": 2
+    },
+    "11": {
+      "Bolinho de bacalhau": 0, "Carvão vegetal": 0, "Gelo": 0, "Ovo de codorna": 0, "Pimenta de cheiro": 0
+    },
+    "flgDsp": 5267
+  },
+  "minhaLst": {
+    "flgMlst": 492
+  }
+}

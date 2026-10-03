@@ -15,7 +15,6 @@ import com.home.apphomemanager_v5.model.churrasqueira.Churrasqueira;
 import com.home.apphomemanager_v5.model.firebase.FirebaseEntity;
 import com.home.apphomemanager_v5.util.AtributoUtils;
 import com.home.apphomemanager_v5.util.ComponentUtils;
-import com.home.apphomemanager_v5.util.FirebaseUtils;
 import com.home.apphomemanager_v5.util.JsonUtils;
 
 import java.util.ArrayList;
@@ -60,6 +59,12 @@ public class ChurrasqueiraActivity extends AppCompatActivity {
         ComponentUtils.setImageViewToggleListener(binding.ivChOnOffMain, componentsActivity, churrasqueira);
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        firebaseEntity.disconnect();
+    }
+
     private void mapeametoComponenteToFirebase(){
         componentsActivity.put(binding.ivChOnOffMain.getId(), "onOff");
 //        componentsActivity.put(binding.swMDirecaoChurrasqueira.getId(), "parametros.motor.direcao");
@@ -79,6 +84,11 @@ public class ChurrasqueiraActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
+                if (dataSnapshot.getValue() == null) {
+                    Log.w("Err" + ACTIVITY_NAME, "Nó '" + PATH_ROOT_FIREBASE + "' inexistente no Firebase");
+                    return;
+                }
+
                 try {
                     Churrasqueira churrasqueiraFirebase = JsonUtils.fromJson(Churrasqueira.class, new Gson().toJson(dataSnapshot.getValue()));
 
@@ -87,8 +97,6 @@ public class ChurrasqueiraActivity extends AppCompatActivity {
                     AtributoUtils.atributosAlterados(churrasqueiraFirebase, churrasqueira, atributosAlterados);
 
                     AtributoUtils.transferirValoresEntreObjetos(churrasqueiraFirebase, churrasqueira, atributosAlterados);
-
-                    FirebaseUtils.updateMultipleFields(churrasqueira, atributosAlterados, PATH_ROOT_FIREBASE);
 
                     ComponentUtils.atualizaComponents(churrasqueira, atributosAlterados, componentsActivity, binding);
                 } catch (Exception e) {
@@ -102,6 +110,6 @@ public class ChurrasqueiraActivity extends AppCompatActivity {
                 Log.w("Err"+ACTIVITY_NAME, "Erro ao receber os dados", databaseError.toException());
             }
         };
-        firebaseEntity.getmDatabase().addValueEventListener(postListener);
+        firebaseEntity.addValueEventListener(postListener);
     }
 }

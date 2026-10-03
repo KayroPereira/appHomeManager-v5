@@ -5,7 +5,6 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.home.apphomemanager_v5.databinding.ActivityDashBoardBinding;
 import com.home.apphomemanager_v5.databinding.ActivityDashBoardReservoirBinding;
 import com.home.apphomemanager_v5.util.ComponentUtils;
 
@@ -34,7 +33,7 @@ public class DashBoardReservoirActivity extends AppCompatActivity {
     private void caixaDagua(Object event){
 
         Intent intent = new Intent(this, CaixaDaguaActivity.class);
-        intent.putExtra("path", "1");
+        intent.putExtra(CaixaDaguaActivity.EXTRA_PATH, "1");
 
         startActivity(intent);
     }
