@@ -55,7 +55,7 @@ public class Output {
         if (this == o) return true;
         if (!(o instanceof Output)) return false;
         Output output = (Output) o;
-        return isAgua() == output.isAgua() && isExaustor() == output.isExaustor() && isLampada() == output.isLampada() && isSoprador() == output.isSoprador();
+        return Objects.equals(isAgua(), output.isAgua()) && Objects.equals(isExaustor(), output.isExaustor()) && Objects.equals(isLampada(), output.isLampada()) && Objects.equals(isSoprador(), output.isSoprador());
     }
 
     @Override

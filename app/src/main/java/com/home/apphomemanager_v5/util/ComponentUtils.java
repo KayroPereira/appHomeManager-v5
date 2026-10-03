@@ -20,6 +20,15 @@ import java.util.Map;
 
 public class ComponentUtils {
 
+    /** Acessado apenas na main thread: indica que o setChecked atual não partiu do usuário. */
+    private static boolean atualizacaoProgramatica = false;
+
+    private ComponentUtils(){}
+
+    public static boolean isAtualizacaoProgramatica(){
+        return atualizacaoProgramatica;
+    }
+
     public static void inicializaElementos(ViewBinding binding){
         ViewGroup layout = (ViewGroup) binding.getRoot();
 
@@ -82,10 +91,24 @@ public class ComponentUtils {
 
     public static void changeValueComponent(View child, Object... value){
 
+        if(child == null || value == null || value.length == 0 || value[0] == null){
+            return;
+        }
+
         if(child instanceof SwitchCompat){
 
             SwitchCompat switchComponent = (SwitchCompat) child;
-            switchComponent.setChecked((boolean) value[0]);
+            boolean checked = (boolean) value[0];
+
+            if(switchComponent.isChecked() != checked){
+                // Alteração vinda do Firebase/código: o listener não deve reenviar o valor.
+                atualizacaoProgramatica = true;
+                try {
+                    switchComponent.setChecked(checked);
+                } finally {
+                    atualizacaoProgramatica = false;
+                }
+            }
 
         }else if(child instanceof TextView){
 
@@ -121,6 +144,10 @@ public class ComponentUtils {
 
     public static <T> void setSwitchCheckedChangeListener(SwitchCompat switchCompat, Map<Integer, String> componentsActivity, T clazz, String pathPai){
         switchCompat.setOnCheckedChangeListener((compoundButton, b) -> {
+
+            if(atualizacaoProgramatica){
+                return;
+            }
 
             Integer idComponent = compoundButton.getId();
             String path = componentsActivity.get(idComponent);

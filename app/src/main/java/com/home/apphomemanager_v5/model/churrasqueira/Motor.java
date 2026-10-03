@@ -45,7 +45,7 @@ public class Motor {
         if (this == o) return true;
         if (!(o instanceof Motor)) return false;
         Motor motor = (Motor) o;
-        return isDirecao() == motor.isDirecao() && isHabilitado() == motor.isHabilitado() && isOnOff() == motor.isOnOff();
+        return Objects.equals(isDirecao(), motor.isDirecao()) && Objects.equals(isHabilitado(), motor.isHabilitado()) && Objects.equals(isOnOff(), motor.isOnOff());
     }
 
     @Override

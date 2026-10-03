@@ -1,15 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Widget.App.Button.OutlinedButton.IconOnly" parent="Widget.MaterialComponents.Button.OutlinedButton">
-        <item name="iconPadding">0dp</item>
-        <item name="android:insetTop">0dp</item>
-        <item name="android:insetBottom">0dp</item>
-        <item name="android:paddingLeft">12dp</item>
-        <item name="android:paddingRight">12dp</item>
-        <item name="android:minWidth">48dp</item>
-        <item name="android:minHeight">48dp</item>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+<!--        <item name="colorPrimary">@color/colorPrimary</item>-->
+<!--        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
+<!--        <item name="colorAccent">@color/colorAccent</item>-->
     </style>
+
+
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+
+    <!-- Estilo personalizado para o SwitchCompat -->
+<!--    <style name="CustomSwitchStyle" parent="Widget.AppCompat.CompoundButton.Switch">-->
+<!--        <item name="android:thumb">@drawable/custom_thumb_switch</item>-->
+<!--        <item name="android:track">@drawable/custom_track_switch</item>-->
+<!--        <item name="android:textColor">@color/black</item>-->
+<!--        <item name="android:textSize">16sp</item>-->
+<!--    </style>-->
+
+<!--    &lt;!&ndash; Estilo personalizado para o SwitchCompat &ndash;&gt;-->
+<!--    <style name="CustomSwitchStyle" parent="Widget.AppCompat.CompoundButton.Switch">-->
+<!--        &lt;!&ndash; Customize SwitchCompat &ndash;&gt;-->
+<!--        <item name="colorSwitchThumbNormal">@drawable/custom_thumb_switch</item>-->
+<!--&lt;!&ndash;        <item name="colorSwitchThumbActivated">@drawable/custom_thumb_switch</item>&ndash;&gt;-->
+<!--        <item name="colorSwitchTrackNormal">@drawable/custom_track_switch</item>-->
+<!--&lt;!&ndash;        <item name="colorSwitchTrackActivated">@drawable/custom_track_switch</item>&ndash;&gt;-->
+<!--    </style>-->
+
+<!--    <style name="Widget.App.Button.OutlinedButton.IconOnly" parent="Widget.MaterialComponents.Button.OutlinedButton">-->
+<!--        <item name="iconPadding">0dp</item>-->
+<!--        <item name="android:insetTop">0dp</item>-->
+<!--        <item name="android:insetBottom">0dp</item>-->
+<!--        <item name="android:paddingLeft">12dp</item>-->
+<!--        <item name="android:paddingRight">12dp</item>-->
+<!--        <item name="android:minWidth">48dp</item>-->
+<!--        <item name="android:minHeight">48dp</item>-->
+<!--    </style>-->
 
 <!--    <style name="SwitchMaterialCustomStyle" parent="Widget.MaterialComponents.CompoundButton.Switch">-->
 <!--        <item name="thumbTint">@color/white</item>-->
@@ -21,4 +53,26 @@
 <!--&lt;!&ndash;        <item name="trackTint">@color/switch_track_color</item> &lt;!&ndash; Cor do Track &ndash;&gt;&ndash;&gt;-->
 <!--&lt;!&ndash;        <item name="android:trackDrawable">@drawable/custom_track_drawable</item> &lt;!&ndash; Drawable personalizado para o Track &ndash;&gt;&ndash;&gt;-->
 <!--    </style>-->
+
+    <!-- Botão de ícone do topo das telas: 48dp de área de toque com círculo de 40dp. -->
+    <style name="BotaoTopo">
+        <item name="android:layout_width">48dp</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:padding">13dp</item>
+        <item name="android:background">@drawable/bg_botao_topo</item>
+        <item name="android:scaleType">fitCenter</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+    </style>
+
+    <!-- Botão de ligar/desligar: a imagem redonda ocupa 40dp dentro dos 48dp de toque. -->
+    <style name="BotaoLigar">
+        <item name="android:layout_width">48dp</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:padding">4dp</item>
+        <item name="android:background">@drawable/bg_botao_ligar</item>
+        <item name="android:scaleType">fitCenter</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+    </style>
 </resources>

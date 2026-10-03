@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Botão ligar/desligar redondo, desenhado em vetor: o círculo ocupa toda a área, sem margem quadrada. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="100dp"
+    android:height="100dp"
+    android:viewportWidth="100"
+    android:viewportHeight="100">
+    <path
+        android:pathData="M50,50m-49,0a49,49 0 1,1 98,0a49,49 0 1,1 -98,0"
+        android:strokeColor="#FFBDBDBD"
+        android:strokeWidth="1">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:centerX="42"
+                android:centerY="34"
+                android:gradientRadius="70"
+                android:type="radial">
+                <item
+                    android:color="#FFFFFFFF"
+                    android:offset="0" />
+                <item
+                    android:color="#FFE6E6E6"
+                    android:offset="1" />
+            </gradient>
+        </aapt:attr>
+    </path>
+    <path
+        android:pathData="M34.57,31.62A24,24 0 1 0 65.43,31.62"
+        android:strokeColor="#FFD50000"
+        android:strokeLineCap="round"
+        android:strokeWidth="9" />
+    <path
+        android:pathData="M50,24L50,49"
+        android:strokeColor="#FFD50000"
+        android:strokeLineCap="round"
+        android:strokeWidth="9" />
+</vector>

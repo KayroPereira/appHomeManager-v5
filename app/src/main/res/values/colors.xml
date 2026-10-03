@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
@@ -10,4 +10,35 @@
     <color name="colorFontItem">#C5ED0909</color>
 
     <color name="colorAzul">#C5021F75</color>
+
+
+    <!-- Define suas cores personalizadas -->
+    <color name="colorPrimary">#2A2532</color>
+    <color name="colorPrimaryVariant">#2C2B2E</color>
+    <color name="colorSecondary">#202A61</color>
+    <color name="colorBackground">#FFFFFF</color>
+    <color name="colorOnPrimary">#FFFFFF</color>
+    <color name="colorOnSecondary">#000000</color>
+
+    <!-- lista de compras -->
+    <color name="colorTab0">#C5ED0909</color>
+    <color name="colorTab1">#D60024EC</color>
+    <color name="colorTab2">#0E9A8D</color>
+    <color name="colorTabInativa">#727272</color>
+    <color name="colorCompradoLista">#8CFF0000</color>
+    <color name="colorTextoLista">#212121</color>
+
+    <!-- tema escuro das telas de controle -->
+    <color name="gradienteInicio">#0B1B3A</color>
+    <color name="gradienteMeio">#123A63</color>
+    <color name="gradienteFim">#0A2540</color>
+    <color name="corLuz">#FFC107</color>
+    <color name="corTomada">#4CD964</color>
+    <color name="corAgua">#29B6F6</color>
+    <color name="corEnergia">#B388FF</color>
+    <color name="corTemperatura">#FF8A65</color>
+    <color name="corCortina">#80CBC4</color>
+    <color name="corAlarme">#FF5252</color>
+    <color name="corAlarmeOk">#69F0AE</color>
+    <color name="textoSecundario">#B3FFFFFF</color>
 </resources>

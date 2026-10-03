@@ -1,10 +1,11 @@
 package com.home.apphomemanager_v5;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ViewTreeObserver;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.database.DataSnapshot;
@@ -34,19 +35,17 @@ public class CisternaActivity extends AppCompatActivity {
 
     private Cisterna cisterna;
 
-    private Map<Integer, String> componentsActivity = new HashMap<>();
+    private final Map<Integer, String> componentsActivity = new HashMap<>();
 
-    private Boolean wasFirstUpdate = true;
+    private boolean wasFirstUpdate = true;
 
-    private StatusDispositivo statusDispositivo = new StatusDispositivo();
+    private boolean online = false;
+
+    private final StatusDispositivo statusDispositivo = new StatusDispositivo();
 
 
     private static final String PATH_ROOT_FIREBASE = "cisterna";
     private static final String ACTIVITY_NAME = "Cisterna";
-
-    private static final int QUANTIDADE_IMAGENS_CISTENA = 20;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,8 +63,6 @@ public class CisternaActivity extends AppCompatActivity {
 
         mapeametoComponenteToFirebase();
 
-        listenerFirebase();
-
         ComponentUtils.inicializaElementos(binding);
 
         ComponentUtils.setImageViewToggleListener(binding.ivCisOnOffMain, componentsActivity, cisterna);
@@ -76,7 +73,26 @@ public class CisternaActivity extends AppCompatActivity {
 
         setParametrosDefault();
 
-        statusDispositivo.inicializaSchedulerStatusDispositivo(this::verificaStatusDispositivo, AppConstants.DELAY_2_MINUTO_MS);
+        // Até o primeiro dado chegar o dispositivo é tratado como off-line.
+        atualizaHabilitacaoComponentes();
+
+        listenerFirebase();
+    }
+
+    @Override
+    protected void onStart() {
+
+        super.onStart();
+
+        statusDispositivo.inicializaSchedulerStatusDispositivo(this::verificaStatusDispositivo, AppConstants.DELAY_VERIFICACAO_STATUS_MS);
+    }
+
+    @Override
+    protected void onStop() {
+
+        super.onStop();
+
+        statusDispositivo.paraSchedulerStatusDispositivo();
     }
 
     @Override
@@ -91,20 +107,19 @@ public class CisternaActivity extends AppCompatActivity {
 
     private void verificaStatusDispositivo() {
 
-        boolean status = statusDispositivo.isOnline(cisterna.getStatus(), AppConstants.PERIODO_2_MINUTO_S);
+        online = statusDispositivo.isOnline(cisterna.getStatus(), AppConstants.PERIODO_2_MINUTO_S);
 
-        binding.tvCisStatus.setText(status ? R.string.online : R.string.offline);
-        binding.tvCisStatus.setTextColor(getString(R.string.online).equals(binding.tvCisStatus.getText()) ? getColor(R.color.onLine) : getColor(R.color.offLine));
+        binding.tvCisStatus.setText(online ? R.string.online : R.string.offline);
+        binding.tvCisStatus.setTextColor(getColor(online ? R.color.onLine : R.color.offLine));
 
-        ComponentUtils.setComponentEnabledAll(binding, componentsActivity, status);
-        ComponentUtils.setComponentEnabled(binding, binding.ivCisReservatorio.getId(), status);
-        controleEquipamentoOnOff();
+        atualizaHabilitacaoComponentes();
     }
 
     private void setParametrosDefault() {
 
         binding.tvCisMain.setText(ACTIVITY_NAME);
-        binding.tvCisStatus.setText(R.string.online);
+        binding.tvCisStatus.setText(R.string.offline);
+        binding.tvCisStatus.setTextColor(getColor(R.color.offLine));
         binding.tvCisAutoManual.setText(R.string.autoManual);
         binding.tvCisValveEntrada.setText(R.string.valveEntrada);
         binding.tvCisValveControle.setText(R.string.valveControle);
@@ -122,9 +137,14 @@ public class CisternaActivity extends AppCompatActivity {
 
         binding.skbCisNivel.setEnabled(false);
 
-        binding.skbCisNivel.getViewTreeObserver().addOnGlobalLayoutListener(() -> {
-            defineNivelSuperior();
-            ajustaPosicaoNivelAtual();
+        // Executa uma única vez, quando a SeekBar já tem largura para posicionar o rótulo do nível.
+        binding.skbCisNivel.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                binding.skbCisNivel.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                defineNivelSuperior();
+                ajustaPosicaoNivelAtual();
+            }
         });
     }
 
@@ -142,7 +162,12 @@ public class CisternaActivity extends AppCompatActivity {
         ValueEventListener postListener = new ValueEventListener() {
 
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                if (dataSnapshot.getValue() == null) {
+                    Log.w("Err" + ACTIVITY_NAME, "Nó '" + PATH_ROOT_FIREBASE + "' inexistente no Firebase");
+                    return;
+                }
 
                 try {
                     Cisterna cisternaFirebase = JsonUtils.fromJson(Cisterna.class, new Gson().toJson(dataSnapshot.getValue()));
@@ -152,73 +177,108 @@ public class CisternaActivity extends AppCompatActivity {
                     if(wasFirstUpdate){
 
                         wasFirstUpdate = false;
-                        atributosAlterados.clear();
                         AtributoUtils.obterTodosAtributos(cisterna, atributosAlterados, false);
+
+                        // Só publica os valores padrão dos campos que ainda não existem no Firebase;
+                        // reenviar o que acabou de ser lido poderia sobrescrever uma leitura mais nova do dispositivo.
+                        List<String> camposAusentes = AtributoUtils.camposAusentes(cisternaFirebase, atributosAlterados);
+                        FirebaseUtils.updateMultipleFields(cisterna, camposAusentes, PATH_ROOT_FIREBASE);
                     }else{
                         AtributoUtils.atributosAlterados(cisternaFirebase, cisterna, atributosAlterados);
                     }
 
                     AtributoUtils.transferirValoresEntreObjetos(cisternaFirebase, cisterna, atributosAlterados);
 
-                    FirebaseUtils.updateMultipleFields(cisterna, atributosAlterados, PATH_ROOT_FIREBASE);
-
                     ComponentUtils.atualizaComponents(cisterna, atributosAlterados, componentsActivity, binding);
 
                     controleComponentes(atributosAlterados);
 
                 } catch (Exception e) {
+                    Log.e("Err" + ACTIVITY_NAME, "Erro ao processar os dados", e);
                     Toast.makeText(CisternaActivity.this, "Erro ao processar os dados: " + e, Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(@NonNull DatabaseError databaseError) {
                 Toast.makeText(CisternaActivity.this, "Erro ao receber os dados: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
                 Log.w("Err"+ACTIVITY_NAME, "Erro ao receber os dados", databaseError.toException());
             }
         };
-        firebaseEntity.getmDatabase().addValueEventListener(postListener);
+        firebaseEntity.addValueEventListener(postListener);
     }
 
     private void controleComponentes(List<String> atributosAlterados){
+
+        boolean atualizaHabilitacao = false;
+        boolean atualizaNivel = false;
+        boolean atualizaNivelSuperior = false;
+        boolean atualizaCaixas = false;
+        boolean atualizaStatus = false;
+        boolean atualizaFluxo = false;
 
         for (String att : atributosAlterados) {
 
             switch (att){
                 case "onOff":
-
-                    controleEquipamentoOnOff();
                 case "autoManual":
-
-                    controleEquipamentosAutoManual();
+                    atualizaHabilitacao = true;
                     break;
 
                 case "nsc":
                 case "nic":
-                    defineNivelSuperior();
+                    atualizaNivelSuperior = true;
+                    atualizaNivel = true;
+                    break;
+
                 case "na":
                 case "ni":
                 case "ns":
-
-                    ajustaPosicaoNivelAtual();
-
-                    @SuppressLint("DiscouragedApi") int resourceIdImagem = getResources().getIdentifier("ct" + cisterna.getImageLevel(QUANTIDADE_IMAGENS_CISTENA), "drawable", getPackageName());
-                    binding.ivCisReservatorio.setImageResource(resourceIdImagem != 0 ? resourceIdImagem : R.drawable.ct0);
+                    atualizaNivel = true;
                     break;
 
                 case "cx1":
                 case "cx2":
                 case "cx3":
+                    atualizaCaixas = true;
+                    break;
 
-                    ComponentUtils.changeValueComponent(binding.ivCisCx1, cisterna.getCx1());
-                    ComponentUtils.changeValueComponent(binding.ivCisCx2, cisterna.getCx2());
-                    ComponentUtils.changeValueComponent(binding.ivCisCx3, cisterna.getCx3());
+                case "vle":
+                case "pump":
+                    atualizaFluxo = true;
                     break;
 
                 case "status":
-                    verificaStatusDispositivo();
+                    atualizaStatus = true;
                     break;
             }
+        }
+
+        if (atualizaNivelSuperior) {
+            defineNivelSuperior();
+        }
+
+        if (atualizaNivel) {
+            ajustaPosicaoNivelAtual();
+
+            binding.ivCisReservatorio.setNivel(cisterna.calculaFracaoNivel());
+        }
+
+        if (atualizaFluxo) {
+            atualizaFluxoAgua();
+        }
+
+        if (atualizaCaixas) {
+            ComponentUtils.changeValueComponent(binding.ivCisCx1, cisterna.getCx1());
+            ComponentUtils.changeValueComponent(binding.ivCisCx2, cisterna.getCx2());
+            ComponentUtils.changeValueComponent(binding.ivCisCx3, cisterna.getCx3());
+        }
+
+        // verificaStatusDispositivo já reaplica a habilitação dos componentes.
+        if (atualizaStatus) {
+            verificaStatusDispositivo();
+        } else if (atualizaHabilitacao) {
+            atualizaHabilitacaoComponentes();
         }
     }
 
@@ -238,25 +298,41 @@ public class CisternaActivity extends AppCompatActivity {
     private int getPosicaoNivelAtualX(){
 
         int px = binding.skbCisNivel.getThumb().getBounds().centerX();
-        int seekBarInicioX = binding.skbCisNivel.getLeft();
-
-        return seekBarInicioX + px;
+        // O rótulo está ancorado ao início da SeekBar: centraliza sobre o thumb.
+        return px - binding.skbCisNivel.getThumbOffset() + binding.skbCisNivel.getPaddingLeft() - binding.tvCisNivelAtual.getWidth() / 2;
     }
 
-    private void controleEquipamentoOnOff(){
+    /**
+     * Regra única de habilitação:
+     * - off-line: tudo desabilitado (e em tons de cinza);
+     * - on-line e desligado: só o botão liga/desliga;
+     * - on-line e ligado: modo auto/manual e válvula de controle;
+     * - on-line, ligado e manual: também válvula de entrada e bomba.
+     */
+    private void atualizaHabilitacaoComponentes(){
 
-        binding.swCisAutoManual.setEnabled(cisterna.getOnOff());
-        binding.swCisValvulaControle.setEnabled(cisterna.getOnOff());
+        boolean ligado = online && Boolean.TRUE.equals(cisterna.getOnOff());
+        boolean manual = ligado && !Boolean.TRUE.equals(cisterna.getAutoManual());
 
-        controleEquipamentosAutoManual();
+        ComponentUtils.setComponentEnabled(binding, binding.ivCisOnOffMain.getId(), online);
+        ComponentUtils.setComponentEnabled(binding, binding.ivCisReservatorio.getId(), online);
+
+        binding.swCisAutoManual.setEnabled(ligado);
+        binding.swCisValvulaControle.setEnabled(ligado);
+
+        binding.swCisValvulaEntrada.setEnabled(manual);
+        binding.swCisBomba.setEnabled(manual);
+
+        atualizaFluxoAgua();
     }
 
-    private void controleEquipamentosAutoManual(){
+    /** Bolhas na entrada de água e gotas na saída (bomba) só com o dispositivo on-line e ligado. */
+    private void atualizaFluxoAgua() {
 
-        Boolean status = cisterna.getOnOff() && !cisterna.getAutoManual();
+        boolean ligado = online && Boolean.TRUE.equals(cisterna.getOnOff());
 
-        binding.swCisValvulaEntrada.setEnabled(status);
-        binding.swCisBomba.setEnabled(status);
+        binding.ivCisReservatorio.setEnchendo(ligado && Boolean.TRUE.equals(cisterna.getVle()));
+        binding.ivCisReservatorio.setEsvaziando(ligado && Boolean.TRUE.equals(cisterna.getPump()));
     }
 
     private void voltar(Object event){

@@ -4,270 +4,270 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
-    android:focusable="true"
-    android:focusableInTouchMode="true"
-    android:scrollbars="horizontal|vertical"
-    android:verticalScrollbarPosition="defaultPosition"
-    app:layout_anchorGravity="center|center_horizontal|center_vertical"
-    android:background="@drawable/background_main"
+    android:background="@drawable/bg_gradiente"
+    android:fitsSystemWindows="true"
     tools:context=".CaixaDaguaActivity">
 
     <ImageView
-        android:id="@+id/ivCxdOnOffMain"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-
-        android:tag="bt_off"
-        app:layout_constraintBottom_toTopOf="@+id/guideline_Cxd_Main_H2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline_Cxd_Main_V1"
-        app:layout_constraintTop_toTopOf="@+id/guideline_Cxd_Main_H1"
-        app:srcCompat="@drawable/bt_off" />
-
-    <ImageView
         android:id="@+id/ivCxdBackMain"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginBottom="5dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline_Cxd_Main_H1"
-        app:layout_constraintEnd_toStartOf="@+id/guideline_Cxd_Main_V2"
+        style="@style/BotaoTopo"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:contentDescription="@string/voltar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/back" />
 
-    <androidx.appcompat.widget.SwitchCompat
-        android:id="@+id/swCxdAutoManual"
-        android:layout_width="113dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="5dp"
-        android:checked="true"
-        android:thumb="@drawable/custom_thumb_switch"
-        app:layout_constraintEnd_toStartOf="@+id/guideline_Cxd_Main_V1"
-        app:layout_constraintTop_toTopOf="@+id/guideline_Cxd_Main_H4"
-        app:track="@drawable/switch_track" />
-
-    <androidx.appcompat.widget.SwitchCompat
-        android:id="@+id/swCxdValvulaEntradaPrincipal"
-        android:layout_width="113dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="8dp"
-        android:checked="true"
-        app:layout_constraintEnd_toStartOf="@+id/guideline_Cxd_Main_V1"
-        app:layout_constraintTop_toBottomOf="@+id/swCxdAutoManual"
-        android:thumb="@drawable/custom_thumb_switch"
-        app:track="@drawable/switch_track" />
-
-    <androidx.appcompat.widget.SwitchCompat
-        android:id="@+id/swCxdValvulaEntradaSecundaria"
-        android:layout_width="113dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="8dp"
-        android:checked="true"
-        app:layout_constraintEnd_toStartOf="@+id/guideline_Cxd_Main_V1"
-        app:layout_constraintTop_toBottomOf="@+id/swCxdValvulaEntradaPrincipal"
-        android:thumb="@drawable/custom_thumb_switch"
-        app:track="@drawable/switch_track" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_Cxd_Main_H1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="60dp" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_Cxd_Main_H2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="120dp" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_Cxd_Main_H3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_end="59dp" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_Cxd_Main_V1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_end="60dp" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_Cxd_Main_V2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="60dp" />
-
     <TextView
         android:id="@+id/tvCxdMain"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif"
-        android:text=""
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline_Cxd_Main_H1"
-        app:layout_constraintEnd_toStartOf="@+id/guideline_Cxd_Main_V1"
-        app:layout_constraintStart_toStartOf="@+id/guideline_Cxd_Main_V3"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_Cxd_Main_V3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.33" />
-
-    <TextView
-        android:id="@+id/tvCxdAutoManual"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:ellipsize="end"
+        android:fontFamily="sans-serif-medium"
         android:gravity="center"
-        android:text="@string/autoManual"
+        android:maxLines="1"
         android:textColor="@color/white"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline_Cxd_Main_H4" />
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="@id/ivCxdBackMain"
+        app:layout_constraintEnd_toStartOf="@id/ivCxdOnOffMain"
+        app:layout_constraintStart_toEndOf="@id/ivCxdBackMain"
+        app:layout_constraintTop_toTopOf="@id/ivCxdBackMain" />
 
-    <TextView
-        android:id="@+id/tvCxdValveEntradaSecundaria"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="15dp"
-        android:text="@string/valveEntradaSecundaria"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvCxdValveEntradaPrincipal" />
-
-    <TextView
-        android:id="@+id/tvCxdValveEntradaPrincipal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="15dp"
-        android:text="@string/valveEntradaPrincipal"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvCxdAutoManual" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_Cxd_Main_H4"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.3"
-        app:layout_constraintTop_toTopOf="@+id/guideline_Cxd_Main_H2" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_Cxd_Main_V4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.33333" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_Cxd_Main_V5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.6666" />
+    <ImageView
+        android:id="@+id/ivCxdOnOffMain"
+        style="@style/BotaoLigar"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="6dp"
+        android:contentDescription="@string/onOff"
+        android:tag="bt_off"
+        app:layout_constraintBottom_toBottomOf="@id/ivCxdBackMain"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/ivCxdBackMain"
+        app:srcCompat="@drawable/bt_off" />
 
     <TextView
         android:id="@+id/tvCxdStatus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_chip_status"
+        android:paddingStart="16dp"
+        android:paddingTop="5dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="5dp"
         android:text="@string/online"
         android:textColor="@color/onLine"
-        android:textSize="20sp"
+        android:textSize="13sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/guideline_Cxd_Main_H2"
-        app:layout_constraintEnd_toStartOf="@+id/guideline_Cxd_Main_V3"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline_Cxd_Main_H1" />
+        app:layout_constraintTop_toBottomOf="@id/ivCxdBackMain" />
 
-    <ImageView
+    <com.home.apphomemanager_v5.view.TanqueView
         android:id="@+id/ivCxdReservatorio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@id/cardCxdNivel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline_Cxd_Main_H5"
-        app:srcCompat="@drawable/wt0" />
+        app:layout_constraintTop_toBottomOf="@id/tvCxdStatus"
+        app:layout_constraintWidth_max="340dp" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_Cxd_Main_H5"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cardCxdNivel"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.55" />
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/bg_card_vidro"
+        android:paddingBottom="14dp"
+        app:layout_constraintBottom_toTopOf="@id/cardCxdControles"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
-    <SeekBar
-        android:id="@+id/skbCxdNivel"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:thumb="@drawable/custom_thumb_seek"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/guideline_Cxd_Main_V1"
-        app:layout_constraintStart_toStartOf="@+id/guideline_Cxd_Main_V2"
-        app:layout_constraintTop_toTopOf="@+id/guideline_Cxd_Main_H3" />
+        <TextView
+            android:id="@+id/tvCxdNivelTitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:text="@string/secaoNivel"
+            android:textAllCaps="true"
+            android:textColor="@color/textoSecundario"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tvCxdNivelSuperior"
+        <TextView
+            android:id="@+id/tvCxdNivelInferior"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/zeroNum"
+            android:textColor="@color/textoSecundario"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="@id/skbCxdNivel"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/skbCxdNivel" />
+
+        <SeekBar
+            android:id="@+id/skbCxdNivel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="34dp"
+            android:layout_marginEnd="8dp"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:progressDrawable="@drawable/sw_progress_seek"
+            android:thumb="@drawable/sw_thumb_seek"
+            app:layout_constraintEnd_toStartOf="@id/tvCxdNivelSuperior"
+            app:layout_constraintStart_toEndOf="@id/tvCxdNivelInferior"
+            app:layout_constraintTop_toBottomOf="@id/tvCxdNivelTitulo" />
+
+        <TextView
+            android:id="@+id/tvCxdNivelSuperior"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:textColor="@color/textoSecundario"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="@id/skbCxdNivel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/skbCxdNivel" />
+
+        <TextView
+            android:id="@+id/tvCxdNivelAtual"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/skbCxdNivel"
+            app:layout_constraintStart_toStartOf="@id/skbCxdNivel" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:id="@+id/cardCxdControles"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:gravity="start|center_vertical"
-        android:textColor="@color/onLine"
-        android:textSize="16sp"
-        android:textStyle="bold"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/bg_card_vidro"
+        android:orientation="vertical"
+        android:paddingStart="14dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="14dp"
+        android:paddingBottom="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline_Cxd_Main_V1"
-        app:layout_constraintTop_toTopOf="@+id/guideline_Cxd_Main_H3" />
+        app:layout_constraintStart_toStartOf="parent">
 
-    <TextView
-        android:id="@+id/tvCxdNivelInferior"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:gravity="center_vertical|end"
-        android:text="@string/zeroNum"
-        android:textColor="@color/offLine"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/guideline_Cxd_Main_V2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline_Cxd_Main_H3" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/secaoControles"
+            android:textAllCaps="true"
+            android:textColor="@color/textoSecundario"
+            android:textSize="12sp"
+            android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/tvCxdNivelAtual"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="2dp"
-        android:gravity="center_vertical|end"
-        android:text="@string/zeroNum"
-        android:textColor="@color/colorAzul"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:minHeight="42dp"
+            android:orientation="horizontal">
 
+            <TextView
+                android:id="@+id/tvCxdAutoManual"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/autoManual"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/swCxdAutoManual"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:thumb="@drawable/sw_thumb"
+                app:track="@drawable/sw_track" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#1FFFFFFF" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:minHeight="42dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvCxdValveEntradaPrincipal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/valveEntradaPrincipal"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/swCxdValvulaEntradaPrincipal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:thumb="@drawable/sw_thumb"
+                app:track="@drawable/sw_track" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#1FFFFFFF" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:minHeight="42dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvCxdValveEntradaSecundaria"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/valveEntradaSecundaria"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/swCxdValvulaEntradaSecundaria"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:thumb="@drawable/sw_thumb"
+                app:track="@drawable/sw_track" />
+        </LinearLayout>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

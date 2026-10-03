@@ -34,6 +34,8 @@ public class DadosFirebaseActivity extends AppCompatActivity {
 
     private DatabaseReference mDatabase;
 
+    private ValueEventListener postListener;
+
     private Churrasqueira churrasqueira;
 
     private Map<Integer, String> componentsActivity = new HashMap<>();
@@ -70,8 +72,20 @@ public class DadosFirebaseActivity extends AppCompatActivity {
         setSwitchCheckedChangeListener(binding.swSFc2Churrasqueira);
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (postListener != null) {
+            mDatabase.removeEventListener(postListener);
+        }
+    }
+
     private void setSwitchCheckedChangeListener(SwitchCompat switchCompat){
         switchCompat.setOnCheckedChangeListener((compoundButton, b) -> {
+
+            if(ComponentUtils.isAtualizacaoProgramatica()){
+                return;
+            }
 
             Integer idComponent = compoundButton.getId();
             String path = componentsActivity.get(idComponent);
@@ -96,7 +110,7 @@ public class DadosFirebaseActivity extends AppCompatActivity {
     }
 
     private void ouvinteFirebase(){
-        ValueEventListener postListener = new ValueEventListener() {
+        postListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
@@ -109,7 +123,6 @@ public class DadosFirebaseActivity extends AppCompatActivity {
 
                     AtributoUtils.transferirValoresEntreObjetos(churrasqueiraFirebase, churrasqueira, atributosAlterados);
 
-                    FirebaseUtils.updateMultipleFields(churrasqueira, atributosAlterados);
 
                     StringBuilder sb = new StringBuilder();
 

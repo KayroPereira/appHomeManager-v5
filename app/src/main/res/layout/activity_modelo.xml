@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_main"
+    android:background="@drawable/bg_gradiente"
     tools:context=".ModeloActivity">
 
     <ImageView
         android:id="@+id/ivModeloOnOffMain"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        style="@style/BotaoLigar"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
 
         app:layout_constraintBottom_toTopOf="@+id/guideline_Modelo_Main_H2"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,13 +21,12 @@
 
     <ImageView
         android:id="@+id/ivModeloBackMain"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-
+        style="@style/BotaoTopo"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginBottom="5dp"
+
         app:layout_constraintBottom_toTopOf="@+id/guideline_Modelo_Main_H1"
         app:layout_constraintEnd_toStartOf="@+id/guideline_Modelo_Main_V2"
         app:layout_constraintStart_toStartOf="parent"

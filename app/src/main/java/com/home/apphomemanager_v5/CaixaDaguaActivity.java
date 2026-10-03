@@ -1,14 +1,12 @@
 package com.home.apphomemanager_v5;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.util.Log;
 import android.view.ViewTreeObserver;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.database.DataSnapshot;
@@ -18,16 +16,13 @@ import com.google.gson.Gson;
 import com.home.apphomemanager_v5.commons.AppConstants;
 import com.home.apphomemanager_v5.commons.StatusDispositivo;
 import com.home.apphomemanager_v5.databinding.ActivityCaixaDaguaBinding;
-import com.home.apphomemanager_v5.databinding.ActivityCisternaBinding;
 import com.home.apphomemanager_v5.model.firebase.FirebaseEntity;
 import com.home.apphomemanager_v5.model.reservatorio.CaixaDagua;
-import com.home.apphomemanager_v5.model.reservatorio.Cisterna;
 import com.home.apphomemanager_v5.util.AtributoUtils;
 import com.home.apphomemanager_v5.util.ComponentUtils;
 import com.home.apphomemanager_v5.util.FirebaseUtils;
 import com.home.apphomemanager_v5.util.JsonUtils;
 
-import java.time.Instant;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -35,23 +30,27 @@ import java.util.Map;
 
 public class CaixaDaguaActivity extends AppCompatActivity {
 
+    public static final String EXTRA_PATH = "path";
+
+    private static final String PATH_PADRAO = "1";
+
     private ActivityCaixaDaguaBinding binding;
 
     private FirebaseEntity firebaseEntity;
 
     private CaixaDagua caixaDagua;
 
-    private Map<Integer, String> componentsActivity = new HashMap<>();
+    private final Map<Integer, String> componentsActivity = new HashMap<>();
 
-    private Boolean wasFirstUpdate = true;
+    private boolean wasFirstUpdate = true;
 
-    private StatusDispositivo statusDispositivo = new StatusDispositivo();
+    private boolean online = false;
 
-    private String PATH_ROOT_CISTERNA_FIREBASE = "cisterna";
-    private String PATH_ROOT_FIREBASE = "cx";
-    private String ACTIVITY_NAME = "Caixa D'água - ";
+    private final StatusDispositivo statusDispositivo = new StatusDispositivo();
 
-    private static final int QUANTIDADE_IMAGENS_CAIXA_DAGUA = 20;
+    private String pathRootFirebase;
+    private String activityName;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,13 +58,17 @@ public class CaixaDaguaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         Intent intent = getIntent();
-        String path = intent.getStringExtra("path");
+        String path = intent.getStringExtra(EXTRA_PATH);
 
-        PATH_ROOT_FIREBASE += path;
-        ACTIVITY_NAME += path;
+        if (path == null || path.trim().isEmpty()) {
+            path = PATH_PADRAO;
+        }
+
+        pathRootFirebase = "cx" + path;
+        activityName = "Caixa D'água - " + path;
 
         firebaseEntity = new FirebaseEntity();
-        firebaseEntity.FirebaseInicialize(PATH_ROOT_FIREBASE);
+        firebaseEntity.FirebaseInicialize(pathRootFirebase);
 
         caixaDagua = new CaixaDagua();
         caixaDagua.inicializa();
@@ -75,20 +78,37 @@ public class CaixaDaguaActivity extends AppCompatActivity {
 
         mapeametoComponenteToFirebase();
 
-        listenerFirebase();
-
         ComponentUtils.inicializaElementos(binding);
 
         ComponentUtils.setEventClickGeneric(binding.ivCxdBackMain, this::voltar);
 
-        ComponentUtils.setImageViewToggleListener(binding.ivCxdOnOffMain, componentsActivity, caixaDagua, PATH_ROOT_FIREBASE);
-        ComponentUtils.setSwitchCheckedChangeListener(binding.swCxdAutoManual, componentsActivity, caixaDagua, PATH_ROOT_FIREBASE);
-        ComponentUtils.setSwitchCheckedChangeListener(binding.swCxdValvulaEntradaPrincipal, componentsActivity, caixaDagua, PATH_ROOT_FIREBASE);
-        ComponentUtils.setSwitchCheckedChangeListener(binding.swCxdValvulaEntradaSecundaria, componentsActivity, caixaDagua, PATH_ROOT_FIREBASE);
+        ComponentUtils.setImageViewToggleListener(binding.ivCxdOnOffMain, componentsActivity, caixaDagua, pathRootFirebase);
+        ComponentUtils.setSwitchCheckedChangeListener(binding.swCxdAutoManual, componentsActivity, caixaDagua, pathRootFirebase);
+        ComponentUtils.setSwitchCheckedChangeListener(binding.swCxdValvulaEntradaPrincipal, componentsActivity, caixaDagua, pathRootFirebase);
+        ComponentUtils.setSwitchCheckedChangeListener(binding.swCxdValvulaEntradaSecundaria, componentsActivity, caixaDagua, pathRootFirebase);
 
         setParametrosDefault();
 
-        statusDispositivo.inicializaSchedulerStatusDispositivo(this::verificaStatusDispositivo, AppConstants.DELAY_2_MINUTO_MS);
+        // Até o primeiro dado chegar o dispositivo é tratado como off-line.
+        atualizaHabilitacaoComponentes();
+
+        listenerFirebase();
+    }
+
+    @Override
+    protected void onStart() {
+
+        super.onStart();
+
+        statusDispositivo.inicializaSchedulerStatusDispositivo(this::verificaStatusDispositivo, AppConstants.DELAY_VERIFICACAO_STATUS_MS);
+    }
+
+    @Override
+    protected void onStop() {
+
+        super.onStop();
+
+        statusDispositivo.paraSchedulerStatusDispositivo();
     }
 
     @Override
@@ -102,19 +122,19 @@ public class CaixaDaguaActivity extends AppCompatActivity {
 
     private void verificaStatusDispositivo() {
 
-        boolean status = statusDispositivo.isOnline(caixaDagua.getStatus(), AppConstants.PERIODO_2_MINUTO_S);
+        online = statusDispositivo.isOnline(caixaDagua.getStatus(), AppConstants.PERIODO_2_MINUTO_S);
 
-        binding.tvCxdStatus.setText(status ? R.string.online : R.string.offline);
-        binding.tvCxdStatus.setTextColor(getString(R.string.online).equals(binding.tvCxdStatus.getText()) ? getColor(R.color.onLine) : getColor(R.color.offLine));
+        binding.tvCxdStatus.setText(online ? R.string.online : R.string.offline);
+        binding.tvCxdStatus.setTextColor(getColor(online ? R.color.onLine : R.color.offLine));
 
-        ComponentUtils.setComponentEnabledAll(binding, componentsActivity, status);
-        ComponentUtils.setComponentEnabled(binding, binding.ivCxdReservatorio.getId(), status);
+        atualizaHabilitacaoComponentes();
     }
 
     private void setParametrosDefault() {
 
-        binding.tvCxdMain.setText(ACTIVITY_NAME);
-        binding.tvCxdStatus.setText(R.string.online);
+        binding.tvCxdMain.setText(activityName);
+        binding.tvCxdStatus.setText(R.string.offline);
+        binding.tvCxdStatus.setTextColor(getColor(R.color.offLine));
         binding.tvCxdAutoManual.setText(R.string.autoManual);
         binding.tvCxdValveEntradaPrincipal.setText(R.string.valveEntradaPrincipal);
         binding.tvCxdValveEntradaSecundaria.setText(R.string.valveEntradaSecundaria);
@@ -122,9 +142,14 @@ public class CaixaDaguaActivity extends AppCompatActivity {
 
         binding.skbCxdNivel.setEnabled(false);
 
-        binding.skbCxdNivel.getViewTreeObserver().addOnGlobalLayoutListener(() -> {
-            defineNivelSuperior();
-            ajustaPosicaoNivelAtual();
+        // Executa uma única vez, quando a SeekBar já tem largura para posicionar o rótulo do nível.
+        binding.skbCxdNivel.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                binding.skbCxdNivel.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                defineNivelSuperior();
+                ajustaPosicaoNivelAtual();
+            }
         });
     }
 
@@ -141,7 +166,12 @@ public class CaixaDaguaActivity extends AppCompatActivity {
         ValueEventListener postListener = new ValueEventListener() {
 
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                if (dataSnapshot.getValue() == null) {
+                    Log.w("Err" + activityName, "Nó '" + pathRootFirebase + "' inexistente no Firebase");
+                    return;
+                }
 
                 try {
                     CaixaDagua caixaDaguaFirebase = JsonUtils.fromJson(CaixaDagua.class, new Gson().toJson(dataSnapshot.getValue()));
@@ -151,64 +181,95 @@ public class CaixaDaguaActivity extends AppCompatActivity {
                     if(wasFirstUpdate){
 
                         wasFirstUpdate = false;
-                        atributosAlterados.clear();
                         AtributoUtils.obterTodosAtributos(caixaDagua, atributosAlterados, false);
+
+                        // Só publica os valores padrão dos campos que ainda não existem no Firebase;
+                        // reenviar o que acabou de ser lido poderia sobrescrever uma leitura mais nova do dispositivo.
+                        List<String> camposAusentes = AtributoUtils.camposAusentes(caixaDaguaFirebase, atributosAlterados);
+                        FirebaseUtils.updateMultipleFields(caixaDagua, camposAusentes, pathRootFirebase);
                     }else{
                         AtributoUtils.atributosAlterados(caixaDaguaFirebase, caixaDagua, atributosAlterados);
                     }
 
                     AtributoUtils.transferirValoresEntreObjetos(caixaDaguaFirebase, caixaDagua, atributosAlterados);
 
-                    FirebaseUtils.updateMultipleFields(caixaDagua, atributosAlterados, PATH_ROOT_FIREBASE);
-
                     ComponentUtils.atualizaComponents(caixaDagua, atributosAlterados, componentsActivity, binding);
 
                     controleComponentes(atributosAlterados);
 
                 } catch (Exception e) {
+                    Log.e("Err" + activityName, "Erro ao processar os dados", e);
                     Toast.makeText(CaixaDaguaActivity.this, "Erro ao processar os dados: " + e, Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(@NonNull DatabaseError databaseError) {
                 Toast.makeText(CaixaDaguaActivity.this, "Erro ao receber os dados: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
-                Log.w("Err"+ACTIVITY_NAME, "Erro ao receber os dados", databaseError.toException());
+                Log.w("Err"+activityName, "Erro ao receber os dados", databaseError.toException());
             }
         };
-        firebaseEntity.getmDatabase().addValueEventListener(postListener);
+        firebaseEntity.addValueEventListener(postListener);
     }
 
     private void controleComponentes(List<String> atributosAlterados){
+
+        boolean atualizaHabilitacao = false;
+        boolean atualizaNivel = false;
+        boolean atualizaNivelSuperior = false;
+        boolean atualizaStatus = false;
+        boolean atualizaFluxo = false;
 
         for (String att : atributosAlterados) {
 
             switch (att){
                 case "onOff":
-
-                    binding.swCxdAutoManual.setEnabled(caixaDagua.getOnOff());
                 case "autoManual":
-
-                    controleEquipamentosAutoManual();
+                    atualizaHabilitacao = true;
                     break;
 
                 case "nsc":
                 case "nic":
-                    defineNivelSuperior();
+                    atualizaNivelSuperior = true;
+                    atualizaNivel = true;
+                    break;
+
                 case "na":
                 case "ni":
                 case "ns":
+                    atualizaNivel = true;
+                    break;
 
-                    ajustaPosicaoNivelAtual();
-
-                    @SuppressLint("DiscouragedApi") int resourceIdImagem = getResources().getIdentifier("wt" + caixaDagua.getImageLevel(QUANTIDADE_IMAGENS_CAIXA_DAGUA), "drawable", getPackageName());
-                    binding.ivCxdReservatorio.setImageResource(resourceIdImagem != 0 ? resourceIdImagem : R.drawable.wt0);
+                case "vlep":
+                case "vles":
+                    atualizaFluxo = true;
                     break;
 
                 case "status":
-                    verificaStatusDispositivo();
+                    atualizaStatus = true;
                     break;
             }
+        }
+
+        if (atualizaNivelSuperior) {
+            defineNivelSuperior();
+        }
+
+        if (atualizaNivel) {
+            ajustaPosicaoNivelAtual();
+
+            binding.ivCxdReservatorio.setNivel(caixaDagua.calculaFracaoNivel());
+        }
+
+        if (atualizaFluxo) {
+            atualizaFluxoAgua();
+        }
+
+        // verificaStatusDispositivo já reaplica a habilitação dos componentes.
+        if (atualizaStatus) {
+            verificaStatusDispositivo();
+        } else if (atualizaHabilitacao) {
+            atualizaHabilitacaoComponentes();
         }
     }
 
@@ -228,17 +289,40 @@ public class CaixaDaguaActivity extends AppCompatActivity {
     private int getPosicaoNivelAtualX(){
 
         int px = binding.skbCxdNivel.getThumb().getBounds().centerX();
-        int seekBarInicioX = binding.skbCxdNivel.getLeft();
-
-        return seekBarInicioX + px;
+        // O rótulo está ancorado ao início da SeekBar: centraliza sobre o thumb.
+        return px - binding.skbCxdNivel.getThumbOffset() + binding.skbCxdNivel.getPaddingLeft() - binding.tvCxdNivelAtual.getWidth() / 2;
     }
 
-    private void controleEquipamentosAutoManual(){
+    /**
+     * Regra única de habilitação:
+     * - off-line: tudo desabilitado (e em tons de cinza);
+     * - on-line e desligado: só o botão liga/desliga;
+     * - on-line e ligado: modo auto/manual;
+     * - on-line, ligado e manual: também as válvulas de entrada.
+     */
+    private void atualizaHabilitacaoComponentes(){
 
-        Boolean status = caixaDagua.getOnOff() && !caixaDagua.getAutoManual();
+        boolean ligado = online && Boolean.TRUE.equals(caixaDagua.getOnOff());
+        boolean manual = ligado && !Boolean.TRUE.equals(caixaDagua.getAutoManual());
 
-        binding.swCxdValvulaEntradaPrincipal.setEnabled(status);
-        binding.swCxdValvulaEntradaSecundaria.setEnabled(status);
+        ComponentUtils.setComponentEnabled(binding, binding.ivCxdOnOffMain.getId(), online);
+        ComponentUtils.setComponentEnabled(binding, binding.ivCxdReservatorio.getId(), online);
+
+        binding.swCxdAutoManual.setEnabled(ligado);
+
+        binding.swCxdValvulaEntradaPrincipal.setEnabled(manual);
+        binding.swCxdValvulaEntradaSecundaria.setEnabled(manual);
+
+        atualizaFluxoAgua();
+    }
+
+    /** Bolhas e gotas no tanque só quando o dispositivo está on-line, ligado e com alguma válvula de entrada aberta. */
+    private void atualizaFluxoAgua() {
+
+        boolean ligado = online && Boolean.TRUE.equals(caixaDagua.getOnOff());
+        boolean entrada = Boolean.TRUE.equals(caixaDagua.getVlep()) || Boolean.TRUE.equals(caixaDagua.getVles());
+
+        binding.ivCxdReservatorio.setEnchendo(ligado && entrada);
     }
 
     private void voltar(Object event){

@@ -42,7 +42,7 @@ public class Churrasqueira {
         this.getParametros().getOutput().setExaustor(false);
         this.getParametros().getOutput().setLampada(false);
         this.getParametros().getOutput().setSoprador(false);
-        this.getParametros().getSensor().setFc2(false);
+        this.getParametros().getSensor().setFc1(false);
         this.getParametros().getSensor().setFc2(false);
     }
 

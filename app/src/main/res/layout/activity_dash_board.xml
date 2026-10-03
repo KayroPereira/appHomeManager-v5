@@ -10,7 +10,7 @@
     android:scrollbars="horizontal|vertical"
     android:verticalScrollbarPosition="defaultPosition"
     app:layout_anchorGravity="center|center_horizontal|center_vertical"
-    android:background="@drawable/background_main"
+    android:background="@drawable/bg_gradiente"
     tools:context=".DashBoardActivity">
 
 
@@ -37,11 +37,11 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
-                    android:id="@+id/ivRefreshDB"
-                    android:layout_width="30dp"
-                    android:layout_height="0dp"
-                    android:layout_marginEnd="5dp"
-                    android:onClick="buttonClickedDB"
+                    android:id="@+id/ivDbRefresh"
+                    style="@style/BotaoTopo"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginEnd="4dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -454,12 +454,46 @@
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/ctControlDB"
+                        android:id="@+id/ctDashboardDB"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         app:layout_constraintBottom_toTopOf="@+id/guideline9"
                         app:layout_constraintEnd_toStartOf="@+id/guideline7"
                         app:layout_constraintStart_toStartOf="@+id/guideline5"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ImageView
+                            android:id="@+id/ivDashboardDB"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:contentDescription="@string/dashboard"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tvDashboardDB"
+                            app:srcCompat="@drawable/dashboard" />
+
+                        <TextView
+                            android:id="@+id/tvDashboardDB"
+                            android:layout_width="0dp"
+                            android:layout_height="25dp"
+                            android:text="@string/dashboard"
+                            android:textAlignment="center"
+                            android:textColor="@android:color/background_light"
+                            android:textSize="16sp"
+                            app:layout_constraintBottom_toTopOf="@+id/ivDashboardDB"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/ctControlDB"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        app:layout_constraintBottom_toTopOf="@+id/guideline9"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/guideline7"
                         app:layout_constraintTop_toTopOf="parent">
 
                         <ImageView
@@ -490,10 +524,10 @@
                         android:id="@+id/ctReservoirDB"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        app:layout_constraintBottom_toTopOf="@+id/guideline9"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="@+id/guideline7"
-                        app:layout_constraintTop_toTopOf="parent">
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/guideline7"
+                        app:layout_constraintStart_toStartOf="@+id/guideline5"
+                        app:layout_constraintTop_toTopOf="@+id/guideline9">
 
                         <ImageView
                             android:id="@+id/ivReservoirDB"

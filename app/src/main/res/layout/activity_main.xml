@@ -29,26 +29,28 @@
             android:layout_height="wrap_content">
 
             <ProgressBar
-                android:id="@+id/pBarLGN"
+                android:id="@+id/pBarMainLogin"
                 style="?android:attr/progressBarStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|center_horizontal"
+                android:indeterminateOnly="true"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/guideline14" />
+                app:layout_constraintTop_toTopOf="@+id/guideline_Main_Main_H2" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="0dp"
                 android:layout_height="200dp"
-                app:layout_constraintBottom_toTopOf="@+id/guideline14"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_Main_Main_H2"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/guideline10">
+                app:layout_constraintTop_toTopOf="@+id/guideline_Main_Main_H1">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/eTSSIDLGN"
+                    android:id="@+id/eTMainEmail"
                     android:layout_width="275dp"
                     android:layout_height="48dp"
                     android:layout_gravity="center|center_horizontal"
@@ -57,7 +59,7 @@
                     android:ems="10"
 
                     android:gravity="center"
-                    android:inputType="textPersonName"
+                    android:inputType="textEmailAddress"
                     android:text=""
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -66,7 +68,7 @@
                     />
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/eTPasswordLGN"
+                    android:id="@+id/eTMainPassword"
                     android:layout_width="275dp"
                     android:layout_height="48dp"
                     android:layout_gravity="center|center_horizontal"
@@ -78,13 +80,13 @@
                     android:inputType="textPassword"
 
 
-                    app:layout_constraintBottom_toTopOf="@+id/btEnviarLGN"
+                    app:layout_constraintBottom_toTopOf="@+id/btMainEnviar"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/eTSSIDLGN" />
+                    app:layout_constraintTop_toBottomOf="@+id/eTMainEmail" />
 
                 <Button
-                    android:id="@+id/btEnviarLGN"
+                    android:id="@+id/btMainEnviar"
                     android:layout_width="275dp"
                     android:layout_height="50dp"
                     android:layout_gravity="center|center_horizontal"
@@ -100,14 +102,14 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline10"
+                android:id="@+id/guideline_Main_Main_H1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 app:layout_constraintGuide_percent="0.25" />
 
             <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline14"
+                android:id="@+id/guideline_Main_Main_H2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"

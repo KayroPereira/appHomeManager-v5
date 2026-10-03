@@ -14,3 +14,11 @@
 .cxx
 local.properties
 google-services.json
+
+# APKs gerados
+/app/release
+/gradle/config.properties
+
+# Cloud Functions
+functions/node_modules/
+firebase-debug.log

@@ -1,11 +1,11 @@
 <resources>
-    <string name="app_name">appHomeManager-v4</string>
+    <string name="app_name">appHomeManager-v5</string>
 
     <string name="login">LOGIN</string>
     <string name="vazio"> </string>
 
-    <string name="dgLogin">Digite um e-mail</string>
-    <string name="dgPassword">Digite uma senha</string>
+    <string name="dgLogin">Digite seu e-mail</string>
+    <string name="dgPassword">Digite sua senha</string>
     <string name="dgConfirmePassword">Confirmar senha</string>
 
     <!-- Geral   -->
@@ -14,6 +14,7 @@
     <string name="senha">Senha</string>
 
     <string name="campoNaoPreenchido">Preencher o campo obrigatório: </string>
+    <string name="falhaAutenticacao">E-mail ou senha inválidos.</string>
     <string name="camposNaoPreenchidos">Preencher os campos obrigatórios: </string>
 
     <string name="online">On-line</string>
@@ -21,7 +22,10 @@
 
     <string name="zeroNum">0</string>
 
-    <string name="autoManual">Manual/Automático</string>
+    <string name="autoManual">Modo automático</string>
+    <string name="secaoControles">Controles</string>
+    <string name="secaoNivel">Nível do sensor</string>
+    <string name="secaoCaixas">Caixas abastecidas</string>
 
     <!-- Churrasqueira   -->
 
@@ -90,14 +94,51 @@
 
     <string name="saveOk">Produto cadastrado</string>
 
+    <string name="tabMinhaLista">Minha Lista</string>
+    <string name="tabDespensa">Despensa</string>
+    <string name="tabOpcoes">Opções</string>
+    <string name="tuyaTitulo">Dispositivos Tuya</string>
+    <string name="tuyaAtualizar">Atualizar</string>
+    <string name="tuyaNaoConfigurado">Tuya não configurada. Defina TUYA_ACCESS_ID e TUYA_ACCESS_SECRET no local.properties e compile novamente.</string>
+    <string name="tuyaSemDispositivos">Nenhum dispositivo controlável encontrado na sua conta do Smart Life.</string>
+    <string name="tuyaSemControle">%1$s · sem controle compatível. Pontos de dados: %2$s</string>
+    <string name="tuyaErro">Erro na Tuya: %1$s</string>
+    <string name="tuyaCenaManual">Cena do Smart Life · toque para executar</string>
+    <string name="tuyaExecutar">Executar</string>
+    <string name="tuyaNaoConfiguradaCurto">Tuya não configurada</string>
+    <string name="tuyaExecutarCenaTitulo">Executar cena</string>
+    <string name="tuyaExecutarCenaMensagem">Executar a cena \"%1$s\" agora?</string>
+    <string name="tuyaCenaExecutada">Cena \"%1$s\" executada</string>
+    <string name="tuyaCenasIndisponiveis">Cenas indisponíveis: %1$s</string>
+    <string name="un">un</string>
+    <string name="ml">ml</string>
+    <string name="kg">Kg</string>
+    <string name="voltar">Voltar</string>
+    <string name="salvar">Salvar</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="produto">Produto</string>
+    <string name="categoria">Categoria</string>
+    <string name="msgNomeInvalido">O nome não pode conter . $ # [ ] /</string>
+    <string name="msgProdutoJaCadastrado">Produto já cadastrado nesta categoria</string>
+    <string name="msgQuantidadeInvalida">Informe uma quantidade maior que zero</string>
+    <string name="msgErroListaCompras">Não foi possível carregar a lista de compras</string>
+    <string name="msgSemProdutosCategoria">Nenhum produto cadastrado nesta categoria</string>
+    <string name="tituloRemoverProduto">Remover produto</string>
+    <string name="msgRemoverProduto">Remover %1$s da despensa e da lista de compras?</string>
+
 
     <!-- dash board -->
 
     <string name="reservatorio">Reservatório</string>
     <string name="utilitarios">Utilitários</string>
     <string name="controle">Controle</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="dashboardEmBreve">Dashboard em breve</string>
     <string name="cidade">Cidade</string>
-    <string name="strNull">null</string>
+    <string name="strNull">--</string>
+    <string name="permissaoLocalizacaoNegada">Permissão de localização negada: não é possível exibir o clima.</string>
+    <string name="localizacaoIndisponivel">Não foi possível obter a localização.</string>
+    <string name="climaIndisponivel">Não foi possível consultar o clima.</string>
 
 
     <!-- doors-->
@@ -107,4 +148,255 @@
     <!-- opções menus -->
 
     <string name="titleConfiguration">Configuração</string>
+    <!-- cômodos -->
+    <string name="titleLiving">Sala</string>
+    <string name="titleKitchen">Cozinha</string>
+    <string name="titleBedRoom1">Quarto - 1</string>
+    <string name="titleBedRoom2">Quarto - 2</string>
+    <string name="titleBedRoom3">Quarto - 3</string>
+    <string name="titleBedRoom4">Quarto - 4</string>
+    <string name="titleBathRoom1">Banheiro - 1</string>
+    <string name="titleBathRoom2">Banheiro - 2</string>
+    <string name="titleHall">Hall</string>
+    <string name="l1LVR">Rua</string>
+    <string name="l2LVR">Escada</string>
+    <string name="l3LVR">Entrada</string>
+    <string name="l4LVR">Spot</string>
+    <string name="l5LVR">Sala</string>
+    <string name="l6LVR">Bar</string>
+    <string name="t1LVR">Tv</string>
+    <string name="t2LVR">Sky</string>
+    <string name="t3LVR">Som</string>
+    <string name="t4LVR">Geral</string>
+    <string name="l1KTR">Principal</string>
+    <string name="l2KTR">Pia</string>
+    <string name="l3KTR">Lavanderia</string>
+    <string name="t1KTR">Fogão</string>
+    <string name="t2KTR">Microondas</string>
+    <string name="t3KTR">Geladeira</string>
+    <string name="t4KTR">Máquina</string>
+    <string name="t5KTR">Cafeteira</string>
+    <string name="t6KTR">Liquidificador</string>
+    <string name="t7KTR">Geral</string>
+    <string name="t8KTR">Geral</string>
+    <string name="t9KTR">Geral</string>
+    <string name="l1BDR1">Principal</string>
+    <string name="t1BDR1">TV</string>
+    <string name="t2BDR1">Computador</string>
+    <string name="t3BDR1">Abajur</string>
+    <string name="t4BDR1">Geral</string>
+    <string name="t5BDR1">Geral</string>
+    <string name="t6BDR1">Geral</string>
+    <string name="t7BDR1">Geral</string>
+    <string name="l1BDR2">Principal</string>
+    <string name="t1BDR2">TV</string>
+    <string name="t2BDR2">Computador</string>
+    <string name="t3BDR2">Abajur</string>
+    <string name="t4BDR2">Geral</string>
+    <string name="t5BDR2">Geral</string>
+    <string name="t6BDR2">Geral</string>
+    <string name="t7BDR2">Geral</string>
+    <string name="l1BDR3">Principal</string>
+    <string name="t1BDR3">TV</string>
+    <string name="t2BDR3">Computador</string>
+    <string name="t3BDR3">Abajur</string>
+    <string name="t4BDR3">Geral</string>
+    <string name="t5BDR3">Geral</string>
+    <string name="t6BDR3">Geral</string>
+    <string name="t7BDR3">Geral</string>
+    <string name="l1BDR4">Principal</string>
+    <string name="l2BDR4">Banheiro</string>
+    <string name="l3BDR4">Chuveiro</string>
+    <string name="t1BDR4">TV</string>
+    <string name="t2BDR4">Computador</string>
+    <string name="t3BDR4">Abajur</string>
+    <string name="t4BDR4">Geral</string>
+    <string name="t5BDR4">Banheiro</string>
+    <string name="l1HALL">Corredor</string>
+    <string name="l2HALL">Área</string>
+    <string name="t1HALL">Corredor</string>
+    <string name="t2HALL">Impressora</string>
+    <string name="t3HALL">Roteador</string>
+    <string name="t4HALL">Geral</string>
+    <string name="t5HALL">Geral</string>
+    <string name="t6HALL">Geral</string>
+    <string name="l1BTR1">Principal</string>
+    <string name="l2BTR1">Chuveiro</string>
+    <string name="t1BTR1">Geral</string>
+    <string name="l1BTR2">Principal</string>
+    <string name="l2BTR2">Chuveiro</string>
+    <string name="t1BTR2">Geral</string>
+    <string name="light">Lâmpadas</string>
+    <string name="power">Tomadas</string>
+    <string name="tuyaAtalho">Tuya</string>
+    <!-- cadastro de cômodos -->
+    <string name="comodos">Cômodos</string>
+    <string name="novoComodo">Novo cômodo</string>
+    <string name="editarComodo">Editar cômodo</string>
+    <string name="nomeComodo">Nome do cômodo</string>
+    <string name="icone">Ícone</string>
+    <string name="nomeItem">Nome</string>
+    <string name="adicionarLampada">+ Lâmpada</string>
+    <string name="adicionarTomada">+ Tomada</string>
+    <string name="excluir">Excluir</string>
+    <string name="nenhumComodo">Nenhum cômodo cadastrado.</string>
+    <string name="resumoComodo">%1$d dispositivo(s) · %2$d grupo(s)</string>
+    <string name="comodoSemItens">Este cômodo ainda não tem dispositivos. Escolha os grupos em Configuração.</string>
+    <string name="semDispositivoAssociado">Sem dispositivo associado. Associe um em Configuração.</string>
+    <string name="dispositivoIndisponivel">Dispositivo indisponível no momento</string>
+    <string name="dispositivoOffline">Dispositivo fora do ar</string>
+    <string name="erroLerComodos">Não foi possível ler os cômodos</string>
+    <string name="novaLampada">Lâmpada %1$d</string>
+    <string name="novaTomada">Tomada %1$d</string>
+    <string name="tuyaSemAssociacao">Tuya: toque para associar um dispositivo</string>
+    <string name="tuyaAssociadoA">Tuya: %1$s</string>
+    <string name="carregandoDispositivos">Carregando dispositivos…</string>
+    <string name="tuyaSemInterruptores">Nenhum interruptor on/off encontrado na sua conta do Smart Life.</string>
+    <string name="tuyaNenhum">Nenhum</string>
+    <string name="tuyaTituloOffline">%1$s (fora do ar)</string>
+    <string name="associarTuya">Dispositivo Tuya</string>
+    <string name="cenaSemAssociacao">Cena: toque para comandar por uma cena</string>
+    <string name="cenaAssociada">Cena: %1$s</string>
+    <string name="cenaDesligaSemAssociacao">Cena para desligar: a mesma (alterna)</string>
+    <string name="cenaDesligaAssociada">Cena para desligar: %1$s</string>
+    <string name="carregandoCenas">Carregando cenas…</string>
+    <string name="tuyaSemCenas">Nenhuma cena de acionamento manual encontrada no Smart Life.</string>
+    <string name="notificacaoCompraCanal">Lista de compras</string>
+    <string name="notificacaoCompraTitulo">Lista de compras</string>
+    <string name="notificacaoCompraTexto">%1$s foi adicionado à lista</string>
+    <string name="moverParaCima">Mover para cima</string>
+    <string name="moverParaBaixo">Mover para baixo</string>
+    <string name="escolherCena">Cena Tuya</string>
+    <string name="escolherCenaDesliga">Cena para desligar</string>
+    <string name="comodoSemNome">Informe o nome do cômodo</string>
+    <string name="excluirComodoTitulo">Excluir cômodo</string>
+    <string name="excluirComodoMensagem">Excluir o cômodo \"%1$s\" e todos os seus dispositivos?</string>
+    <string name="comodosDica">Toque em um cômodo para escolher os grupos de dispositivos e associá-los à Tuya.</string>
+    <string name="resumoTuya">Tuya: %1$d de %2$d associados</string>
+    <string name="habilitarComodo">Habilitar ou desabilitar o cômodo</string>
+    <string name="comodoDesabilitado">Cômodo desabilitado</string>
+    <!-- grupos de dispositivos do cômodo -->
+    <string name="grupoMedidores">Medidores de energia</string>
+    <string name="grupoTermometros">Termômetros</string>
+    <string name="novoMedidor">Medidor %1$d</string>
+    <string name="novoTermometro">Termômetro %1$d</string>
+    <string name="adicionarMedidor">+ Medidor</string>
+    <string name="adicionarTermometro">+ Termômetro</string>
+    <string name="adicionarGrupo">+ Adicionar grupo de dispositivos</string>
+    <string name="escolherGrupo">Grupo de dispositivos</string>
+    <string name="comodoSemGrupos">Este cômodo está vazio. Adicione os grupos de dispositivos que ele terá e depois associe cada dispositivo.</string>
+    <string name="todosGruposAdicionados">Todos os grupos já foram adicionados</string>
+    <string name="removerGrupo">Remover grupo</string>
+    <string name="removerGrupoTitulo">Remover grupo</string>
+    <string name="removerGrupoMensagem">Remover o grupo \"%1$s\" e seus %2$d dispositivo(s) deste cômodo?</string>
+    <string name="tuyaSemMedidores">Nenhum dispositivo que meça energia (potência, corrente ou tensão) encontrado na sua conta do Smart Life.</string>
+    <string name="tuyaSemTermometros">Nenhum sensor de temperatura encontrado na sua conta do Smart Life.</string>
+    <string name="potencia">Potência</string>
+    <string name="corrente">Corrente</string>
+    <string name="tensao">Tensão</string>
+    <string name="ligarDesligar">Ligar ou desligar</string>
+    <string name="estadoLigado">Ligado</string>
+    <string name="estadoDesligado">Desligado</string>
+    <string name="estadoForaDoAr">Fora do ar</string>
+    <string name="estadoSemDispositivo">Sem dispositivo associado</string>
+    <string name="umidadeValor">Umidade: %1$s</string>
+    <string name="desligarTitulo">Desligar dispositivo</string>
+    <string name="desligarMensagem">Desligar \"%1$s\"? Tudo o que estiver ligado nele ficará sem energia.</string>
+    <string name="desligar">Desligar</string>
+    <string name="grupoCortinas">Cortinas</string>
+    <string name="novaCortina">Cortina %1$d</string>
+    <string name="adicionarCortina">+ Cortina</string>
+    <string name="grupoChuva">Sensores de chuva</string>
+    <string name="novoSensorChuva">Sensor de chuva %1$d</string>
+    <string name="adicionarSensorChuva">+ Sensor de chuva</string>
+    <string name="grupoAlarmes">Alarmes</string>
+    <string name="novoAlarme">Alarme %1$d</string>
+    <string name="adicionarAlarme">+ Alarme</string>
+    <string name="tuyaSemSensoresChuva">Nenhum sensor de chuva encontrado na sua conta do Smart Life.</string>
+    <string name="tuyaSemAlarmes">Nenhuma central de alarme encontrada na sua conta do Smart Life.</string>
+    <string name="cenaRotuloVazio">%1$s: toque para escolher</string>
+    <string name="cenaRotuloAtual">%1$s: %2$s</string>
+    <string name="rotuloCenaSubir">Cena para subir</string>
+    <string name="rotuloCenaParar">Cena para parar</string>
+    <string name="rotuloCenaDescer">Cena para descer</string>
+    <string name="rotuloCenaAtivar">Cena para ativar</string>
+    <string name="rotuloCenaDesativar">Cena para desativar</string>
+    <string name="subir">Subir</string>
+    <string name="parar">Parar</string>
+    <string name="descer">Descer</string>
+    <string name="ativar">Ativar</string>
+    <string name="desativar">Desativar</string>
+    <string name="grupoLuz">Luz ajustável</string>
+    <string name="novaLuz">Luz %1$d</string>
+    <string name="adicionarLuz">+ Luz ajustável</string>
+    <string name="luzLigada">Ligada · %1$d%%</string>
+    <string name="luzLigadaSemBrilho">Ligada</string>
+    <string name="luzDesligada">Desligada</string>
+    <string name="tuyaSemLuzes">Nenhuma lâmpada com controle de brilho ou de temperatura da cor encontrada na sua conta do Smart Life.</string>
+    <string name="luzTemperaturaTitulo">Temperatura da cor</string>
+    <string name="luzBrilhoTitulo">Brilho</string>
+    <string name="luzQuente">Quente</string>
+    <string name="luzNeutra">Neutra</string>
+    <string name="luzFria">Fria</string>
+    <string name="luzBrilho25">25%</string>
+    <string name="luzBrilho50">50%</string>
+    <string name="luzBrilho75">75%</string>
+    <string name="luzBrilho100">100%</string>
+    <string name="rotuloCenaQuente">Cena para temperatura quente</string>
+    <string name="rotuloCenaNeutra">Cena para temperatura neutra</string>
+    <string name="rotuloCenaFria">Cena para temperatura fria</string>
+    <string name="rotuloCenaBrilho25">Cena para brilho 25%</string>
+    <string name="rotuloCenaBrilho50">Cena para brilho 50%</string>
+    <string name="rotuloCenaBrilho75">Cena para brilho 75%</string>
+    <string name="rotuloCenaBrilho100">Cena para brilho 100%</string>
+    <string name="protecaoTotal">Proteção total</string>
+    <string name="protecaoParcial">Proteção parcial</string>
+    <string name="sos">SOS</string>
+    <string name="removerAlarmes">Remover alarmes</string>
+    <string name="rotuloCenaTotal">Cena para proteção total</string>
+    <string name="rotuloCenaParcial">Cena para proteção parcial</string>
+    <string name="rotuloCenaSos">Cena para SOS</string>
+    <string name="rotuloCenaRemover">Cena para remover alarmes</string>
+    <string name="acionarSosTitulo">Acionar SOS</string>
+    <string name="acionarSosMensagem">Acionar o SOS de \"%1$s\"? A sirene vai tocar.</string>
+    <string name="acionar">Acionar</string>
+    <string name="tuyaSemCortinas">Nenhum motor de cortina com posição encontrado na sua conta do Smart Life.</string>
+    <string name="cortinaPosicaoNormal">Posição: 100% = aberta (toque para inverter)</string>
+    <string name="cortinaPosicaoInvertida">Posição: 0% = aberta (toque para inverter)</string>
+    <string name="cortinaAberta">Aberta</string>
+    <string name="cortinaFechada">Fechada</string>
+    <string name="cortinaAbrindo">Abrindo…</string>
+    <string name="cortinaAtualizando">Atualizando…</string>
+    <string name="cortinaFechando">Fechando…</string>
+    <string name="cortinaParcialSemPercentual">Parcialmente aberta</string>
+    <string name="dadosDispositivoTitulo">Dados do dispositivo</string>
+    <string name="dadosDispositivoVazio">Sem leitura do dispositivo ainda.</string>
+    <string name="fechar">Fechar</string>
+    <string name="cortinaParcial">%1$d%% aberta</string>
+    <string name="desativarAlarmeTitulo">Desativar alarme</string>
+    <string name="desativarAlarmeMensagem">Desativar \"%1$s\"? A casa ficará sem a proteção do alarme.</string>
+    <string name="semCenaConfigurada">Cena não configurada. Escolha em Configuração.</string>
+    <string name="estadoChovendo">Chovendo</string>
+    <string name="estadoSemChuva">Sem chuva</string>
+    <string name="estadoSemLeitura">Sem leitura</string>
+    <string name="alarmeAtivado">Ativado</string>
+    <string name="alarmeDesativado">Desativado</string>
+    <string name="alarmeEmCasa">Em casa</string>
+    <string name="alarmeDisparado">Disparado</string>
+    <string name="alarmeDesconhecido">Status indisponível</string>
+    <!-- mesma ordem de Comodo.ICONES -->
+    <string-array name="iconesComodo">
+        <item>Sala</item>
+        <item>Cozinha</item>
+        <item>Quarto</item>
+        <item>Banheiro</item>
+        <item>Hall</item>
+        <item>Escritório</item>
+        <item>Manutenção</item>
+        <item>Climatização</item>
+        <item>Piscina</item>
+        <item>Churrasqueira</item>
+        <item>Quintal</item>
+        <item>Segurança</item>
+    </string-array>
 </resources>

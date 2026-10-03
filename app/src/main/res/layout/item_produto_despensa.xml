@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:minHeight="48dp"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/tvProdutoDespensa"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:textColor="@color/colorTab1"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/etQuantidade"
+        android:layout_width="56dp"
+        android:layout_height="wrap_content"
+        android:autofillHints="none"
+        android:imeOptions="actionDone"
+        android:importantForAutofill="no"
+        android:inputType="numberDecimal"
+        android:maxLength="7"
+        android:selectAllOnFocus="true"
+        android:textAlignment="center"
+        android:textColor="@color/colorTab1"
+        android:textSize="14sp" />
+
+    <RadioGroup
+        android:id="@+id/rgUnidade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rbUn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/un"
+            android:textColor="@color/colorTab1"
+            android:textSize="14sp" />
+
+        <RadioButton
+            android:id="@+id/rbMl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ml"
+            android:textColor="@color/colorTab1"
+            android:textSize="14sp" />
+
+        <RadioButton
+            android:id="@+id/rbKg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/kg"
+            android:textColor="@color/colorTab1"
+            android:textSize="14sp" />
+    </RadioGroup>
+
+    <ImageView
+        android:id="@+id/ivAcaoProduto"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:contentDescription="@string/msgLstCompras"
+        android:padding="2dp" />
+</LinearLayout>

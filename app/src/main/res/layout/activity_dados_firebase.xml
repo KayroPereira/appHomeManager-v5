@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_main"
+    android:background="@drawable/bg_gradiente"
     tools:context=".DadosFirebaseActivity">
 
     <androidx.constraintlayout.widget.Guideline
@@ -29,6 +29,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:text="@string/onOff"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
         app:layout_constraintStart_toStartOf="parent"
@@ -42,6 +43,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:text="@string/churrasqueira_mdir"
+        android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
@@ -52,6 +54,7 @@
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
         android:text="@string/churrasqueira_sfc2"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -61,6 +64,7 @@
         android:layout_height="52dp"
         android:layout_marginBottom="10dp"
         android:text="@string/churrasqueira_sfc1"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintEnd_toStartOf="@+id/swSFc2Churrasqueira"
         app:layout_constraintStart_toEndOf="@+id/swOSopradorChurrasqueira" />
@@ -72,6 +76,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginBottom="10dp"
         android:text="@string/churrasqueira_osopr"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -81,6 +86,7 @@
         android:layout_height="52dp"
         android:layout_marginEnd="10dp"
         android:text="@string/churrasqueira_olamp"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/swSFc2Churrasqueira"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/swMOnOffChurrasqueira" />
@@ -92,6 +98,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:text="@string/churrasqueira_monoff"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
@@ -100,6 +107,7 @@
         android:layout_width="100dp"
         android:layout_height="52dp"
         android:text="@string/churrasqueira_oexau"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/swSFc1Churrasqueira"
         app:layout_constraintEnd_toStartOf="@+id/swOLampadaChurrasqueira"
         app:layout_constraintStart_toEndOf="@+id/swOAguaChurrasqueira"
@@ -111,6 +119,7 @@
         android:layout_height="52dp"
         android:layout_marginStart="10dp"
         android:text="@string/churrasqueira_oagua"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/swOSopradorChurrasqueira"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/swMDirecaoChurrasqueira" />
@@ -121,6 +130,7 @@
         android:layout_height="52dp"
         android:layout_marginTop="10dp"
         android:text="@string/churrasqueira_mhab"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toStartOf="@+id/swMOnOffChurrasqueira"
         app:layout_constraintStart_toEndOf="@+id/swMDirecaoChurrasqueira"
         app:layout_constraintTop_toTopOf="@+id/guideline2" />
@@ -134,6 +144,7 @@
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
         android:text="@string/vazio"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -148,6 +159,7 @@
         android:layout_marginBottom="10dp"
         android:gravity="center"
         android:text="@string/zeroNum"
+        android:textColor="@color/white"
         android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toEndOf="parent"
