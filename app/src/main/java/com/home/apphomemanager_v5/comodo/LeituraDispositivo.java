@@ -93,6 +93,21 @@ public final class LeituraDispositivo {
         return algum ? 0.0 : null;
     }
 
+    /** Estado do interruptor associado ao item (lâmpada, tomada...): ligado, desligado ou nulo se o aparelho não informa. */
+    public static Boolean ligado(TuyaDevice dispositivo, ItemComodo item) {
+
+        if (dispositivo == null || dispositivo.status == null || item.tuyaCode == null) {
+            return null;
+        }
+
+        for (TuyaStatus status : dispositivo.status) {
+            if (item.tuyaCode.equals(status.code) && status.value instanceof Boolean) {
+                return (Boolean) status.value;
+            }
+        }
+        return null;
+    }
+
     public enum PosicaoCortina { ABERTA, FECHADA, PARCIAL, ABRINDO, FECHANDO }
 
     /** Estado da cortina; o percentual só existe quando o motor informa uma posição. */

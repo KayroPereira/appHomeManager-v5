@@ -385,10 +385,9 @@ public class DashBoardActivity extends AppCompatActivity {
         binding.tvBuyListInfDB.setVisibility(visibilidade);
     }
 
-    /** O Dashboard ainda não tem tela própria; por ora só avisa. */
     private void dashboard(Object event){
 
-        Toast.makeText(this, R.string.dashboardEmBreve, Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(this, DashBoardMetricasActivity.class));
     }
 
     private void configuracao(Object event){

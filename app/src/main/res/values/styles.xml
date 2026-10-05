@@ -65,6 +65,30 @@
         <item name="android:focusable">true</item>
     </style>
 
+    <!-- Título de seção do dashboard (a cor vem de cada seção). -->
+    <style name="DashSecao">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">9dp</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:layout_marginBottom">6dp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- Cartão que agrupa as linhas de uma seção do dashboard. -->
+    <style name="DashCartaoSecao">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">5dp</item>
+        <item name="android:layout_marginEnd">5dp</item>
+        <item name="android:background">@drawable/bg_card_vidro</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingBottom">4dp</item>
+    </style>
+
     <!-- Botão de ligar/desligar: a imagem redonda ocupa 40dp dentro dos 48dp de toque. -->
     <style name="BotaoLigar">
         <item name="android:layout_width">48dp</item>

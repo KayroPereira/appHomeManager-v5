@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_gradiente"
+    android:fitsSystemWindows="true"
+    tools:context=".DashBoardMetricasActivity">
+
+    <ImageView
+        android:id="@+id/ivMetVoltar"
+        style="@style/BotaoTopo"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:contentDescription="@string/voltar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/back" />
+
+    <ImageView
+        android:id="@+id/ivMetAtualizar"
+        style="@style/BotaoTopo"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@id/ivMetVoltar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/ivMetVoltar"
+        app:srcCompat="@drawable/atualizar" />
+
+    <TextView
+        android:id="@+id/tvMetTitulo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center"
+        android:maxLines="1"
+        android:text="@string/dashboard"
+        android:textColor="@android:color/background_light"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toTopOf="@id/tvMetAtualizado"
+        app:layout_constraintEnd_toStartOf="@id/ivMetAtualizar"
+        app:layout_constraintStart_toEndOf="@id/ivMetVoltar"
+        app:layout_constraintTop_toTopOf="@id/ivMetVoltar"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/tvMetAtualizado"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:maxLines="1"
+        android:textColor="@color/textoSecundario"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@id/ivMetVoltar"
+        app:layout_constraintEnd_toEndOf="@id/tvMetTitulo"
+        app:layout_constraintStart_toStartOf="@id/tvMetTitulo"
+        app:layout_constraintTop_toBottomOf="@id/tvMetTitulo" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivMetVoltar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="11dp"
+            android:paddingTop="4dp"
+            android:paddingEnd="11dp"
+            android:paddingBottom="24dp">
+
+            <TextView
+                android:id="@+id/tvMetAviso"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/bg_chip_status"
+                android:padding="12dp"
+                android:textColor="@color/textoSecundario"
+                android:textSize="14sp"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/llMetResumo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+
+            <TextView
+                style="@style/DashSecao"
+                android:text="@string/dashSecaoSeguranca"
+                android:textColor="@color/corAlarme" />
+
+            <LinearLayout
+                android:id="@+id/llMetSeguranca"
+                style="@style/DashCartaoSecao" />
+
+            <TextView
+                style="@style/DashSecao"
+                android:text="@string/dashSecaoClimatizacao"
+                android:textColor="@color/corTemperatura" />
+
+            <LinearLayout
+                android:id="@+id/llMetClimatizacao"
+                style="@style/DashCartaoSecao" />
+
+            <TextView
+                style="@style/DashSecao"
+                android:text="@string/dashSecaoManutencao"
+                android:textColor="@color/corAgua" />
+
+            <LinearLayout
+                android:id="@+id/llMetManutencao"
+                style="@style/DashCartaoSecao" />
+
+            <TextView
+                style="@style/DashSecao"
+                android:text="@string/dashSecaoComodos"
+                android:textColor="@color/corTomada" />
+
+            <LinearLayout
+                android:id="@+id/llMetComodos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp" />
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

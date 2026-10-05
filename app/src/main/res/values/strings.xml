@@ -133,7 +133,6 @@
     <string name="utilitarios">Utilitários</string>
     <string name="controle">Controle</string>
     <string name="dashboard">Dashboard</string>
-    <string name="dashboardEmBreve">Dashboard em breve</string>
     <string name="cidade">Cidade</string>
     <string name="strNull">--</string>
     <string name="permissaoLocalizacaoNegada">Permissão de localização negada: não é possível exibir o clima.</string>
@@ -148,7 +147,7 @@
     <!-- opções menus -->
 
     <string name="titleConfiguration">Configuração</string>
-    <!-- cômodos -->
+    <!-- grupos -->
     <string name="titleLiving">Sala</string>
     <string name="titleKitchen">Cozinha</string>
     <string name="titleBedRoom1">Quarto - 1</string>
@@ -229,23 +228,23 @@
     <string name="light">Lâmpadas</string>
     <string name="power">Tomadas</string>
     <string name="tuyaAtalho">Tuya</string>
-    <!-- cadastro de cômodos -->
-    <string name="comodos">Cômodos</string>
-    <string name="novoComodo">Novo cômodo</string>
-    <string name="editarComodo">Editar cômodo</string>
-    <string name="nomeComodo">Nome do cômodo</string>
+    <!-- cadastro de grupos -->
+    <string name="comodos">Grupos</string>
+    <string name="novoComodo">Novo grupo</string>
+    <string name="editarComodo">Editar grupo</string>
+    <string name="nomeComodo">Nome do grupo</string>
     <string name="icone">Ícone</string>
     <string name="nomeItem">Nome</string>
     <string name="adicionarLampada">+ Lâmpada</string>
     <string name="adicionarTomada">+ Tomada</string>
     <string name="excluir">Excluir</string>
-    <string name="nenhumComodo">Nenhum cômodo cadastrado.</string>
-    <string name="resumoComodo">%1$d dispositivo(s) · %2$d grupo(s)</string>
-    <string name="comodoSemItens">Este cômodo ainda não tem dispositivos. Escolha os grupos em Configuração.</string>
+    <string name="nenhumComodo">Nenhum grupo cadastrado.</string>
+    <string name="resumoComodo">%1$d dispositivo(s) · %2$d tipo(s)</string>
+    <string name="comodoSemItens">Este grupo ainda não tem dispositivos. Escolha os tipos em Configuração.</string>
     <string name="semDispositivoAssociado">Sem dispositivo associado. Associe um em Configuração.</string>
     <string name="dispositivoIndisponivel">Dispositivo indisponível no momento</string>
     <string name="dispositivoOffline">Dispositivo fora do ar</string>
-    <string name="erroLerComodos">Não foi possível ler os cômodos</string>
+    <string name="erroLerComodos">Não foi possível ler os grupos</string>
     <string name="novaLampada">Lâmpada %1$d</string>
     <string name="novaTomada">Tomada %1$d</string>
     <string name="tuyaSemAssociacao">Tuya: toque para associar um dispositivo</string>
@@ -268,27 +267,27 @@
     <string name="moverParaBaixo">Mover para baixo</string>
     <string name="escolherCena">Cena Tuya</string>
     <string name="escolherCenaDesliga">Cena para desligar</string>
-    <string name="comodoSemNome">Informe o nome do cômodo</string>
-    <string name="excluirComodoTitulo">Excluir cômodo</string>
-    <string name="excluirComodoMensagem">Excluir o cômodo \"%1$s\" e todos os seus dispositivos?</string>
-    <string name="comodosDica">Toque em um cômodo para escolher os grupos de dispositivos e associá-los à Tuya.</string>
+    <string name="comodoSemNome">Informe o nome do grupo</string>
+    <string name="excluirComodoTitulo">Excluir grupo</string>
+    <string name="excluirComodoMensagem">Excluir o grupo \"%1$s\" e todos os seus dispositivos?</string>
+    <string name="comodosDica">Toque em um grupo para escolher os tipos de dispositivos e associá-los à Tuya.</string>
     <string name="resumoTuya">Tuya: %1$d de %2$d associados</string>
-    <string name="habilitarComodo">Habilitar ou desabilitar o cômodo</string>
-    <string name="comodoDesabilitado">Cômodo desabilitado</string>
-    <!-- grupos de dispositivos do cômodo -->
+    <string name="habilitarComodo">Habilitar ou desabilitar o grupo</string>
+    <string name="comodoDesabilitado">Grupo desabilitado</string>
+    <!-- tipos de dispositivos do grupo -->
     <string name="grupoMedidores">Medidores de energia</string>
     <string name="grupoTermometros">Termômetros</string>
     <string name="novoMedidor">Medidor %1$d</string>
     <string name="novoTermometro">Termômetro %1$d</string>
     <string name="adicionarMedidor">+ Medidor</string>
     <string name="adicionarTermometro">+ Termômetro</string>
-    <string name="adicionarGrupo">+ Adicionar grupo de dispositivos</string>
-    <string name="escolherGrupo">Grupo de dispositivos</string>
-    <string name="comodoSemGrupos">Este cômodo está vazio. Adicione os grupos de dispositivos que ele terá e depois associe cada dispositivo.</string>
-    <string name="todosGruposAdicionados">Todos os grupos já foram adicionados</string>
-    <string name="removerGrupo">Remover grupo</string>
-    <string name="removerGrupoTitulo">Remover grupo</string>
-    <string name="removerGrupoMensagem">Remover o grupo \"%1$s\" e seus %2$d dispositivo(s) deste cômodo?</string>
+    <string name="adicionarGrupo">+ Adicionar tipo de dispositivo</string>
+    <string name="escolherGrupo">Tipo de dispositivo</string>
+    <string name="comodoSemGrupos">Este grupo está vazio. Adicione os tipos de dispositivos que ele terá e depois associe cada dispositivo.</string>
+    <string name="todosGruposAdicionados">Todos os tipos já foram adicionados</string>
+    <string name="removerGrupo">Remover tipo</string>
+    <string name="removerGrupoTitulo">Remover tipo</string>
+    <string name="removerGrupoMensagem">Remover o tipo \"%1$s\" e seus %2$d dispositivo(s) deste grupo?</string>
     <string name="tuyaSemMedidores">Nenhum dispositivo que meça energia (potência, corrente ou tensão) encontrado na sua conta do Smart Life.</string>
     <string name="tuyaSemTermometros">Nenhum sensor de temperatura encontrado na sua conta do Smart Life.</string>
     <string name="potencia">Potência</string>
@@ -384,6 +383,49 @@
     <string name="alarmeEmCasa">Em casa</string>
     <string name="alarmeDisparado">Disparado</string>
     <string name="alarmeDesconhecido">Status indisponível</string>
+    <!-- dashboard da casa (somente leitura) -->
+    <string name="dashAtualizadoAs">Atualizado às %1$s</string>
+    <string name="dashAtualizando">Atualizando…</string>
+    <string name="dashSemComodos">Nenhum grupo cadastrado ainda. Cadastre os grupos em Controle para ver os dados aqui.</string>
+    <string name="dashTileLampadas">Lâmpadas acesas</string>
+    <string name="dashTileTomadas">Tomadas ligadas</string>
+    <string name="dashTileConsumo">Consumo agora</string>
+    <string name="dashTileDispositivos">Dispositivos online</string>
+    <string name="dashTileTemperatura">Temperatura média</string>
+    <string name="dashTileSeguranca">Segurança</string>
+    <string name="dashDeTotal">de %1$d</string>
+    <string name="dashForaDoArContagem">%1$d fora do ar</string>
+    <string name="dashTodosOnline">Todos online</string>
+    <string name="dashSemMedidor">sem medidor</string>
+    <string name="dashSemAlarme">sem alarme</string>
+    <string name="dashSecaoSeguranca">Segurança</string>
+    <string name="dashSecaoClimatizacao">Climatização</string>
+    <string name="dashSecaoManutencao">Manutenção</string>
+    <string name="dashSecaoComodos">Grupos</string>
+    <string name="dashSemSeguranca">Nenhum alarme ou sensor de chuva nos grupos.</string>
+    <string name="dashSemClima">Nenhum termômetro ou cortina nos grupos.</string>
+    <string name="dashCortinas">Cortinas</string>
+    <string name="dashCortinasAbertas">%1$d de %2$d abertas</string>
+    <string name="dashAlarmeComodo">Alarme: %1$s</string>
+    <string name="dashCortinasComodo">%1$d de %2$d cortinas abertas</string>
+    <string name="dashCaixaDagua">Caixa d\'água</string>
+    <string name="dashNivelBaixo">Nível baixo</string>
+    <string name="dashModoAutomatico">Automático</string>
+    <string name="dashModoManual">Manual</string>
+    <string name="dashBombaLigada">Bomba ligada</string>
+    <string name="dashBombaDesligada">Bomba desligada</string>
+    <string name="dashEnchendo">Enchendo</string>
+    <string name="dashSemLeituraNivel">Sem leitura de nível</string>
+    <string name="dashTodosDispositivosOnline">Todos os dispositivos estão online.</string>
+    <string name="dashSemDispositivos">Sem dispositivos associados</string>
+    <string name="dashComodoDesabilitado">Desabilitado</string>
+    <string name="dashRotuloLuzes">Luzes</string>
+    <string name="dashRotuloTomadas">Tomadas</string>
+    <string name="dashRotuloTemperatura">Temperatura</string>
+    <string name="dashRotuloConsumo">Consumo</string>
+    <string name="dashUmidade">%1$s de umidade</string>
+    <string name="dashFracao">%1$d/%2$d</string>
+    <string name="dashPercentual">%1$d%%</string>
     <!-- mesma ordem de Comodo.ICONES -->
     <string-array name="iconesComodo">
         <item>Sala</item>
